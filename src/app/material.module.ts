@@ -16,7 +16,8 @@ import {MatIconModule} from "@angular/material/icon";
     MatInputModule,
     MatFormFieldModule,
     MatTableModule,
-    MatIconModule
+    MatIconModule,
+
   ],
   exports: [
     MatButtonModule,
