@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {Alumnos} from "../../models/alumnos";
-import {Curso} from "../../models/curso";
+// @ts-ignore
+import {Alumnos} from "../models/alumnos";
+// @ts-ignore
+import {Curso} from "../models/curso";
 import {MatTableDataSource} from "@angular/material/table";
 
 @Component({

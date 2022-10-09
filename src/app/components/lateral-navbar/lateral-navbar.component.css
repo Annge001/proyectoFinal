@@ -1,3 +1,10 @@
 h2{
   color: #5D6D7E;
 }
+.background-color{
+  background: rgba(33, 37, 41, 0.88);
+  opacity: 1;
+}
+.colorWhite{
+  color: whitesmoke;
+}
