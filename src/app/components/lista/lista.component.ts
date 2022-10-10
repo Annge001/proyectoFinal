@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MatTableDataSource} from "@angular/material/table";
-import {MatDialog} from "@angular/material/dialog";
 import {ListaAlumnos} from "../models/alumnos";
-
 
 
 
@@ -12,6 +10,9 @@ import {ListaAlumnos} from "../models/alumnos";
   styleUrls: ['./lista.component.css']
 })
 export class ListaComponent  implements OnInit {
+
+
+
 
   dataInicial = ListaAlumnos
 

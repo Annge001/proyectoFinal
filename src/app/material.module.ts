@@ -6,6 +6,13 @@ import {MatInputModule} from "@angular/material/input";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatTableModule} from "@angular/material/table";
 import {MatIconModule} from "@angular/material/icon";
+import {MatDialogModule} from "@angular/material/dialog";
+import {MatSelectModule} from "@angular/material/select";
+import {ReactiveFormsModule} from "@angular/forms";
+
+
+
+
 
 
 
@@ -17,6 +24,10 @@ import {MatIconModule} from "@angular/material/icon";
     MatFormFieldModule,
     MatTableModule,
     MatIconModule,
+    MatDialogModule,
+    MatSelectModule,
+    ReactiveFormsModule,
+
 
   ],
   exports: [
@@ -25,7 +36,11 @@ import {MatIconModule} from "@angular/material/icon";
     MatInputModule,
     MatFormFieldModule,
     MatTableModule,
-    MatIconModule
+    MatIconModule,
+    MatDialogModule,
+    MatSelectModule,
+    ReactiveFormsModule,
+
   ]
 })
 export class MaterialModule{}
