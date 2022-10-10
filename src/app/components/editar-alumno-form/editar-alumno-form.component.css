@@ -1,0 +1,20 @@
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+td {
+  padding-right: 8px;
+}
+.container{
+  background: rgba(105, 105, 105, 0.5);
+  width: 30%;
+  border-radius: 5px;
+
+}
+
