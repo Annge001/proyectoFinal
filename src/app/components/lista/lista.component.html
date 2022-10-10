@@ -1,5 +1,7 @@
 
+
 <!--dataSource siempre al inicio-->
+
 <mat-table [dataSource]="ELEMENT_DATA">
 
   <ng-container matColumnDef="nombre">
@@ -23,7 +25,7 @@
   <ng-container matColumnDef="editar">
     <mat-header-cell *matHeaderCellDef> Editar </mat-header-cell>
     <mat-cell *matCellDef="let persona">
-      <mat-icon class="mat-18 colorGray pointer">edit</mat-icon>
+    <button mat-button mat-icon-button>editar</button>
     </mat-cell>
   </ng-container>
 
@@ -40,8 +42,17 @@
   </ng-container>
 
 
+
   <!-- variable para indicar cada columna de la pagina. siempre al final -->
 
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
   <mat-row *matRowDef="let row; columns : displayedColumns;"></mat-row>
 </mat-table>
+
+<div class="example-button-container">
+  <p class="colorGray">Agregar Alumno</p>
+  <button mat-mini-fab color="black" aria-label="Example icon button with a plus one icon">
+    <mat-icon>plus_one</mat-icon>
+  </button>
+</div>
+
