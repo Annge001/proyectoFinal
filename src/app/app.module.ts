@@ -9,6 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MaterialModule} from "./material.module";
 import {LateralNavbarComponent} from "./components/lateral-navbar/lateral-navbar.component";
 import {EditarAlumnoFormComponent} from "./components/editar-alumno-form/editar-alumno-form.component";
+import {MatCheckboxModule} from "@angular/material/checkbox";
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import {EditarAlumnoFormComponent} from "./components/editar-alumno-form/editar-
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]

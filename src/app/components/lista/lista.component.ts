@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import {MatTableDataSource} from "@angular/material/table";
 import {ListaAlumnos} from "../models/alumnos";
+import {MatButtonModule} from "@angular/material/button";
 
 
 
@@ -11,7 +12,7 @@ import {ListaAlumnos} from "../models/alumnos";
 })
 export class ListaComponent  implements OnInit {
 
-
+@Output() newEditarEvent = new EventEmitter<undefined>();
 
 
   dataInicial = ListaAlumnos
@@ -27,6 +28,11 @@ export class ListaComponent  implements OnInit {
     // @ts-ignore
     this.ELEMENT_DATA.data = this.dataInicial
   }
+  addNewEditar(value:undefined){
+    // @ts-ignore
+    this.newEditarEvent.emit();
+  }
+
 
   borrar(id: number) {
 //aqui busco a la persona por id y me retorna la posicion en el arreglo

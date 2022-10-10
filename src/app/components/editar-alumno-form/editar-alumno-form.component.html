@@ -22,6 +22,12 @@
                 <input matInput>
               </mat-form-field>
             </td>
+            <td>
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Comisión</mat-label>
+                <input matInput>
+              </mat-form-field>
+            </td>
           </tr>
         </table>
         <p>
@@ -46,6 +52,7 @@
               Email is <strong>required</strong>
             </mat-error>
           </mat-form-field>
+
         </p>
 
         <p>
@@ -56,6 +63,16 @@
             <mat-icon matSuffix>mode_edit</mat-icon>
           </mat-form-field>
         </p>
+
+
+          <mat-form-field appearance="fill">
+            <mat-label>Cursos</mat-label>
+            <mat-select [formControl]="toppings" multiple>
+              <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+
         <div class="d-flex">
           <div>
             <button mat-stroked-button color="primary">Volver</button>

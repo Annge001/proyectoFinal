@@ -25,6 +25,7 @@
   <ng-container matColumnDef="editar">
     <mat-header-cell *matHeaderCellDef> Editar </mat-header-cell>
     <mat-cell *matCellDef="let persona">
+    <input type="text" id="editar-input" #newEditar>
     <button mat-button mat-icon-button>editar</button>
     </mat-cell>
   </ng-container>
@@ -49,10 +50,13 @@
   <mat-row *matRowDef="let row; columns : displayedColumns;"></mat-row>
 </mat-table>
 
+<!-- Poner este boton en formulario para inscribirse a cursos
+
 <div class="example-button-container">
   <p class="colorGray">Agregar Alumno</p>
   <button mat-mini-fab color="black" aria-label="Example icon button with a plus one icon">
     <mat-icon>plus_one</mat-icon>
-  </button>
 </div>
+  </button> -->
+
 

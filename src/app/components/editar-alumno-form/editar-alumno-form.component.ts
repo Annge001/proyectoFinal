@@ -1,4 +1,4 @@
-import {Component, Output, EventEmitter, OnInit} from '@angular/core';
+import {Component, Output, EventEmitter, OnInit, Input} from '@angular/core';
 import {FormArray, FormGroup, Validators, FormControl, FormBuilder} from "@angular/forms";
 import {ReactiveFormsModule} from '@angular/forms';
 import {outputAst} from "@angular/compiler";
@@ -12,7 +12,10 @@ import {outputAst} from "@angular/compiler";
 export class EditarAlumnoFormComponent implements OnInit {
 
 
+
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
+  toppings = new FormControl('');
+  toppingList: string[] = ['HTML', 'Javascript', 'CSS', 'Angular', 'React', 'Inglés'];
 
   constructor() { }
 
