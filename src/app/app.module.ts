@@ -23,7 +23,7 @@ import {EditarAlumnoFormComponent} from "./components/editar-alumno-form/editar-
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
