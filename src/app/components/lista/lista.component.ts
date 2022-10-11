@@ -28,10 +28,7 @@ export class ListaComponent  implements OnInit {
     // @ts-ignore
     this.ELEMENT_DATA.data = this.dataInicial
   }
-  addNewEditar(value:undefined){
-    // @ts-ignore
-    this.newEditarEvent.emit();
-  }
+
 
 
   borrar(id: number) {

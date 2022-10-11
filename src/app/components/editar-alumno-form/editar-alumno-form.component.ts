@@ -2,6 +2,7 @@ import {Component, Output, EventEmitter, OnInit, Input} from '@angular/core';
 import {FormArray, FormGroup, Validators, FormControl, FormBuilder} from "@angular/forms";
 import {ReactiveFormsModule} from '@angular/forms';
 import {outputAst} from "@angular/compiler";
+import {Curso, ListaCursos} from "../models/curso";
 
 
 @Component({
@@ -14,10 +15,21 @@ export class EditarAlumnoFormComponent implements OnInit {
 
 
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
-  toppings = new FormControl('');
-  toppingList: string[] = ['HTML', 'Javascript', 'CSS', 'Angular', 'React', 'Inglés'];
 
-  constructor() { }
+  listaCursos: Array<Curso> = ListaCursos;
+  cursos = ListaCursos;
+  formularioPersona: FormGroup;
+
+  constructor(private fb: FormBuilder,) {
+    this.formularioPersona = fb.group({
+      nombre: ['', [Validators.required]],
+      apellido: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
+      curso: ['', [Validators.required]],
+      comision: ['', [Validators.required]],
+      telefono: ['', [Validators.required]]
+    });
+  }
 
 
 
