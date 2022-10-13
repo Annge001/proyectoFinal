@@ -5,7 +5,9 @@ export interface Alumnos{
   nombre: string,
   apellido:string,
   comision:string,
-  curso:Array<Curso>
+  curso:Array<Curso>,
+  email:string,
+  telefono:string
 }
 
 
@@ -17,14 +19,19 @@ export let ListaAlumnos: Alumnos[] = [
     nombre:'Andrea',
     apellido:'Castillo',
     comision:'32566',
-    curso: [ListaCursos[0]]
+    curso: [ListaCursos[0]],
+    email: 'andrea@correo.cl',
+    telefono: '958641238'
   },
   {
     id:2,
     nombre:'Constanza',
     apellido:'Rojas',
     comision:'32577',
-    curso: [ListaCursos[1]]
+    curso: [ListaCursos[1]],
+    email: 'constanza@correo.cl',
+    telefono:'958641239'
+
 
 
   },
@@ -33,8 +40,9 @@ export let ListaAlumnos: Alumnos[] = [
     nombre:'Javiera',
     apellido:'Bello',
     comision:'32588',
-    curso: [ListaCursos[2]]
-
+    curso: [ListaCursos[2]],
+    email: 'javiera@correo.cl',
+    telefono: '958641240'
 
   },
 ]
