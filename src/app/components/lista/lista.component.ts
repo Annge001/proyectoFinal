@@ -17,7 +17,7 @@ export class ListaComponent  implements OnInit {
   dataInicial = ListaAlumnos
 
   ELEMENT_DATA = new MatTableDataSource([])
-  displayedColumns: string[] = ['nombre', 'apellido', 'email', 'comision', 'curso', 'editar', 'borrar'];
+  displayedColumns: string[] = ['nombre', 'email', 'comision', 'curso', 'editar', 'borrar'];
   // variante de salida con el alumno a editar
   @Output()
   alumno = new EventEmitter<any>();

@@ -1,13 +1,13 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'mostrarApellido'
+    name: 'mostrarApellido'
 })
 export class MostrarApellidoPipe implements PipeTransform {
 
-  transform(nombre: string, ...args: unknown[]): unknown {
+  transform(nombre: unknown, apellido: unknown[]): unknown {
 
-    return ('apellido') ;
+    return nombre+' '+apellido;
   }
 
 }

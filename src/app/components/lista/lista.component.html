@@ -7,13 +7,13 @@
 
         <ng-container matColumnDef="nombre">
           <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
-          <mat-cell *matCellDef="let persona"> {{persona.nombre | mostrarApellido}} </mat-cell>
+          <mat-cell *matCellDef="let persona"> {{persona.nombre | mostrarApellido : persona.apellido }} </mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="apellido">
+       <!-- <ng-container matColumnDef="apellido">
           <mat-header-cell *matHeaderCellDef > Apellido </mat-header-cell>
           <mat-cell *matCellDef="let persona"> {{persona.apellido}} </mat-cell>
-        </ng-container>
+        </ng-container>-->
 
         <ng-container matColumnDef="email">
           <mat-header-cell *matHeaderCellDef> Correo </mat-header-cell>

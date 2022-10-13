@@ -13,6 +13,7 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
 import {FormsModule} from "@angular/forms";
 import {PrincipalComponent} from "./components/principal/principal.component";
 import {MostrarApellidoPipe} from "./mostrar-apellido.pipe";
+import {TamanoLetraDirective} from "./directivas/tamano-letra.directive";
 
 @NgModule({
     declarations: [
@@ -23,6 +24,7 @@ import {MostrarApellidoPipe} from "./mostrar-apellido.pipe";
         EditarAlumnoFormComponent,
         PrincipalComponent,
         MostrarApellidoPipe,
+        TamanoLetraDirective
 
     ],
   imports: [
