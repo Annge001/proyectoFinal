@@ -11,6 +11,7 @@ import {LateralNavbarComponent} from "./components/lateral-navbar/lateral-navbar
 import {EditarAlumnoFormComponent} from "./components/editar-alumno-form/editar-alumno-form.component";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {FormsModule} from "@angular/forms";
+import {PrincipalComponent} from "./components/principal/principal.component";
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {FormsModule} from "@angular/forms";
     ListaComponent,
     HeaderComponent,
     LateralNavbarComponent,
-    EditarAlumnoFormComponent
+    EditarAlumnoFormComponent,
+    PrincipalComponent
 
   ],
   imports: [

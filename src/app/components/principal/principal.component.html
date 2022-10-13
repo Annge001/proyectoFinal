@@ -1,0 +1,13 @@
+<div>
+  <app-header></app-header>
+</div>
+<div>
+  <app-lateral-navbar></app-lateral-navbar>
+</div>
+<div>
+  <app-lista (alumno)="editarAlumno($event)" ></app-lista>
+</div>
+<div>
+  <app-editar-alumno-form [alumno]="alumno" *ngIf="alumno"></app-editar-alumno-form>
+</div>
+
