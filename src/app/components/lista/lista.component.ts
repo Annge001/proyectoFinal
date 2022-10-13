@@ -26,6 +26,8 @@ export class ListaComponent  implements OnInit {
   @Input()
   listaAlumnosInput= [];
 
+
+
   constructor(
     ){ }
 

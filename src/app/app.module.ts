@@ -12,17 +12,19 @@ import {EditarAlumnoFormComponent} from "./components/editar-alumno-form/editar-
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {FormsModule} from "@angular/forms";
 import {PrincipalComponent} from "./components/principal/principal.component";
+import {MostrarApellidoPipe} from "./mostrar-apellido.pipe";
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ListaComponent,
-    HeaderComponent,
-    LateralNavbarComponent,
-    EditarAlumnoFormComponent,
-    PrincipalComponent,
+    declarations: [
+        AppComponent,
+        ListaComponent,
+        HeaderComponent,
+        LateralNavbarComponent,
+        EditarAlumnoFormComponent,
+        PrincipalComponent,
+        MostrarApellidoPipe,
 
-  ],
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,

@@ -7,7 +7,7 @@
 
         <ng-container matColumnDef="nombre">
           <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
-          <mat-cell *matCellDef="let persona"> {{persona.nombre}} </mat-cell>
+          <mat-cell *matCellDef="let persona"> {{persona.nombre | mostrarApellido}} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="apellido">
