@@ -3,11 +3,11 @@
 <!--{{this.formularioPersona.value | json}}-->
 <div class="container mt-5">
   <!--{{this.formularioPersona.value | json}}-->
-  <div>
-    <h1 appTamanoLetra >Editar Alumno</h1>
-  </div>
   <div class="row">
     <div class="col">
+      <div class="center">
+        <h1 appTamanoLetra >Editar Alumno</h1>
+      </div>
       <form class="example-form" [formGroup]="formularioPersona">
         <div class="col-12 d-flex">
 
@@ -30,7 +30,7 @@
           <div class="col-6 me-3">
             <mat-form-field class="example-full-width" appearance="fill">
               <mat-label>Email</mat-label>
-              <input type="email" matInput formControlName="email" placeholder="ejemplo@ejemplo.com">
+              <input type="email" matInput formControlName="email" placeholder="ejemplo@ejemplo.com" >
               <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
 
               </mat-error>
@@ -43,7 +43,7 @@
             <mat-form-field class="example-full-width" appearance="fill">
               <mat-label>Teléfono</mat-label>
               <span matPrefix>+ &nbsp;</span>
-              <input type="tel" matInput placeholder="555-555-1234" formControlName="telefono">
+              <input type="tel" matInput placeholder="555-555-1234" formControlName="telefono" SoloNumeros>
               <mat-icon matSuffix>mode_edit</mat-icon>
             </mat-form-field>
           </div>

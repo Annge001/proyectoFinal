@@ -3,13 +3,12 @@
   cursor: pointer;
 }
 
-.colorGray{
-  color:dimgray;
-}
 .border{
   border-radius: initial ;
 }
-
+.center{
+  text-align: center;
+}
 
 
 
