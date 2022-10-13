@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Curso, ListaCursos} from "../models/curso";
 
@@ -16,8 +16,14 @@ export class EditarAlumnoFormComponent implements OnInit {
   listaCursos: Array<Curso> = ListaCursos;
   cursos = ListaCursos;
   formularioPersona: FormGroup;
+
+  // Recibe alumno a actualizar
   @Input()
    alumno:any;
+
+  // variable que envia alumno actualizado al componente padre
+  @Output()
+  alumnoActualizado = new EventEmitter<any>();
 
   constructor(private fb: FormBuilder,) {
     this.formularioPersona = fb.group({
@@ -33,10 +39,11 @@ export class EditarAlumnoFormComponent implements OnInit {
 
 
   ngOnInit(): void {
-    console.log(this.alumno.curso[0].comision)
+
     this.completarFormulario();
   }
 
+  //funcion para completar el formulario con la persona a editar
   completarFormulario(){
     this.formularioPersona.patchValue({nombre:this.alumno.nombre})
     this.formularioPersona.patchValue({apellido:this.alumno.apellido})
@@ -46,5 +53,18 @@ export class EditarAlumnoFormComponent implements OnInit {
     this.formularioPersona.patchValue({curso:this.alumno.curso[0].nombreCurso})
 
 
+  }
+//funcion para generar el alumno que fue editado y sera enviado al componente padre
+  guardarAlumno() {
+    this.alumnoActualizado.emit(
+      { id:this.alumno.id,
+        nombre: this.formularioPersona.get('nombre')?.value,
+        apellido:this.formularioPersona.get('apellido')?.value,
+        comision:this.formularioPersona.get('comision')?.value,
+        curso: this.formularioPersona.get('cursos')?.value,
+        email:this.formularioPersona.get('email')?.value,
+        telefono: this.formularioPersona.get('telefono')?.value,
+      }
+    )
   }
 }

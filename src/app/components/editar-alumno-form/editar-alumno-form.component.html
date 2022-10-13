@@ -1,6 +1,6 @@
 <!--Editar y agregar alumno-->
 
-
+<!--{{this.formularioPersona.value | json}}-->
 <div class="container mt-5">
   <!--{{this.formularioPersona.value | json}}-->
   <div>
@@ -14,7 +14,7 @@
          <div class="col-6 me-3">
            <mat-form-field class="example-full-width" appearance="fill">
              <mat-label>Nombre</mat-label>
-             <input matInput formControlName="nombre">
+             <input matInput formControlName="nombre" (keyup)="alumno()">
            </mat-form-field>
          </div>
           <div class="col-6">
@@ -79,7 +79,7 @@
             <button mat-stroked-button color="primary">Volver</button>
           </div>
           <div>
-            <button mat-stroked-button color="primary">Confirmar</button>
+            <button mat-stroked-button color="primary" (click)="guardarAlumno()">Confirmar</button>
           </div>
         </div>
         <br>

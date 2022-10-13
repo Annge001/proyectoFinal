@@ -20,7 +20,7 @@ import {PrincipalComponent} from "./components/principal/principal.component";
     HeaderComponent,
     LateralNavbarComponent,
     EditarAlumnoFormComponent,
-    PrincipalComponent
+    PrincipalComponent,
 
   ],
   imports: [

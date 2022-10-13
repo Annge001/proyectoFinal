@@ -12,15 +12,19 @@ import {MatButtonModule} from "@angular/material/button";
 })
 export class ListaComponent  implements OnInit {
 
-@Output() newEditarEvent = new EventEmitter<undefined>();
 
 
   dataInicial = ListaAlumnos
 
   ELEMENT_DATA = new MatTableDataSource([])
-  displayedColumns: string[] = ['nombre', 'apellido', 'comision', 'curso', 'editar', 'borrar'];
+  displayedColumns: string[] = ['nombre', 'apellido', 'email', 'comision', 'curso', 'editar', 'borrar'];
+  // variante de salida con el alumno a editar
   @Output()
   alumno = new EventEmitter<any>();
+
+  //variante que recibe la lista actualizada
+  @Input()
+  listaAlumnosInput= [];
 
   constructor(
     ){ }
@@ -28,6 +32,7 @@ export class ListaComponent  implements OnInit {
   ngOnInit(): void {
     // @ts-ignore
     this.ELEMENT_DATA.data = this.dataInicial
+
   }
 
 
@@ -46,7 +51,6 @@ export class ListaComponent  implements OnInit {
 
 
   editar(persona:any) {
-    console.log(persona)
     this.alumno.emit(persona)
   }
 }

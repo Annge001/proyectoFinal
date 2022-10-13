@@ -7,7 +7,7 @@ export interface Alumnos{
   comision:string,
   curso:Array<Curso>,
   email:string,
-  telefono:string
+  telefono:string,
 }
 
 

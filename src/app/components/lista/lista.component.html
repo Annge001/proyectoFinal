@@ -1,61 +1,72 @@
+<div class="container border">
+  <div class="row-">
+    <div class="col">
+
+      <!--dataSource siempre al inicio-->
+      <mat-table [dataSource]="ELEMENT_DATA">
+
+        <ng-container matColumnDef="nombre">
+          <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
+          <mat-cell *matCellDef="let persona"> {{persona.nombre}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="apellido">
+          <mat-header-cell *matHeaderCellDef > Apellido </mat-header-cell>
+          <mat-cell *matCellDef="let persona"> {{persona.apellido}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="email">
+          <mat-header-cell *matHeaderCellDef> Correo </mat-header-cell>
+          <mat-cell *matCellDef="let persona"> {{persona.email}} </mat-cell>
+        </ng-container>
 
 
-<!--dataSource siempre al inicio-->
+        <ng-container matColumnDef="borrar">
+          <mat-header-cell *matHeaderCellDef> Borrar </mat-header-cell>
+          <mat-cell *matCellDef="let persona">
+            <mat-icon class="mat-18 colorGray pointer" (click)= "borrar (persona.id)">remove</mat-icon>
+          </mat-cell>
+        </ng-container>
 
-<mat-table [dataSource]="ELEMENT_DATA">
+        <ng-container matColumnDef="editar">
+          <mat-header-cell *matHeaderCellDef> Editar </mat-header-cell>
+          <mat-cell *matCellDef="let persona">
+            <button mat-button mat-icon-button (click)="editar(persona)"><mat-icon matSuffix>mode_edit</mat-icon></button>
+          </mat-cell>
+        </ng-container>
 
-  <ng-container matColumnDef="nombre">
-    <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
-    <mat-cell *matCellDef="let persona"> {{persona.nombre}} </mat-cell>
-  </ng-container>
+        <ng-container matColumnDef="curso">
+          <mat-header-cell *matHeaderCellDef> Curso </mat-header-cell>
+          <mat-cell *matCellDef="let persona"> {{persona.curso[0].nombreCurso}}
+            <mat-icon class="mat-18 colorGray"></mat-icon>
+          </mat-cell>
+        </ng-container>
 
-  <ng-container matColumnDef="apellido">
-    <mat-header-cell *matHeaderCellDef > Apellido </mat-header-cell>
-    <mat-cell *matCellDef="let persona"> {{persona.apellido}} </mat-cell>
-  </ng-container>
-
-
-  <ng-container matColumnDef="borrar">
-    <mat-header-cell *matHeaderCellDef> Borrar </mat-header-cell>
-    <mat-cell *matCellDef="let persona">
-      <mat-icon class="mat-18 colorGray pointer" (click)= "borrar (persona.id)">remove</mat-icon>
-    </mat-cell>
-  </ng-container>
-
-  <ng-container matColumnDef="editar">
-    <mat-header-cell *matHeaderCellDef> Editar </mat-header-cell>
-    <mat-cell *matCellDef="let persona">
-    <button mat-button mat-icon-button (click)="editar(persona)"><mat-icon matSuffix>mode_edit</mat-icon></button>
-    </mat-cell>
-  </ng-container>
-
-  <ng-container matColumnDef="curso">
-    <mat-header-cell *matHeaderCellDef> Curso </mat-header-cell>
-    <mat-cell *matCellDef="let persona"> {{persona.curso[0].nombreCurso}}
-      <mat-icon class="mat-18 colorGray"></mat-icon>
-    </mat-cell>
-  </ng-container>
-
-  <ng-container matColumnDef="comision">
-    <mat-header-cell *matHeaderCellDef> Comision</mat-header-cell>
-    <mat-cell *matCellDef="let persona"> {{persona.curso[0].comision}} </mat-cell>
-  </ng-container>
+        <ng-container matColumnDef="comision">
+          <mat-header-cell *matHeaderCellDef> Comision</mat-header-cell>
+          <mat-cell *matCellDef="let persona"> {{persona.curso[0].comision}} </mat-cell>
+        </ng-container>
 
 
 
-  <!-- variable para indicar cada columna de la pagina. siempre al final -->
+        <!-- variable para indicar cada columna de la pagina. siempre al final -->
 
-  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-  <mat-row *matRowDef="let row; columns : displayedColumns;"></mat-row>
-</mat-table>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns : displayedColumns;"></mat-row>
+      </mat-table>
 
-<!-- Poner este boton en formulario para inscribirse a cursos
+      <!-- Poner este boton en formulario para inscribirse a cursos
 
-<div class="example-button-container">
-  <p class="colorGray">Agregar Alumno</p>
-  <button mat-mini-fab color="black" aria-label="Example icon button with a plus one icon">
-    <mat-icon>plus_one</mat-icon>
+      <div class="example-button-container">
+        <p class="colorGray">Agregar Alumno</p>
+        <button mat-mini-fab color="black" aria-label="Example icon button with a plus one icon">
+          <mat-icon>plus_one</mat-icon>
+      </div>
+        </button> -->
+
+
+
+    </div>
+  </div>
+
 </div>
-  </button> -->
-
-
