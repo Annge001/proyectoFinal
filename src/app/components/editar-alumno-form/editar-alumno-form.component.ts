@@ -20,6 +20,7 @@ export class EditarAlumnoFormComponent implements OnInit {
   cursos = ListaCursos;
   formularioPersona: FormGroup;
 
+
   constructor(private fb: FormBuilder,) {
     this.formularioPersona = fb.group({
       nombre: ['', [Validators.required]],
@@ -33,8 +34,11 @@ export class EditarAlumnoFormComponent implements OnInit {
 
 
 
-  ngOnInit(): void {
-  }
 
+
+
+
+    ngOnInit(): void {
+  }
 
 }

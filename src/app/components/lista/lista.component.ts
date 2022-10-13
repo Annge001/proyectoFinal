@@ -19,7 +19,8 @@ export class ListaComponent  implements OnInit {
 
   ELEMENT_DATA = new MatTableDataSource([])
   displayedColumns: string[] = ['nombre', 'apellido', 'comision', 'curso', 'editar', 'borrar'];
-
+  @Output()
+  alumno = new EventEmitter<any>();
 
   constructor(
     ){ }
@@ -44,5 +45,8 @@ export class ListaComponent  implements OnInit {
   }
 
 
-
+  editar(persona:any) {
+    console.log(persona)
+    this.alumno.emit(persona)
+  }
 }

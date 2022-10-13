@@ -10,6 +10,7 @@ import {MaterialModule} from "./material.module";
 import {LateralNavbarComponent} from "./components/lateral-navbar/lateral-navbar.component";
 import {EditarAlumnoFormComponent} from "./components/editar-alumno-form/editar-alumno-form.component";
 import {MatCheckboxModule} from "@angular/material/checkbox";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

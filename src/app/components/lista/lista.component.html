@@ -25,14 +25,14 @@
   <ng-container matColumnDef="editar">
     <mat-header-cell *matHeaderCellDef> Editar </mat-header-cell>
     <mat-cell *matCellDef="let persona">
-    <button mat-button mat-icon-button>editar</button>
+    <button mat-button mat-icon-button (click)="editar(persona)"></button>
     </mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="curso">
     <mat-header-cell *matHeaderCellDef> Curso </mat-header-cell>
-    <mat-cell *matCellDef="let persona"> {{persona.curso.nombreCurso}}
-      <mat-icon class="mat-18 colorGray pointer"></mat-icon>
+    <mat-cell *matCellDef="let persona"> {{persona.curso[0].nombreCurso}}
+      <mat-icon class="mat-18 colorGray"></mat-icon>
     </mat-cell>
   </ng-container>
 
