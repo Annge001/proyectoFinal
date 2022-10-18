@@ -1,0 +1,92 @@
+
+
+<!--{{this.formularioPersona.value | json}}-->
+<div class="container mt-5">
+  <!--{{this.formularioPersona.value | json}}-->
+  <div class="row">
+    <div class="col">
+      <div class="center">
+        <h1 appTamanoLetra>Alumno nuevo</h1>
+      </div>
+      <form class="example-form" [formGroup]="formularioPersona">
+        <div class="col-12 d-flex">
+
+          <div class="col-6 me-3">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Nombre</mat-label>
+              <input matInput formControlName="nombre">
+            </mat-form-field>
+          </div>
+
+          <div class="col-6">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Apellido</mat-label>
+              <input matInput formControlName="apellido">
+            </mat-form-field>
+          </div>
+
+        </div>
+        <div class="d-flex">
+          <div class="col-6 me-3">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Email</mat-label>
+              <input type="email" matInput formControlName="email" placeholder="ejemplo@ejemplo.com">
+              <mat-error *ngIf="this.formularioPersona.get('email')?.hasError('email') && !this.formularioPersona.get('email')?.hasError('required')">
+              </mat-error>
+              <mat-error *ngIf="this.formularioPersona.get('email')?.hasError('required')">
+                Email es un campo <strong>requerido</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col-6 ">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Confirmar Email</mat-label>
+              <input type="email" matInput formControlName="confirmarEmail" (keyup)="validarCorreo()" placeholder="ejemplo@ejemplo.com">
+
+              <mat-error *ngIf="this.formularioPersona.get('confirmarEmail')?.hasError('email') && !this.formularioPersona.get('confirmarEmail')?.hasError('required')">
+                Por favor ingresa un correo válido
+              </mat-error>
+              <mat-error *ngIf="this.formularioPersona.get('confirmarEmail')?.hasError('required')">
+                Email es un campo <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+
+        <div class="d-flex">
+          <div class="col-6 me-3">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Teléfono</mat-label>
+              <span matPrefix>+ &nbsp;</span>
+              <input type="tel" matInput placeholder="555-555-1234" formControlName="telefono">
+            </mat-form-field>
+          </div>
+
+          <div class="col-6 ">
+            <mat-form-field appearance="fill">
+              <mat-label>Cursos</mat-label>
+              <mat-select formControlName="cursos" multiple>
+                <mat-option *ngFor="let curso of listaCursos" [value]="curso">{{curso.nombreCurso}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="color-error">
+          <p *ngIf="isCorreoConfirmado">Campo email debe coincidir</p>
+        </div>
+        <div class="d-flex">
+          <div class="me-5">
+            <button mat-stroked-button color="primary">Volver</button>
+          </div>
+          <div>
+             <button mat-stroked-button color="primary" (click)="crearAlumno()">Confirmar</button>
+          </div>
+        </div>
+        <br>
+        <br>
+      </form>
+    </div>
+  </div>
+</div>
