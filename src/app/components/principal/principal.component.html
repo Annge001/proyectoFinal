@@ -4,12 +4,12 @@
 <div>
   <app-lateral-navbar></app-lateral-navbar>
 </div>
-<div class="example-button-container">
-
-  <button  mat-stroked-button color="basic" class="btn-agregar" (click)="agrgarAlumno()">
+<div class="btn-agregar">
+  <button  mat-stroked-button color="basic" (click)="agrgarAlumno()">
     Alta Alumno
   </button>
 </div>
+<br>
 <div>
   <app-lista (alumno)="editarAlumno($event)" [listaAlumnosInput]="listaAlumnos" *ngIf="lista"></app-lista>
 </div>
