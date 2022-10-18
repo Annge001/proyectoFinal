@@ -1,12 +1,22 @@
+
+
 <div class="container border">
   <div class="row-">
     <div class="col-auto">
-
-      <div class="center">
-        <h1 appTamanoLetra>Alumnos Cursando</h1>
-      </div>
       <!--dataSource siempre al inicio-->
       <mat-table [dataSource]="ELEMENT_DATA">
+
+
+        <div class="center">
+        <h1 appTamanoLetra>Alumnos Cursando</h1>
+      </div>
+
+        <div>
+        <mat-form-field appearance="standard">
+          <mat-label>Filtrar</mat-label>
+          <input type="text" placeholder="Buscar..." matInput>
+        </mat-form-field>
+      </div>
 
 
         <ng-container matColumnDef="nombre">
@@ -60,17 +70,6 @@
         <mat-row *matRowDef="let row; columns : displayedColumns;"></mat-row>
       </mat-table>
 
-      <!-- Poner este boton en formulario para inscribirse a cursos
-
-      <div class="example-button-container">
-        <p class="colorGray">Agregar Alumno</p>
-        <button mat-mini-fab color="black" aria-label="Example icon button with a plus one icon">
-          <mat-icon>plus_one</mat-icon>
-      </div>
-        </button> -->
-
-
     </div>
   </div>
-
 </div>

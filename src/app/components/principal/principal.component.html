@@ -4,6 +4,13 @@
 <div>
   <app-lateral-navbar></app-lateral-navbar>
 </div>
+<div class="example-button-container">
+
+  <button mat-icon-button color="primary" aria-label="Example icon button with a home icon" (click)="agrgarAlumno()">
+    <p></p>
+    <mat-icon>add</mat-icon>
+  </button>
+</div>
 <div>
   <app-lista (alumno)="editarAlumno($event)" [listaAlumnosInput]="listaAlumnos" *ngIf="lista"></app-lista>
 </div>
@@ -11,3 +18,6 @@
   <app-editar-alumno-form (alumnoActualizado)="alumnoActualizado($event)" [alumno]="alumno" *ngIf="editarForm"></app-editar-alumno-form>
 </div>
 
+<div>
+  <app-alta-alumno (alumnoNuevo) = "alumnoNuevo($event)" *ngIf="this.agregarForm" ></app-alta-alumno>
+</div>

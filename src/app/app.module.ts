@@ -14,6 +14,7 @@ import {FormsModule} from "@angular/forms";
 import {PrincipalComponent} from "./components/principal/principal.component";
 import {MostrarApellidoPipe} from "./mostrar-apellido.pipe";
 import {TamanoLetraDirective} from "./directivas/tamano-letra.directive";
+import {AltaAlumnoComponent} from "./components/alta-alumno/alta-alumno.component";
 
 @NgModule({
     declarations: [
@@ -24,7 +25,8 @@ import {TamanoLetraDirective} from "./directivas/tamano-letra.directive";
         EditarAlumnoFormComponent,
         PrincipalComponent,
         MostrarApellidoPipe,
-        TamanoLetraDirective
+        TamanoLetraDirective,
+        AltaAlumnoComponent
 
     ],
   imports: [

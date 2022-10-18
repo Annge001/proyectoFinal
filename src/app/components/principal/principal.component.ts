@@ -11,9 +11,11 @@ export class PrincipalComponent implements OnInit {
 
   alumno: any;
   editarForm = false;
+  agregarForm = false;
   lista = true;
 
   listaAlumnos = [];
+
 
   editarAlumno($event: any) {
     this.editarForm = true;
@@ -25,6 +27,7 @@ export class PrincipalComponent implements OnInit {
   constructor() {
     // @ts-ignore
     this.listaAlumnos = ListaAlumnos;
+   // this.lista = false
 
   }
 
@@ -39,5 +42,23 @@ export class PrincipalComponent implements OnInit {
     this.listaAlumnos.push($event);
     this.editarForm = false;
     this.lista = true;
+  }
+
+
+  alumnoNuevo($event: any) {
+    console.log($event);
+    console.log(this.listaAlumnos[0])
+    // @ts-ignore
+
+    this.listaAlumnos.push($event);
+    this.listaAlumnos = [...this.listaAlumnos]
+     this.lista = true
+    this.agregarForm = false;
+  }
+
+  agrgarAlumno() {
+    this.agregarForm = true;
+    this.lista = false;
+
   }
 }
