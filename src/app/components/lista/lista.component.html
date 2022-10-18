@@ -1,24 +1,22 @@
-
-
 <div class="container border">
   <div class="row-">
     <div class="col-auto">
-      <!--dataSource siempre al inicio-->
-      <mat-table [dataSource]="ELEMENT_DATA">
 
 
-        <div class="center">
+      <div class="center">
         <h1 appTamanoLetra>Alumnos Cursando</h1>
       </div>
 
-        <div>
+      <div>
         <mat-form-field appearance="standard">
           <mat-label>Filtrar</mat-label>
-          <input type="text" placeholder="Buscar..." matInput>
+          <input matInput type="text" (keyup)="filtrar($event)" placeholder="Buscar..." >
         </mat-form-field>
       </div>
 
 
+      <!--dataSource siempre al inicio de la lista-->
+      <mat-table [dataSource]="ELEMENT_DATA">
         <ng-container matColumnDef="nombre">
           <mat-header-cell *matHeaderCellDef> Nombre</mat-header-cell>
           <mat-cell *matCellDef="let persona"> {{persona.nombre | mostrarApellido : persona.apellido }} </mat-cell>

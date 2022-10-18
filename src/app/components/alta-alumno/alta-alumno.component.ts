@@ -61,4 +61,5 @@ export class AltaAlumnoComponent implements OnInit {
     }
   }
 
+
 }

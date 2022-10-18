@@ -5,6 +5,7 @@ import {MatButtonModule} from "@angular/material/button";
 
 
 
+
 @Component({
   selector: 'app-lista',
   templateUrl: './lista.component.html',
@@ -14,7 +15,7 @@ export class ListaComponent  implements OnInit {
 
 
 
-  dataInicial = ListaAlumnos
+  dataInicial:any;
 
   ELEMENT_DATA = new MatTableDataSource([])
   displayedColumns: string[] = ['nombre', 'email', 'comision', 'curso', 'editar', 'borrar'];
@@ -33,21 +34,21 @@ export class ListaComponent  implements OnInit {
 
   ngOnInit(): void {
     // @ts-ignore
+    this.dataInicial = ListaAlumnos;
     this.ELEMENT_DATA.data = this.dataInicial
 
   }
 
 
-
   borrar(id: number) {
-//aqui busco a la persona por id y me retorna la posicion en el arreglo
-    let position = this.dataInicial.findIndex(persona => persona.id === id)
-    //position = 0
-    //console.log(this.dataInicial[position])
-    //en esta linea paso la posicion entregada y lo elimina
+    console.log(id)
+    console.log(this.dataInicial)
+    //aqui busco a la persona por id y me retorna la posicion en el arreglo
+    let position = this.dataInicial.findIndex((persona: { id: number; }) => persona.id === id)
+    console.log(position)
     this.dataInicial.splice(position, 1)
-    //esta linea actualiza la data
-    // @ts-ignore
+    console.log(this.dataInicial)
+    //en esta linea paso la posicion entregada y lo elimina
     this.ELEMENT_DATA.data = this.dataInicial
   }
 
@@ -55,4 +56,13 @@ export class ListaComponent  implements OnInit {
   editar(persona:any) {
     this.alumno.emit(persona)
   }
+
+  filtrar(event: Event){
+    const filtro = (event.target as HTMLInputElement).value;
+
+    this.ELEMENT_DATA.filter = filtro.trim().toLowerCase();
+
+  }
+
+
 }
