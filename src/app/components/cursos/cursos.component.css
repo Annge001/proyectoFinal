@@ -1,0 +1,8 @@
+.card {
+  max-width: 400px;
+}
+
+.imagen {
+  background-image: url('https://acceso.canalizados.com/wp-content/uploads/2021/08/logo_coderhouse_2_bmqbet-e1628261723128.png');
+  background-size: cover;
+}
