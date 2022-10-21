@@ -10,7 +10,7 @@ import {Curso, ListaCursos} from "../models/curso";
 export class AltaAlumnoComponent implements OnInit {
 
 
-  listaCursos: Array<Curso> = ListaCursos;
+  listaCursos: Array<Curso> =[];
   cursos = ListaCursos;
   formularioPersona: FormGroup;
 

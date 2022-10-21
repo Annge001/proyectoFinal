@@ -1,7 +1,10 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import {MatTableDataSource} from "@angular/material/table";
-import {ListaAlumnos} from "../models/alumnos";
+import {Alumnos, ListaAlumnos} from "../models/alumnos";
 import {MatButtonModule} from "@angular/material/button";
+import {CursoService} from "../../services/curso.service";
+import {AlumnosService} from "../../services/alumnos.service";
+import {Observable} from "rxjs";
 
 
 
@@ -26,20 +29,50 @@ export class ListaComponent  implements OnInit {
   //variante que recibe la lista actualizada
   @Input()
   listaAlumnosInput= [];
+  cursos!: Alumnos[];
+ // cursos$: Observable<Alumnos[]>;
+  suscripcion: any;
+  promesa: any;
+  merge$!: Observable<any>;
 
 
 
   constructor(
-    ){ }
 
-  ngOnInit(): void {
-    // @ts-ignore
-    this.dataInicial = ListaAlumnos;
-    this.ELEMENT_DATA.data = this.dataInicial
+    private alumnoService : AlumnosService
+  ){
+    // consumo del servicio de alumnos a traves de un observable
 
+  this.suscripcion =  alumnoService.obtenerAlumnosObservable().subscribe({
+      next: (alumnos: Alumnos[]) => {
+        console.log(alumnos)
+        this.dataInicial = alumnos;
+        this.ELEMENT_DATA.data = this.dataInicial
+      },
+      error: (error) => {
+        console.error(error);
+      }
+    });
+  }
+
+  ngOnDestroy(){
+    this.suscripcion.unsubscribe();
   }
 
 
+  ngOnInit(): void {
+    //consumo del servicio de alumnos a traves de una promesa
+
+  /*this.obtenerAlumnos().then(data => {
+      this.dataInicial = data
+      this.ELEMENT_DATA.data = this.dataInicial
+      console.log(this.dataInicial)
+    });*/
+
+  }
+  obtenerAlumnos() {
+    return this.alumnoService.obtenerAlumnosPromise();
+  }
   borrar(id: number) {
     console.log(id)
     console.log(this.dataInicial)

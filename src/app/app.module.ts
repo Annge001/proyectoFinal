@@ -16,6 +16,7 @@ import {MostrarApellidoPipe} from "./mostrar-apellido.pipe";
 import {TamanoLetraDirective} from "./directivas/tamano-letra.directive";
 import {AltaAlumnoComponent} from "./components/alta-alumno/alta-alumno.component";
 import {CursosComponent} from "./components/cursos/cursos.component";
+import {CursoService} from "./services/curso.service";
 
 @NgModule({
     declarations: [
@@ -40,7 +41,7 @@ import {CursosComponent} from "./components/cursos/cursos.component";
     MatCheckboxModule,
     FormsModule,
   ],
-  providers: [],
+  providers: [CursoService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

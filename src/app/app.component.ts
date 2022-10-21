@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import {Alumnos} from "./components/models/alumnos";
+import {Curso} from "./components/models/curso";
+import {CursoService} from "./services/curso.service";
+import {Observable} from "rxjs";
 
 
 @Component({
@@ -9,5 +12,12 @@ import {Alumnos} from "./components/models/alumnos";
 })
 export class AppComponent {
   title = '1pfPerez';
+  cursos!: Curso[];
+
+
+  constructor (
+  ){
+
+  }
 
 }
