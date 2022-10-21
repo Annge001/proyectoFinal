@@ -13,6 +13,7 @@ export class AlumnosService {
 
   ]
   //alumnos$: Observable<Alumnos[]>;
+  // @ts-ignore
   alumnosSubject: BehaviorSubject<Alumnos[]>;
 
   cursos = [];
@@ -24,6 +25,7 @@ export class AlumnosService {
     this.obtenerCursos().then(data => {
       this.cursos = data
       console.log(this.cursos)
+
       this.alumnos = [
         {
           id:1,
@@ -57,8 +59,6 @@ export class AlumnosService {
       ]
     })
 
-
-
   }
 
   obtenerAlumnosPromise(): Promise<Alumnos[] | any>{
@@ -77,7 +77,10 @@ export class AlumnosService {
     });
   }
   obtenerAlumnosObservable(){
+
     return this.alumnosSubject.asObservable();
+
+
     // return this.cursos$;
     // return of(this.cursos);
   }

@@ -17,6 +17,7 @@ import {TamanoLetraDirective} from "./directivas/tamano-letra.directive";
 import {AltaAlumnoComponent} from "./components/alta-alumno/alta-alumno.component";
 import {CursosComponent} from "./components/cursos/cursos.component";
 import {CursoService} from "./services/curso.service";
+import {AlumnosService} from "./services/alumnos.service";
 
 @NgModule({
     declarations: [
@@ -41,7 +42,7 @@ import {CursoService} from "./services/curso.service";
     MatCheckboxModule,
     FormsModule,
   ],
-  providers: [CursoService],
+  providers: [CursoService, AlumnosService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

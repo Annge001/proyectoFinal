@@ -43,16 +43,20 @@ export class ListaComponent  implements OnInit {
   ){
     // consumo del servicio de alumnos a traves de un observable
 
-  this.suscripcion =  alumnoService.obtenerAlumnosObservable().subscribe({
-      next: (alumnos: Alumnos[]) => {
-        console.log(alumnos)
-        this.dataInicial = alumnos;
-        this.ELEMENT_DATA.data = this.dataInicial
-      },
-      error: (error) => {
-        console.error(error);
-      }
-    });
+      this.suscripcion =  alumnoService.obtenerAlumnosObservable().subscribe({
+        next: (alumnos: Alumnos[]) => {
+          console.log(alumnos)
+          this.dataInicial = alumnos;
+          console.log(this.dataInicial)
+          this.ELEMENT_DATA.data = this.dataInicial
+        },
+        error: (error) => {
+          console.error(error);
+        }
+      });
+
+
+
   }
 
   ngOnDestroy(){
@@ -63,22 +67,19 @@ export class ListaComponent  implements OnInit {
   ngOnInit(): void {
     //consumo del servicio de alumnos a traves de una promesa
 
-  /*this.obtenerAlumnos().then(data => {
+  this.obtenerAlumnos().then(data => {
       this.dataInicial = data
       this.ELEMENT_DATA.data = this.dataInicial
       console.log(this.dataInicial)
-    });*/
+    });
 
   }
   obtenerAlumnos() {
     return this.alumnoService.obtenerAlumnosPromise();
   }
   borrar(id: number) {
-    console.log(id)
-    console.log(this.dataInicial)
     //aqui busco a la persona por id y me retorna la posicion en el arreglo
     let position = this.dataInicial.findIndex((persona: { id: number; }) => persona.id === id)
-    console.log(position)
     this.dataInicial.splice(position, 1)
     console.log(this.dataInicial)
     //en esta linea paso la posicion entregada y lo elimina
