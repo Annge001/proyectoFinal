@@ -12,8 +12,7 @@ export class AlumnosService {
   alumnos: Alumnos[] = [
 
   ]
-  //alumnos$: Observable<Alumnos[]>;
-  // @ts-ignore
+// @ts-ignore
   alumnosSubject: BehaviorSubject<Alumnos[]>;
 
   cursos = [];
@@ -76,6 +75,7 @@ export class AlumnosService {
       }, 3000)
     });
   }
+
   obtenerAlumnosObservable(){
 
     return this.alumnosSubject.asObservable();

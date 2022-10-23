@@ -5,6 +5,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {CursoService} from "../../services/curso.service";
 import {AlumnosService} from "../../services/alumnos.service";
 import {Observable} from "rxjs";
+import {Curso} from "../models/curso";
 
 
 
@@ -29,8 +30,9 @@ export class ListaComponent  implements OnInit {
   //variante que recibe la lista actualizada
   @Input()
   listaAlumnosInput= [];
-  cursos!: Alumnos[];
- // cursos$: Observable<Alumnos[]>;
+  cursos!: Curso[];
+  alumnos!: Alumnos[];
+  //cursos$: Observable<Alumnos[]>;
   suscripcion: any;
   promesa: any;
   merge$!: Observable<any>;

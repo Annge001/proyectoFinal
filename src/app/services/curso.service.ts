@@ -26,8 +26,8 @@ export class CursoService {
       // alumnos:''
   },
     {
-      comision:'12347',
       nombreCurso:'Front End Vue',
+      comision:'12347',
       profesor: 'Marcos',
       fechaInicio: new Date(2022,4,1),
       fechaFin: new Date(2023,4,1),

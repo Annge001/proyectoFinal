@@ -13,6 +13,7 @@ import {Observable} from "rxjs";
 export class AppComponent {
   title = '1pfPerez';
   cursos!: Curso[];
+  alumnos!: Alumnos[];
 
 
   constructor (
