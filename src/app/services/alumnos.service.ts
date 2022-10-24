@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {Curso, ListaCursos} from "../components/models/curso";
 import {Alumnos} from "../components/models/alumnos";
 import {BehaviorSubject, Observable} from "rxjs";
-import {CursoService} from "./curso.service";
+import {CursoService} from "../modulos/cursos/services/curso.service";
 
 @Injectable({
   providedIn: 'root'
