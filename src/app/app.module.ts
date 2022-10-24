@@ -8,17 +8,18 @@ import {HeaderComponent} from "./components/header/header.component";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MaterialModule} from "./material.module";
 import {LateralNavbarComponent} from "./components/lateral-navbar/lateral-navbar.component";
-import {EditarAlumnoFormComponent} from "./components/editar-alumno-form/editar-alumno-form.component";
+import {EditarAlumnoFormComponent} from "./modulos/alumnos/components/editar-alumno-form/editar-alumno-form.component";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {FormsModule} from "@angular/forms";
 import {PrincipalComponent} from "./components/principal/principal.component";
 import {MostrarApellidoPipe} from "./mostrar-apellido.pipe";
 import {TamanoLetraDirective} from "./directivas/tamano-letra.directive";
-import {AltaAlumnoComponent} from "./components/alta-alumno/alta-alumno.component";
+import {AltaAlumnoComponent} from "./modulos/alumnos/components/alta-alumno/alta-alumno.component";
 import {CursoService} from "./modulos/cursos/services/curso.service";
 import {AlumnosService} from "./modulos/alumnos/services/alumnos.service";
 import {CursosModule} from "./modulos/cursos/cursos.module";
 import {AutenticacionModule} from "./modulos/autenticacion/autenticacion.module";
+
 
 @NgModule({
   declarations: [
@@ -32,7 +33,6 @@ import {AutenticacionModule} from "./modulos/autenticacion/autenticacion.module"
     TamanoLetraDirective,
     AltaAlumnoComponent,
 
-
   ],
   imports: [
     BrowserModule,
@@ -42,9 +42,13 @@ import {AutenticacionModule} from "./modulos/autenticacion/autenticacion.module"
     MatCheckboxModule,
     FormsModule,
     CursosModule,
-    AutenticacionModule
+    AutenticacionModule,
+
   ],
   providers: [CursoService, AlumnosService],
+  exports: [
+    MostrarApellidoPipe
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

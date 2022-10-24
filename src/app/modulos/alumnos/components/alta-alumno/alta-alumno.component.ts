@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {Curso, ListaCursos} from "../models/curso";
+import {Curso, ListaCursos} from "../../../../components/models/curso";
 
 @Component({
   selector: 'app-alta-alumno',
