@@ -3,7 +3,7 @@ import {BrowserModule} from '@angular/platform-browser';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {ListaComponent} from "./components/lista/lista.component";
+import {ListaComponent} from "./modulos/alumnos/components/lista/lista.component";
 import {HeaderComponent} from "./components/header/header.component";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MaterialModule} from "./material.module";
@@ -16,25 +16,24 @@ import {MostrarApellidoPipe} from "./mostrar-apellido.pipe";
 import {TamanoLetraDirective} from "./directivas/tamano-letra.directive";
 import {AltaAlumnoComponent} from "./components/alta-alumno/alta-alumno.component";
 import {CursoService} from "./modulos/cursos/services/curso.service";
-import {AlumnosService} from "./services/alumnos.service";
-import {LoginComponent} from "./modulos/autenticacion/components/login/login.component";
+import {AlumnosService} from "./modulos/alumnos/services/alumnos.service";
 import {CursosModule} from "./modulos/cursos/cursos.module";
+import {AutenticacionModule} from "./modulos/autenticacion/autenticacion.module";
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        ListaComponent,
-        HeaderComponent,
-        LateralNavbarComponent,
-        EditarAlumnoFormComponent,
-        PrincipalComponent,
-        MostrarApellidoPipe,
-        TamanoLetraDirective,
-        AltaAlumnoComponent,
-        LoginComponent
+  declarations: [
+    AppComponent,
+    ListaComponent,
+    HeaderComponent,
+    LateralNavbarComponent,
+    EditarAlumnoFormComponent,
+    PrincipalComponent,
+    MostrarApellidoPipe,
+    TamanoLetraDirective,
+    AltaAlumnoComponent,
 
 
-    ],
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -42,7 +41,8 @@ import {CursosModule} from "./modulos/cursos/cursos.module";
     MaterialModule,
     MatCheckboxModule,
     FormsModule,
-    CursosModule
+    CursosModule,
+    AutenticacionModule
   ],
   providers: [CursoService, AlumnosService],
   bootstrap: [AppComponent]

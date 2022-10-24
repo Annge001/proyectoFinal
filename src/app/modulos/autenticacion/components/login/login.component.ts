@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ValidatorLoginService} from "../../../../services/validator-login.service";
+import {ValidatorLoginService} from "../../services/validator-login.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
