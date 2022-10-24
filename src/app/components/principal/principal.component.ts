@@ -61,4 +61,6 @@ export class PrincipalComponent implements OnInit {
     this.lista = false;
 
   }
+
+
 }

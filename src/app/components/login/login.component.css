@@ -2,7 +2,7 @@
   width: min(100% - 15px, 840px);
   margin-inline: auto;
   box-sizing:border-box;
-  border: 3px inset cadetblue;
+  border: 3px inset darkgreen;
 }
 h1 {
   text-align: center;
@@ -11,7 +11,7 @@ h1 {
 .form-control{
   margin: 1rem 0;
   display: block;
-  width: 100%;
+  width: 170%;
   padding: 1rem;
   box-shadow: inset -5px -5px 15px rgba(280, 280, 280, 0.8), inset 5px 5px 10px
   rgba(0, 0, 0, 0.1);

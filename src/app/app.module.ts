@@ -18,6 +18,7 @@ import {AltaAlumnoComponent} from "./components/alta-alumno/alta-alumno.componen
 import {CursosComponent} from "./components/cursos/cursos.component";
 import {CursoService} from "./services/curso.service";
 import {AlumnosService} from "./services/alumnos.service";
+import {LoginComponent} from "./components/login/login.component";
 
 @NgModule({
     declarations: [
@@ -31,6 +32,7 @@ import {AlumnosService} from "./services/alumnos.service";
         TamanoLetraDirective,
         AltaAlumnoComponent,
         CursosComponent,
+        LoginComponent
 
 
     ],

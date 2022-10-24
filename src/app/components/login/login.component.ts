@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {ValidatorLoginService} from "../../services/validator-login.service";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-login',
@@ -11,7 +13,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    public validator: ValidatorService
+    public validator: ValidatorLoginService
   ) {
     this.formularioPersona = fb.group({
       email: ['', [Validators.required, Validators.email]],
