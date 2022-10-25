@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {HeaderComponent} from "./components/header/header.component";
+import {SesionService} from "./services/sesion.service";
 
 
 
@@ -13,7 +14,7 @@ import {HeaderComponent} from "./components/header/header.component";
     CommonModule
   ],
   providers: [
-
+    SesionService
   ]
 })
 export class CoreModule { }
