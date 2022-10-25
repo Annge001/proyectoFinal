@@ -7,7 +7,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MaterialModule} from "./material.module";
 import {LateralNavbarComponent} from "./components/lateral-navbar/lateral-navbar.component";
 import {MatCheckboxModule} from "@angular/material/checkbox";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {PrincipalComponent} from "./components/principal/principal.component";
 import {MostrarApellidoPipe} from "./mostrar-apellido.pipe";
 import {TamanoLetraDirective} from "./directivas/tamano-letra.directive";
@@ -36,6 +36,7 @@ import {CoreModule} from "./core/core.module";
     FormsModule,
     CursosModule,
     AutenticacionModule,
+    ReactiveFormsModule,
     CoreModule
 
   ],
