@@ -15,7 +15,7 @@ import {CursoService} from "../cursos/services/curso.service";
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
 import {MatSelectModule} from "@angular/material/select";
-import {MostrarApellidoPipe} from "../alumnos/pipes/mostrar-apellido.pipe";
+import {MostrarApellidoPipe} from "./pipes/mostrar-apellido.pipe";
 
 
 @NgModule({

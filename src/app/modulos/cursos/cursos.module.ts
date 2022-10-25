@@ -5,15 +5,14 @@ import { CursosRoutingModule } from './cursos-routing.module';
 import {CursosComponent} from "./components/cursos/cursos.component";
 import {MaterialModule} from "../../material.module";
 import {CursoService} from "./services/curso.service";
+import { VerMasComponent } from './components/ver-mas/ver-mas.component';
 
 
 @NgModule({
   declarations: [
-    CursosComponent
+    CursosComponent,
+    VerMasComponent
 
-  ],
-  exports: [
-    CursosComponent
   ],
   imports: [
     CommonModule,
@@ -21,9 +20,12 @@ import {CursoService} from "./services/curso.service";
     MaterialModule
 
   ],
+  exports: [
+    CursosComponent
+  ],
   providers:[
     CursoService
-
   ]
 })
+
 export class CursosModule { }

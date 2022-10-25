@@ -33,10 +33,10 @@ import {AlumnosModule} from "./modulos/alumnos/alumnos.module";
     MaterialModule,
     MatCheckboxModule,
     FormsModule,
-    CursosModule,
     AutenticacionModule,
     ReactiveFormsModule,
     CoreModule,
+    CursosModule,
     AlumnosModule
 
   ],

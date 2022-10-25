@@ -12,8 +12,7 @@ import {SesionService} from "./services/sesion.service";
 
   ],
   imports: [
-    CommonModule,
-
+    CommonModule
   ],
   exports: [
     HeaderComponent
