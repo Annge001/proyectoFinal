@@ -1,7 +1,6 @@
-import { Injectable } from '@angular/core';
-import {Curso, ListaCursos} from "../../../components/models/curso";
+import {Injectable} from '@angular/core';
 import {Alumnos} from "../../../components/models/alumnos";
-import {BehaviorSubject, Observable} from "rxjs";
+import {BehaviorSubject} from "rxjs";
 import {CursoService} from "../../cursos/services/curso.service";
 
 @Injectable({

@@ -1,13 +1,9 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {MatTableDataSource} from "@angular/material/table";
-import {Alumnos, ListaAlumnos} from "../../../../components/models/alumnos";
-import {MatButtonModule} from "@angular/material/button";
-import {CursoService} from "../../../cursos/services/curso.service";
+import {Alumnos} from "../../../../components/models/alumnos";
 import {AlumnosService} from "../../services/alumnos.service";
 import {Observable} from "rxjs";
 import {Curso} from "../../../../components/models/curso";
-
-
 
 
 @Component({

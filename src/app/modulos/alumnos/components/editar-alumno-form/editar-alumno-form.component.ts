@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {Curso, ListaCursos} from "../../../../components/models/curso";
+import {Curso} from "../../../../components/models/curso";
+import {CursoService} from "../../../cursos/services/curso.service";
 
 
 @Component({
@@ -13,8 +14,8 @@ export class EditarAlumnoFormComponent implements OnInit {
 
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
 
-  listaCursos: Array<Curso> = ListaCursos;
-  cursos = ListaCursos;
+  listaCursos: Array<Curso> = [];
+  cursos = [];
   formularioPersona: FormGroup;
 
   // Recibe alumno a actualizar
@@ -25,7 +26,8 @@ export class EditarAlumnoFormComponent implements OnInit {
   @Output()
   alumnoActualizado = new EventEmitter<any>();
 
-  constructor(private fb: FormBuilder,) {
+  constructor(private fb: FormBuilder,
+              private  cursoService: CursoService) {
     this.formularioPersona = fb.group({
       nombre: ['', [Validators.required]],
       apellido: ['', [Validators.required]],
@@ -35,6 +37,16 @@ export class EditarAlumnoFormComponent implements OnInit {
       telefono: ['', [Validators.required]],
       cursos: ['', [Validators.required]]
     });
+
+    this.obtenerCursos().then(data => {
+      this.cursos = data;
+      this.listaCursos = this.cursos;
+      console.log(this.cursos);
+
+    })
+  }
+  obtenerCursos() {
+    return this.cursoService.obtenerCursosPromise();
   }
 
 

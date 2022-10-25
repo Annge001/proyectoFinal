@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {ListaAlumnos} from "../models/alumnos";
+import {Component, OnInit} from '@angular/core';
+import {AlumnosService} from "../../modulos/alumnos/services/alumnos.service";
 
 
 @Component({
@@ -24,14 +24,24 @@ export class PrincipalComponent implements OnInit {
 
   }
 
-  constructor() {
+  constructor(
+    private alumnoService: AlumnosService) {
     // @ts-ignore
-    this.listaAlumnos = ListaAlumnos;
+
    // this.lista = false
 
   }
 
+
   ngOnInit(): void {
+    this.obtenerAlumnos().then(data => {
+      this.listaAlumnos = data;
+      console.log(this.listaAlumnos)
+    });
+
+  }
+  obtenerAlumnos() {
+    return this.alumnoService.obtenerAlumnosPromise();
   }
 //funcion para recibir el alumno actualizado desde el formulario del componente hijo
   alumnoActualizado($event: any) {

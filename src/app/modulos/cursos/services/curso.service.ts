@@ -1,11 +1,12 @@
 import {Injectable} from '@angular/core';
 import {Curso} from "../../../components/models/curso";
+import {BehaviorSubject} from "rxjs";
 
 @Injectable()
 export class CursoService {
 
   cursos: Curso[] = [{
-
+      idCurso:'1',
       nombreCurso:'Front End Angular',
       comision:'12345',
       profesor: 'Juan',
@@ -15,6 +16,7 @@ export class CursoService {
       //  alumnos:''
   },
     {
+      idCurso:'2',
       nombreCurso:'Desarrollo Backend',
       comision:'12346',
       profesor: 'Sandra',
@@ -24,6 +26,7 @@ export class CursoService {
       // alumnos:''
   },
     {
+      idCurso:'3',
       nombreCurso:'Front End Vue',
       comision:'12347',
       profesor: 'Marcos',
@@ -34,8 +37,10 @@ export class CursoService {
   }];
 
 
+   cursosSubect: BehaviorSubject<Curso[]>;
 
   constructor() {
+    this.cursosSubect = new BehaviorSubject<Curso[]>(this.cursos);
   }
 
   obtenerCursosPromise(): Promise<Curso[] | any>{
@@ -49,6 +54,17 @@ export class CursoService {
         });
       }
     });
+  }
+
+
+  editarCurso(curso: Curso){
+    let indice = this.cursos.findIndex((c: Curso) => c.idCurso === curso.idCurso);
+
+    if(indice > -1){
+      this.cursos[indice] = curso;
+    }
+
+    this.cursosSubect.next(this.cursos);
   }
 
 

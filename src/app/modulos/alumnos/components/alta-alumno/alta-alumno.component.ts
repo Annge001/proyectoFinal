@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {Curso, ListaCursos} from "../../../../components/models/curso";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {Curso} from "../../../../components/models/curso";
+import {CursoService} from "../../../cursos/services/curso.service";
 
 @Component({
   selector: 'app-alta-alumno',
@@ -11,7 +12,7 @@ export class AltaAlumnoComponent implements OnInit {
 
 
   listaCursos: Array<Curso> =[];
-  cursos = ListaCursos;
+  cursos = [];
   formularioPersona: FormGroup;
 
 
@@ -23,7 +24,8 @@ export class AltaAlumnoComponent implements OnInit {
   isCorreoConfirmado = false ;
 
 
-  constructor(private fb: FormBuilder,) {
+  constructor(private fb: FormBuilder,
+            private  cursoService: CursoService) {
     this.formularioPersona = fb.group({
       nombre: ['', [Validators.required]],
       apellido: ['', [Validators.required]],
@@ -32,6 +34,12 @@ export class AltaAlumnoComponent implements OnInit {
       telefono: ['', [Validators.required]],
       cursos: ['', [Validators.required]]
     });
+
+    this.obtenerCursos().then(data => {
+      this.cursos = data
+      console.log(this.cursos)
+
+    })
   }
 
   ngOnInit(): void {
@@ -61,5 +69,8 @@ export class AltaAlumnoComponent implements OnInit {
     }
   }
 
+  obtenerCursos() {
+    return this.cursoService.obtenerCursosPromise();
+  }
 
 }
