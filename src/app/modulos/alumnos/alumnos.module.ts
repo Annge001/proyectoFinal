@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
-import { AlumnosRoutingModule } from './alumnos-routing.module';
+import {AlumnosRoutingModule} from './alumnos-routing.module';
 import {ListaComponent} from "./components/lista/lista.component";
 import {AlumnosService} from "./services/alumnos.service";
 import {MatTableModule} from "@angular/material/table";
@@ -12,6 +12,10 @@ import {AppModule} from "../../app.module";
 import {AltaAlumnoComponent} from "./components/alta-alumno/alta-alumno.component";
 import {EditarAlumnoFormComponent} from "./components/editar-alumno-form/editar-alumno-form.component";
 import {CursoService} from "../cursos/services/curso.service";
+import {ReactiveFormsModule} from "@angular/forms";
+import {MatInputModule} from "@angular/material/input";
+import {MatSelectModule} from "@angular/material/select";
+import {MostrarApellidoPipe} from "../alumnos/pipes/mostrar-apellido.pipe";
 
 
 @NgModule({
@@ -19,6 +23,8 @@ import {CursoService} from "../cursos/services/curso.service";
     ListaComponent,
     AltaAlumnoComponent,
     EditarAlumnoFormComponent,
+    MostrarApellidoPipe
+
 
   ],
   imports: [
@@ -28,12 +34,21 @@ import {CursoService} from "../cursos/services/curso.service";
     MatIconModule,
     MatButtonModule,
     MatFormFieldModule,
-    AppModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatSelectModule,
 
+  ],
+  exports: [
+    AltaAlumnoComponent,
+    EditarAlumnoFormComponent,
+    ListaComponent,
+    MostrarApellidoPipe
   ],
   providers: [
     AlumnosService,
     CursoService
   ]
 })
-export class AlumnosModule { }
+export class AlumnosModule {
+}
