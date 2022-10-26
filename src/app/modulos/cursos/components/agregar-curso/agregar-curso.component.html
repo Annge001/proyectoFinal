@@ -1,1 +1,67 @@
-<p>agregar-curso works!</p>
+{{this.formulario.value | json}}
+
+<div class="container mt-5">
+  <!--{{this.formularioPersona.value | json}}-->
+  <div class="row">
+    <div class="col">
+      <div class="center">
+        <h1 appTamanoLetra>Agregar Curso</h1>
+      </div>
+      <form class="example-form" [formGroup]="formulario">
+        <div class="col-12 d-flex">
+
+          <div class="col-md-6">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Profesor</mat-label>
+              <input matInput formControlName="profesor">
+            </mat-form-field>
+          </div>
+
+          <div class="col-md-6 ">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Cursos</mat-label>
+              <mat-select formControlName="cursos" multiple>
+                <mat-option *ngFor="let curso of listaCursos" [value]="curso">{{curso.nombreCurso}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Inicio del curso</mat-label>
+            <input matInput [matDatepicker]="fechaInicio">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="fechaInicio"></mat-datepicker-toggle>
+            <mat-datepicker #fechaInicio></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-6">
+          <mat-form-field  class="example-full-width" appearance="fill">
+            <mat-label>Fin del curso</mat-label>
+            <input matInput [matDatepicker]="fechaFin">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="fechaFin"></mat-datepicker-toggle>
+            <mat-datepicker #fechaFin></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div class="col-md-6">
+          <mat-slide-toggle>Inscripci&oacute;n abierta</mat-slide-toggle>
+        </div>
+
+        <div class="d-flex">
+          <div class="me-5">
+            <button mat-stroked-button color="primary">Volver</button>
+          </div>
+          <div>
+            <button mat-stroked-button color="primary" (click)="obtenerCursos()">Confirmar</button>
+          </div>
+        </div>
+        <br>
+        <br>
+      </form>
+    </div>
+  </div>
+</div>
+

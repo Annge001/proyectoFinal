@@ -1,5 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {AlumnosService} from "../../modulos/alumnos/services/alumnos.service";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -7,7 +8,7 @@ import {AlumnosService} from "../../modulos/alumnos/services/alumnos.service";
   templateUrl: './principal.component.html',
   styleUrls: ['./principal.component.css']
 })
-export class PrincipalComponent implements OnInit {
+export class PrincipalComponent implements OnInit  {
 
   alumno: any;
   editarForm = false;
@@ -25,7 +26,9 @@ export class PrincipalComponent implements OnInit {
   }
 
   constructor(
-    private alumnoService: AlumnosService) {
+    private alumnoService: AlumnosService,
+    //libreria de ruteo con funcion navigate
+    private router: Router) {
     // @ts-ignore
 
    // this.lista = false
@@ -72,5 +75,8 @@ export class PrincipalComponent implements OnInit {
 
   }
 
-
+//funcion para viajar entre componentes
+  //redirect(url: string) {
+    //this.router.navigate([url]);
+  //}
 }

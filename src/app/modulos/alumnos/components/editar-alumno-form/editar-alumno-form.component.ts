@@ -64,7 +64,6 @@ export class EditarAlumnoFormComponent implements OnInit {
     this.formularioPersona.patchValue({telefono:this.alumno.telefono})
     this.formularioPersona.patchValue({curso:this.alumno.curso[0].nombreCurso})
 
-
   }
 //funcion para generar el alumno que fue editado y sera enviado al componente padre
   guardarAlumno() {

@@ -5,7 +5,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MaterialModule} from "./material.module";
-import {LateralNavbarComponent} from "./components/lateral-navbar/lateral-navbar.component";
+import {LateralNavbarComponent} from "./core/components/lateral-navbar/lateral-navbar.component";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {PrincipalComponent} from "./components/principal/principal.component";
@@ -16,6 +16,7 @@ import {CursosModule} from "./modulos/cursos/cursos.module";
 import {AutenticacionModule} from "./modulos/autenticacion/autenticacion.module";
 import {CoreModule} from "./core/core.module";
 import {AlumnosModule} from "./modulos/alumnos/alumnos.module";
+import {ListaCursoService} from "./modulos/cursos/services/lista-curso.service";
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import {AlumnosModule} from "./modulos/alumnos/alumnos.module";
     AppComponent,
     LateralNavbarComponent,
     PrincipalComponent,
-    TamanoLetraDirective
+    TamanoLetraDirective,
+
   ],
   imports: [
     BrowserModule,
@@ -35,10 +37,12 @@ import {AlumnosModule} from "./modulos/alumnos/alumnos.module";
     AutenticacionModule,
     ReactiveFormsModule,
     CoreModule,
-    AlumnosModule
+    AlumnosModule,
+    CursosModule
+
 
   ],
-  providers: [CursoService, AlumnosService],
+  providers: [CursoService, AlumnosService,ListaCursoService],
   exports: [
     TamanoLetraDirective
   ],

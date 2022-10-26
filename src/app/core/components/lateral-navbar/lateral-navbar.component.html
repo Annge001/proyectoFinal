@@ -13,14 +13,14 @@
           <div class="offcanvas-header background-color">
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
           </div>
-          <div class="offcanvas-body background-color">
-            <a class="display-6 colorWhite" href="" target="_blank">Cursos</a>
+          <div class="offcanvas-body background-color ">
+            <p class="display-6 colorWhite pointer" data-bs-dismiss="offcanvas"  (click)="redirect('cursos/lista-curso')">Cursos</p>
             <br>
             <br>
-            <a class="display-6 colorWhite" href="" target="_blank">Inscribete aquí</a>
+            <p class="display-6 colorWhite pointer" data-bs-dismiss="offcanvas">Inscribete aquí</p>
             <br>
             <br>
-            <a class="display-6 colorWhite" href="" target="_blank">Alumnos</a>
+            <p class="display-6 colorWhite pointer"  data-bs-dismiss="offcanvas" (click)="redirect('alumnos/lista-alumnos')">Alumnos</p>
           </div>
         </div>
       </div>

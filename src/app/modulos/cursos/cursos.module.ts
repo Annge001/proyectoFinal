@@ -23,7 +23,7 @@ import { ListaCursosComponent } from './components/lista-cursos/lista-cursos.com
     CommonModule,
     CursosRoutingModule,
     MaterialModule,
-    AppModule
+
 
   ],
   exports: [

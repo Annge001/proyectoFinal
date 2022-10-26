@@ -1,32 +1,71 @@
+<div class="container border">
+  <div class="row-">
+    <div class="col-auto">
 
-<div *ngFor="let curso of cursos$ | async" class="col-md-3">
-  <div>
-    <mat-form-field appearance="standard">
-      <mat-label>Filtrar</mat-label>
-      <input matInput type="text" (keyup)="filtrar($event)" placeholder="Buscar...">
-    </mat-form-field>
+
+      <div class="center">
+        <h1 appTamanoLetra>Alumnos Cursando</h1>
+      </div>
+
+      <div>
+        <mat-form-field appearance="standard">
+          <mat-label>Filtrar</mat-label>
+          <input matInput type="text" (keyup)="filtrar($event)" placeholder="Buscar..." >
+        </mat-form-field>
+      </div>
+
+
+      <mat-table [dataSource]="ELEMENT_DATA">
+        <ng-container matColumnDef="nombreCurso">
+          <mat-header-cell *matHeaderCellDef> Nombre Curso:</mat-header-cell>
+          <mat-cell *matCellDef="let curso"> {{curso.nombreCurso}}</mat-cell>
+        </ng-container>
+
+
+        <ng-container matColumnDef="comision">
+          <mat-header-cell *matHeaderCellDef> Comision</mat-header-cell>
+          <mat-cell *matCellDef="let curso"> {{curso.comision}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="profesor">
+          <mat-header-cell *matHeaderCellDef> Profesor</mat-header-cell>
+          <mat-cell *matCellDef="let curso"> {{curso.profesor}} </mat-cell>
+        </ng-container>
+
+
+        <ng-container matColumnDef="idCurso">
+          <mat-header-cell *matHeaderCellDef> Eliminar</mat-header-cell>
+          <mat-cell *matCellDef="let curso">
+            <mat-icon class="mat-18 pointer" (click)="borrar (curso.idCurso)">delete</mat-icon>
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="editar">
+          <mat-header-cell *matHeaderCellDef> Editar</mat-header-cell>
+          <mat-cell *matCellDef="let curso">
+            <button mat-button mat-icon-button (click)="editar(curso)">
+              <mat-icon matSuffix>mode_edit</mat-icon>
+            </button>
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="borrar">
+          <mat-header-cell *matHeaderCellDef> Editar</mat-header-cell>
+          <mat-cell *matCellDef="let curso">
+            <button mat-button mat-icon-button (click)="editar(curso)">
+              <mat-icon matSuffix>mode_edit</mat-icon>
+            </button>
+          </mat-cell>
+        </ng-container>
+
+
+
+        <!-- variable para indicar cada columna de la pagina. siempre al final -->
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns : displayedColumns;"></mat-row>
+      </mat-table>
+
+    </div>
   </div>
-  <mat-card>
-    <mat-card-header>
-      <mat-card-title>{{ curso.nombre }}</mat-card-title>
-      <mat-card-subtitle>{{ curso.comision }}</mat-card-subtitle>
-    </mat-card-header>
-
-    <img mat-card-image [src]="curso.imagen" alt="coderhouse">
-
-    <mat-card-content>
-      <p>Impartido por {{ curso.profesor }}</p>
-      <p>Inicial el {{ curso.fechaInicio | date: 'dd/MM/YYYY' }}</p>
-      <p>Finaliza el {{ curso.fechaFin | date: 'dd/MM/YYYY' }}</p>
-    </mat-card-content>
-
-    <mat-card-actions align="end">
-      <button mat-icon-button color="primary">
-        <mat-icon>edit</mat-icon>
-      </button>
-      <button mat-icon-button color="warn">
-        <mat-icon>delete</mat-icon>
-      </button>
-    </mat-card-actions>
-  </mat-card>
 </div>
