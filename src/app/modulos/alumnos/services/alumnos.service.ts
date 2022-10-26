@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Alumnos} from "../../../components/models/alumnos";
+import {Alumnos} from "../../../models/alumnos";
 import {BehaviorSubject} from "rxjs";
 import {CursoService} from "../../cursos/services/curso.service";
 

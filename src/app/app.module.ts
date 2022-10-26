@@ -23,8 +23,7 @@ import {AlumnosModule} from "./modulos/alumnos/alumnos.module";
     AppComponent,
     LateralNavbarComponent,
     PrincipalComponent,
-    TamanoLetraDirective,
-
+    TamanoLetraDirective
   ],
   imports: [
     BrowserModule,
@@ -36,7 +35,6 @@ import {AlumnosModule} from "./modulos/alumnos/alumnos.module";
     AutenticacionModule,
     ReactiveFormsModule,
     CoreModule,
-    CursosModule,
     AlumnosModule
 
   ],

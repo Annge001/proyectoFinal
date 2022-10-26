@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import {HeaderComponent} from "./components/header/header.component";
 import {SesionService} from "./services/sesion.service";
 import { PaginaNoEncontradaComponent } from './components/pagina-no-encontrada/pagina-no-encontrada.component';
+import {RouterModule} from "@angular/router";
 
 
 
@@ -14,7 +15,8 @@ import { PaginaNoEncontradaComponent } from './components/pagina-no-encontrada/p
 
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ],
   exports: [
     HeaderComponent

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {MatTableDataSource} from "@angular/material/table";
 
 @Component({
   selector: 'app-cursos',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cursos.component.css']
 })
 export class CursosComponent implements OnInit {
+
+
 
   constructor() { }
 

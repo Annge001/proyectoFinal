@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {Curso} from "../../../../components/models/curso";
+import {Curso} from "../../../../models/curso";
 import {CursoService} from "../../../cursos/services/curso.service";
 
 @Component({

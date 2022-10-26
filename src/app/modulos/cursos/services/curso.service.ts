@@ -1,11 +1,11 @@
 import {Injectable} from '@angular/core';
-import {Curso} from "../../../components/models/curso";
+import {Curso} from "../../../models/curso";
 import {BehaviorSubject} from "rxjs";
 
 @Injectable()
 export class CursoService {
 
-  cursos: Curso[] = [{
+ private cursos: Curso[] = [{
       idCurso:'1',
       nombreCurso:'Front End Angular',
       comision:'12345',
@@ -13,7 +13,6 @@ export class CursoService {
       fechaInicio: new Date(2022,2,1),
       fechaFin: new Date(2023,2,1),
       inscripcionABierta: true,
-      //  alumnos:''
   },
     {
       idCurso:'2',
@@ -23,7 +22,6 @@ export class CursoService {
       fechaInicio: new Date(2022,3,1),
       fechaFin:  new Date(2023,3,1),
       inscripcionABierta: true,
-      // alumnos:''
   },
     {
       idCurso:'3',
@@ -33,7 +31,6 @@ export class CursoService {
       fechaInicio: new Date(2022,4,1),
       fechaFin: new Date(2023,4,1),
       inscripcionABierta:false,
-      //  alumnos:''
   }];
 
 
@@ -57,15 +54,7 @@ export class CursoService {
   }
 
 
-  editarCurso(curso: Curso){
-    let indice = this.cursos.findIndex((c: Curso) => c.idCurso === curso.idCurso);
 
-    if(indice > -1){
-      this.cursos[indice] = curso;
-    }
-
-    this.cursosSubect.next(this.cursos);
-  }
 
 
 
