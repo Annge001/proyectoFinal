@@ -9,6 +9,7 @@ import { AgregarCursoComponent } from './components/agregar-curso/agregar-curso.
 import { EditarCursoComponent } from './components/editar-curso/editar-curso.component';
 import {AppModule} from "../../app.module";
 import { ListaCursosComponent } from './components/lista-cursos/lista-cursos.component';
+import { VerDetalleComponent } from './components/ver-detalle/ver-detalle.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { ListaCursosComponent } from './components/lista-cursos/lista-cursos.com
     CursosComponent,
     AgregarCursoComponent,
     EditarCursoComponent,
-    ListaCursosComponent
+    ListaCursosComponent,
+    VerDetalleComponent
 
   ],
   imports: [
