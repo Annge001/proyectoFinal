@@ -1,1 +1,18 @@
-<p>ver-detalle works!</p>
+<mat-card *ngIf="cursosDetalle">
+  <mat-card-title>
+    Detalles
+  </mat-card-title>
+  <mat-card-content>
+    id: {{cursosDetalle.idCurso}}<br>
+    Nombre: {{cursosDetalle.nombreCurso}}<br>
+    Comision: {{cursosDetalle.comision}}<br>
+    Profesor: {{cursosDetalle.profesor}}<br>
+    Inicio: {{cursosDetalle.fechaInicio}}<br>
+    Fin: {{cursosDetalle.fechaFin}}<br>
+    Inscripci&oacute;n abierta: {{cursosDetalle.inscripcionABierta}}<br>
+
+
+    <button  mat-icon-button (click)="OnCerrar()">close</button>
+
+  </mat-card-content>
+</mat-card>

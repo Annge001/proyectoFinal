@@ -1,0 +1,18 @@
+<mat-card *ngIf="alumnoDetalle">
+  <mat-card-title>
+    Detalles
+  </mat-card-title>
+  <mat-card-content>
+    id: {{alumnoDetalle.id}}<br>
+    Nombre: {{alumnoDetalle.nombreAlumno}}<br>
+    apellido: {{alumnoDetalle.apellido}}<br>
+    comision: {{alumnoDetalle.comision}}<br>
+    curso: {{alumnoDetalle.curso.nombreCurso}}<br>
+    email: {{alumnoDetalle.email}}<br>
+    tel&eacute;fono: {{alumnoDetalle.telefono}}<br>
+
+
+    <button  mat-icon-button (click)="OnCerrar()">close</button>
+
+  </mat-card-content>
+</mat-card>

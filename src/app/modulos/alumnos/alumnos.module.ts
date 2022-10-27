@@ -16,7 +16,8 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
 import {MatSelectModule} from "@angular/material/select";
 import {MostrarApellidoPipe} from "./pipes/mostrar-apellido.pipe";
-import { VerDetalleComponent } from './components/ver-detalle/ver-detalle.component';
+import { VerDetalleAlumnoComponent } from './components/ver-detalle/ver-detalle-alumno.component';
+import {MaterialModule} from "../../material.module";
 
 
 @NgModule({
@@ -25,7 +26,7 @@ import { VerDetalleComponent } from './components/ver-detalle/ver-detalle.compon
     AltaAlumnoComponent,
     EditarAlumnoFormComponent,
     MostrarApellidoPipe,
-    VerDetalleComponent
+    VerDetalleAlumnoComponent
 
 
   ],
@@ -39,14 +40,16 @@ import { VerDetalleComponent } from './components/ver-detalle/ver-detalle.compon
     ReactiveFormsModule,
     MatInputModule,
     MatSelectModule,
+    MaterialModule
 
   ],
-  exports: [
-    AltaAlumnoComponent,
-    EditarAlumnoFormComponent,
-    ListaComponent,
-    MostrarApellidoPipe
-  ],
+    exports: [
+        AltaAlumnoComponent,
+        EditarAlumnoFormComponent,
+        ListaComponent,
+        MostrarApellidoPipe,
+        VerDetalleAlumnoComponent
+    ],
   providers: [
     AlumnosService,
     CursoService

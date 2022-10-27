@@ -8,7 +8,7 @@ import {Router} from "@angular/router";
   templateUrl: './principal.component.html',
   styleUrls: ['./principal.component.css']
 })
-export class PrincipalComponent implements OnInit  {
+export class PrincipalComponent implements OnInit {
 
   alumno: any;
   editarForm = false;
@@ -16,6 +16,8 @@ export class PrincipalComponent implements OnInit  {
   lista = true;
 
   listaAlumnos = [];
+
+
 
 
   editarAlumno($event: any) {
@@ -31,7 +33,7 @@ export class PrincipalComponent implements OnInit  {
     private router: Router) {
     // @ts-ignore
 
-   // this.lista = false
+    // this.lista = false
 
   }
 
@@ -43,9 +45,11 @@ export class PrincipalComponent implements OnInit  {
     });
 
   }
+
   obtenerAlumnos() {
     return this.alumnoService.obtenerAlumnosPromise();
   }
+
 //funcion para recibir el alumno actualizado desde el formulario del componente hijo
   alumnoActualizado($event: any) {
     // @ts-ignore
@@ -65,7 +69,7 @@ export class PrincipalComponent implements OnInit  {
 
     this.listaAlumnos.push($event);
     this.listaAlumnos = [...this.listaAlumnos]
-     this.lista = true
+    this.lista = true
     this.agregarForm = false;
   }
 
@@ -77,6 +81,6 @@ export class PrincipalComponent implements OnInit  {
 
 //funcion para viajar entre componentes
   //redirect(url: string) {
-    //this.router.navigate([url]);
+  //this.router.navigate([url]);
   //}
 }

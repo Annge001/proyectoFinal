@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MatTableDataSource} from "@angular/material/table";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-cursos',
@@ -10,9 +11,13 @@ export class CursosComponent implements OnInit {
 
 
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
   }
-
+  redirect(url: string) {
+    this.router.navigate([url]);
+  }
 }

@@ -4,6 +4,7 @@ import {Alumnos} from "../../../../models/alumnos";
 import {AlumnosService} from "../../services/alumnos.service";
 import {Observable} from "rxjs";
 import {Curso} from "../../../../models/curso";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -23,6 +24,9 @@ export class ListaComponent  implements OnInit {
   @Output()
   alumno = new EventEmitter<any>();
 
+  alumnoDetalle = null;
+
+
   //variante que recibe la lista actualizada
   @Input()
   listaAlumnosInput= [];
@@ -36,7 +40,7 @@ export class ListaComponent  implements OnInit {
 
 
   constructor(
-
+    private router: Router,
     private alumnoService : AlumnosService
   ){
     // consumo del servicio de alumnos a traves de un observable
@@ -95,10 +99,17 @@ export class ListaComponent  implements OnInit {
     this.ELEMENT_DATA.filter = filtro.trim().toLowerCase();
 
   }
-  verMas(id: any) {
-    console.log(id)
+  redirect(url: string) {
+    this.router.navigate([url]);
   }
 
+  verMas(id: any) {
+    console.log(id)
+    this.redirect('alumnos/detalle-alumno')
+  }
+  cerrarDetalle(){
+    this.alumnoDetalle = null;
+  }
 
 
 }

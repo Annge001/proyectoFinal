@@ -51,11 +51,12 @@
         <ng-container matColumnDef="verDetalle">
           <mat-header-cell *matHeaderCellDef> </mat-header-cell>
           <mat-cell *matCellDef="let curso">
-            <button mat-button mat-icon-button (click)="verMas(curso.idCurso)" title="Ver más">
+            <button mat-button mat-icon-button (click)="verMas(curso.cursosDetalle)" title="Ver más">
               <mat-icon matSuffix >loupe</mat-icon>
             </button>
           </mat-cell>
         </ng-container>
+        <app-ver-detalle (cerrar)="cerrarDetalle()"></app-ver-detalle>
 
 
         <!-- variable para indicar cada columna de la pagina. siempre al final -->

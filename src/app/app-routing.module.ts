@@ -10,6 +10,9 @@ import {ListaComponent} from "./modulos/alumnos/components/lista/lista.component
 import {AltaAlumnoComponent} from "./modulos/alumnos/components/alta-alumno/alta-alumno.component";
 import {EditarAlumnoFormComponent} from "./modulos/alumnos/components/editar-alumno-form/editar-alumno-form.component";
 import {FormInscripcionComponent} from "./modulos/inscripciones/components/form-inscripcion/form-inscripcion.component";
+import {VerDetalleComponent} from "./modulos/cursos/components/ver-detalle/ver-detalle.component";
+import {VerDetalleAlumnoComponent} from "./modulos/alumnos/components/ver-detalle/ver-detalle-alumno.component";
+
 
 const routes: Routes = [
   { path: 'principal', component: PrincipalComponent},
@@ -19,12 +22,15 @@ const routes: Routes = [
   { path: 'cursos', children:[
       {path: 'lista-curso',  component: ListaCursosComponent},
       {path: 'agregar-curso',  component: AgregarCursoComponent},
-      {path: 'editar-curso',  component: EditarCursoComponent}
+      {path: 'editar-curso',  component: EditarCursoComponent},
+      {path: 'detalle-curso',  component: VerDetalleComponent}
     ]},
   { path: 'alumnos', children:[
       {path: 'lista-alumnos',  component: ListaComponent},
       {path: 'agregar-alumno',  component: AltaAlumnoComponent},
-      {path: 'editar-alumno',  component: EditarAlumnoFormComponent}
+      {path: 'editar-alumno',  component: EditarAlumnoFormComponent},
+      {path: 'detalle-alumno',  component: VerDetalleAlumnoComponent}
+
     ]},
 
   { path: 'login', component: LoginComponent},

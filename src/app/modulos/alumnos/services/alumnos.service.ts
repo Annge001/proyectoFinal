@@ -71,7 +71,7 @@ export class AlumnosService {
             mensaje: 'No existen alumnos'
           });
         }
-      }, 3000)
+      }, 1000)
     });
   }
 

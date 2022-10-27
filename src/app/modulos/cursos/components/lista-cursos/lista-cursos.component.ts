@@ -13,6 +13,7 @@ import {Router} from "@angular/router";
 })
 export class ListaCursosComponent implements OnInit {
 
+  cursosDetalle = null;
   cursos$!: Observable<Curso[]>
   dataInicial: any;
 
@@ -81,5 +82,9 @@ export class ListaCursosComponent implements OnInit {
 
   verMas(idCurso: any) {
     console.log(idCurso)
+    this.redirect('cursos/detalle-curso')
+  }
+  cerrarDetalle(){
+    this.cursosDetalle = null;
   }
 }

@@ -17,8 +17,8 @@
             </p>
           </mat-card-content>
           <mat-card-actions>
-            <button mat-button>Ver más</button>
-            <button mat-button >Inicia sesión</button>
+            <button mat-button (click)="redirect('cursos/lista-curso')">Ver más</button>
+            <button mat-button (click)="redirect('login')">Inicia sesión</button>
           </mat-card-actions>
         </mat-card>
       </div>
@@ -39,8 +39,8 @@
             </p>
           </mat-card-content>
           <mat-card-actions>
-            <button mat-button>Ver más</button>
-            <button mat-button>Inicia sesión</button>
+            <button mat-button (click)="redirect('cursos/lista-curso')">Ver más</button>
+            <button mat-button (click)="redirect('login')">Inicia sesión</button>
           </mat-card-actions>
         </mat-card>
       </div>
@@ -61,7 +61,9 @@
             </p>
           </mat-card-content>
           <mat-card-actions>
-            <button mat-button>Ver más</button>
+            <button mat-button (click)="redirect('cursos/lista-curso')">Ver más</button>
+            <button mat-button (click)="redirect('login')">Inicia sesión</button>
+
 
           </mat-card-actions>
         </mat-card>

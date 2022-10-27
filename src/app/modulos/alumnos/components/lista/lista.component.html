@@ -66,10 +66,12 @@
           <mat-header-cell *matHeaderCellDef> </mat-header-cell>
           <mat-cell *matCellDef="let persona">
             <button mat-button mat-icon-button (click)="verMas(persona.id)" title="Ver más">
-              <mat-icon matSuffix >loupe</mat-icon>
+              <mat-icon matSuffix>loupe</mat-icon>
             </button>
           </mat-cell>
         </ng-container>
+        <app-ver-detalle-alumno (cerrar)="cerrarDetalle()"></app-ver-detalle-alumno>
+
 
 
         <!-- variable para indicar cada columna de la pagina. siempre al final -->
