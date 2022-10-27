@@ -18,7 +18,7 @@ export class ListaComponent  implements OnInit {
   dataInicial:any;
 
   ELEMENT_DATA = new MatTableDataSource([])
-  displayedColumns: string[] = ['nombre', 'email', 'comision', 'curso', 'editar', 'borrar'];
+  displayedColumns: string[] = ['nombre', 'email', 'comision', 'curso', 'editar', 'borrar','verDetalle'];
   // variante de salida con el alumno a editar
   @Output()
   alumno = new EventEmitter<any>();
@@ -94,6 +94,9 @@ export class ListaComponent  implements OnInit {
 
     this.ELEMENT_DATA.filter = filtro.trim().toLowerCase();
 
+  }
+  verMas(id: any) {
+    console.log(id)
   }
 
 
