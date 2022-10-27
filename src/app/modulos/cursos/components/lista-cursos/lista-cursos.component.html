@@ -4,13 +4,13 @@
 
 
       <div class="center">
-        <h1 appTamanoLetra>Alumnos Cursando</h1>
+        <h1>Lista de Cursos</h1>
       </div>
 
       <div>
         <mat-form-field appearance="standard">
           <mat-label>Filtrar</mat-label>
-          <input matInput type="text" (keyup)="filtrar($event)" placeholder="Buscar..." >
+          <input matInput type="text" (keyup)="filtrar($event)" placeholder="Buscar...">
         </mat-form-field>
       </div>
 
@@ -33,31 +33,29 @@
         </ng-container>
 
 
-        <ng-container matColumnDef="idCurso">
+        <ng-container matColumnDef="borrar">
           <mat-header-cell *matHeaderCellDef> Eliminar</mat-header-cell>
           <mat-cell *matCellDef="let curso">
-            <mat-icon class="mat-18 pointer" (click)="borrar (curso.idCurso)">delete</mat-icon>
+            <mat-icon class="mat-18 pointer" (click)="borrar (curso.idCurso)" title="Eliminar">delete_outline</mat-icon>
           </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="editar">
           <mat-header-cell *matHeaderCellDef> Editar</mat-header-cell>
           <mat-cell *matCellDef="let curso">
-            <button mat-button mat-icon-button (click)="editar(curso)">
-              <mat-icon matSuffix>mode_edit</mat-icon>
+            <button mat-button mat-icon-button (click)="editar(curso.idCurso)" title="Editar">
+              <mat-icon matSuffix>edit</mat-icon>
             </button>
           </mat-cell>
         </ng-container>
-
-        <ng-container matColumnDef="borrar">
-          <mat-header-cell *matHeaderCellDef> Editar</mat-header-cell>
+        <ng-container matColumnDef="verDetalle">
+          <mat-header-cell *matHeaderCellDef> </mat-header-cell>
           <mat-cell *matCellDef="let curso">
-            <button mat-button mat-icon-button (click)="editar(curso)">
-              <mat-icon matSuffix>mode_edit</mat-icon>
+            <button mat-button mat-icon-button (click)="verMas(curso.idCurso)" title="Ver más">
+              <mat-icon matSuffix >loupe</mat-icon>
             </button>
           </mat-cell>
         </ng-container>
-
 
 
         <!-- variable para indicar cada columna de la pagina. siempre al final -->

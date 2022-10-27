@@ -9,9 +9,13 @@ import {ListaCursosComponent} from "./modulos/cursos/components/lista-cursos/lis
 import {ListaComponent} from "./modulos/alumnos/components/lista/lista.component";
 import {AltaAlumnoComponent} from "./modulos/alumnos/components/alta-alumno/alta-alumno.component";
 import {EditarAlumnoFormComponent} from "./modulos/alumnos/components/editar-alumno-form/editar-alumno-form.component";
+import {FormInscripcionComponent} from "./modulos/inscripciones/components/form-inscripcion/form-inscripcion.component";
 
 const routes: Routes = [
   { path: 'principal', component: PrincipalComponent},
+  {path: 'inscripcion', component: FormInscripcionComponent},
+
+
   { path: 'cursos', children:[
       {path: 'lista-curso',  component: ListaCursosComponent},
       {path: 'agregar-curso',  component: AgregarCursoComponent},
@@ -26,6 +30,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: '', redirectTo: 'principal', pathMatch: 'full'},
   { path:'**', component: PaginaNoEncontradaComponent}
+
+
 ];
 
 @NgModule({

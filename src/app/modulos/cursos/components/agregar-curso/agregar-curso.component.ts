@@ -12,7 +12,7 @@ export class AgregarCursoComponent implements OnInit {
 
 
   listaCursos: Array<Curso> = [];
-  cursos = [];
+  cursos: Array<Curso> = [];
   formulario: FormGroup;
 
 
@@ -26,7 +26,7 @@ export class AgregarCursoComponent implements OnInit {
   constructor(private fb: FormBuilder,
               private cursoService: CursoService) {
     this.formulario = fb.group({
-      nombre: ['', [Validators.required]],
+      profesor: ['', [Validators.required]],
       fechaInicio: ['', [Validators.required]],
       fechaFin: ['', [Validators.required]],
       cursos: ['', [Validators.required]]

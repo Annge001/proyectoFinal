@@ -1,11 +1,11 @@
-{{this.formulario.value | json}}
+<!--{{this.formulario.value | json}}-->
 
 <div class="container mt-5">
-  <!--{{this.formularioPersona.value | json}}-->
+  <!--{{this.formulario.value | json}}-->
   <div class="row">
     <div class="col">
       <div class="center">
-        <h1 appTamanoLetra>Agregar Curso</h1>
+        <h1>Agregar Curso</h1>
       </div>
       <form class="example-form" [formGroup]="formulario">
         <div class="col-12 d-flex">
@@ -17,20 +17,22 @@
             </mat-form-field>
           </div>
 
+
           <div class="col-md-6 ">
             <mat-form-field class="example-full-width" appearance="fill">
               <mat-label>Cursos</mat-label>
               <mat-select formControlName="cursos" multiple>
-                <mat-option *ngFor="let curso of listaCursos" [value]="curso">{{curso.nombreCurso}}</mat-option>
+                <mat-option *ngFor="let curso of cursos" [value]="curso">{{curso.nombreCurso}}</mat-option>
               </mat-select>
             </mat-form-field>
           </div>
         </div>
 
+
         <div class="col-md-6">
           <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Inicio del curso</mat-label>
-            <input matInput [matDatepicker]="fechaInicio">
+            <input matInput [matDatepicker]="fechaInicio" formControlName="fechaInicio">
             <mat-hint>MM/DD/YYYY</mat-hint>
             <mat-datepicker-toggle matSuffix [for]="fechaInicio"></mat-datepicker-toggle>
             <mat-datepicker #fechaInicio></mat-datepicker>
@@ -38,9 +40,9 @@
         </div>
 
         <div class="col-md-6">
-          <mat-form-field  class="example-full-width" appearance="fill">
+          <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Fin del curso</mat-label>
-            <input matInput [matDatepicker]="fechaFin">
+            <input matInput [matDatepicker]="fechaFin" formControlName="fechaFin">
             <mat-hint>MM/DD/YYYY</mat-hint>
             <mat-datepicker-toggle matSuffix [for]="fechaFin"></mat-datepicker-toggle>
             <mat-datepicker #fechaFin></mat-datepicker>
@@ -55,7 +57,7 @@
             <button mat-stroked-button color="primary">Volver</button>
           </div>
           <div>
-            <button mat-stroked-button color="primary" (click)="obtenerCursos()">Confirmar</button>
+            <button mat-stroked-button color="primary" (click)="crearCurso()">Confirmar</button>
           </div>
         </div>
         <br>

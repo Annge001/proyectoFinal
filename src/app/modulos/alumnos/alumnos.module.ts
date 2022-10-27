@@ -16,6 +16,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
 import {MatSelectModule} from "@angular/material/select";
 import {MostrarApellidoPipe} from "./pipes/mostrar-apellido.pipe";
+import { VerDetalleComponent } from './components/ver-detalle/ver-detalle.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import {MostrarApellidoPipe} from "./pipes/mostrar-apellido.pipe";
     ListaComponent,
     AltaAlumnoComponent,
     EditarAlumnoFormComponent,
-    MostrarApellidoPipe
+    MostrarApellidoPipe,
+    VerDetalleComponent
 
 
   ],

@@ -37,6 +37,7 @@ export class ListaCursoService {
     }];
 
   private cursosSubject: BehaviorSubject<Curso[]>;
+  idCurso:any;
 
 
   constructor() {
@@ -80,5 +81,16 @@ export class ListaCursoService {
       }, 1000)
     });
   }
+
+  setIdCurso(idCurso:any){
+    this.idCurso = idCurso;
+    console.log(idCurso)
+  }
+
+  getIdCurso(){
+    return this.idCurso;
+  }
+
+
 
 }

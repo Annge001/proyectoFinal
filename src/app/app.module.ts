@@ -12,11 +12,12 @@ import {PrincipalComponent} from "./components/principal/principal.component";
 import {TamanoLetraDirective} from "./directivas/tamano-letra.directive";
 import {CursoService} from "./modulos/cursos/services/curso.service";
 import {AlumnosService} from "./modulos/alumnos/services/alumnos.service";
-import {CursosModule} from "./modulos/cursos/cursos.module";
 import {AutenticacionModule} from "./modulos/autenticacion/autenticacion.module";
 import {CoreModule} from "./core/core.module";
 import {AlumnosModule} from "./modulos/alumnos/alumnos.module";
 import {ListaCursoService} from "./modulos/cursos/services/lista-curso.service";
+import {CursosModule} from "./modulos/cursos/cursos.module";
+import {FormInscripcionComponent} from "./modulos/inscripciones/components/form-inscripcion/form-inscripcion.component";
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import {ListaCursoService} from "./modulos/cursos/services/lista-curso.service";
     LateralNavbarComponent,
     PrincipalComponent,
     TamanoLetraDirective,
+    FormInscripcionComponent
 
   ],
   imports: [
@@ -38,7 +40,7 @@ import {ListaCursoService} from "./modulos/cursos/services/lista-curso.service";
     ReactiveFormsModule,
     CoreModule,
     AlumnosModule,
-    CursosModule
+    CursosModule,
 
 
   ],
