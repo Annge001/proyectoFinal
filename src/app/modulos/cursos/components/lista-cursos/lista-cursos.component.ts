@@ -5,6 +5,7 @@ import {Observable} from "rxjs";
 import {ListaCursoService} from "../../services/lista-curso.service";
 import {Alumnos} from "../../../../models/alumnos";
 import {Router} from "@angular/router";
+import {CursoService} from "../../services/curso.service";
 
 @Component({
   selector: 'app-lista-cursos',
@@ -32,7 +33,7 @@ export class ListaCursosComponent implements OnInit {
 
 
   constructor(
-    private listaCursoService: ListaCursoService,
+    private cursoService: CursoService,
     private router: Router
   ) {
   }
@@ -41,6 +42,7 @@ export class ListaCursosComponent implements OnInit {
   ngOnInit(): void {
     // @ts-ignore
     this.obtenerAlumnos().then(data => {
+      console.log(data)
       this.dataInicial = data
       this.ELEMENT_DATA.data = this.dataInicial
       console.log(this.dataInicial)
@@ -48,7 +50,7 @@ export class ListaCursosComponent implements OnInit {
   }
 
   obtenerAlumnos() {
-    return this.listaCursoService.obtenerCursosPromise();
+    return this.cursoService.obtenerCursosPromise();
   }
 
   filtrar(event: Event) {
@@ -67,12 +69,22 @@ export class ListaCursosComponent implements OnInit {
     this.ELEMENT_DATA.data = this.dataInicial
   }
 
-  editar(idCurso: any) {
+  editar(curso: any) {
     //this.curso.emit(idCurso)
-    console.log(idCurso)
+    console.log(curso)
     // se guarda el id de curso en el servicio para recuperarlo en el componente editar
-    this.listaCursoService.setIdCurso(idCurso);
-    this.redirect('cursos/editar-curso')
+    this.router.navigate(['cursos/editar-curso', {
+      idCurso: curso.idCurso,
+      nombreCurso: curso.nombreCurso,
+      comision: curso.comision,
+      profesor: curso.profesor,
+      fechaInicio: curso.fechaInicio,
+      fechaFin: curso.fechaFin,
+      inscripcionAbierta: curso.inscripcionAbierta
+
+    }])
+
+
   }
 
   redirect(url: string) {

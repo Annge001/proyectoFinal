@@ -12,7 +12,7 @@ export class CursoService {
       profesor: 'Juan',
       fechaInicio: new Date(2022,2,1),
       fechaFin: new Date(2023,2,1),
-      inscripcionABierta: true,
+      inscripcionAbierta: true,
       //  alumnos:''
   },
     {
@@ -22,7 +22,7 @@ export class CursoService {
       profesor: 'Sandra',
       fechaInicio: new Date(2022,3,1),
       fechaFin:  new Date(2023,3,1),
-      inscripcionABierta: true,
+      inscripcionAbierta: true,
       // alumnos:''
   },
     {
@@ -32,7 +32,7 @@ export class CursoService {
       profesor: 'Marcos',
       fechaInicio: new Date(2022,4,1),
       fechaFin: new Date(2023,4,1),
-      inscripcionABierta:false,
+      inscripcionAbierta:false,
       //  alumnos:''
   }];
 
@@ -58,10 +58,13 @@ export class CursoService {
 
 
   editarCurso(curso: Curso){
+    console.log(curso)
     let indice = this.cursos.findIndex((c: Curso) => c.idCurso === curso.idCurso);
+    console.log(indice)
 
     if(indice > -1){
       this.cursos[indice] = curso;
+      console.log(this.cursos)
     }
 
     this.cursosSubect.next(this.cursos);

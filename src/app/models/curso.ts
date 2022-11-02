@@ -6,7 +6,7 @@ export interface Curso{
   profesor: string;
   fechaInicio: Date,
   fechaFin: Date,
-  inscripcionABierta: boolean,
+  inscripcionAbierta: boolean,
   //alumnos: Alumnos[],
 
 }

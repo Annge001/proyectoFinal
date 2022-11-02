@@ -89,8 +89,18 @@ export class ListaComponent  implements OnInit {
   }
 
 
-  editar(persona:any) {
-    this.alumno.emit(persona)
+  editar(alumno:Alumnos) {
+    this.router.navigate(['alumnos/editar-alumno', {
+      id: alumno.id,
+      nombre: alumno.nombre,
+      apellido: alumno.apellido,
+      comision: alumno.comision,
+      curso: alumno.curso,
+      email: alumno.email,
+      telefono: alumno.telefono
+
+
+    }])
   }
 
   filtrar(event: Event){

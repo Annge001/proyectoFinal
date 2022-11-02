@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Curso} from "../../../../models/curso";
 import {CursoService} from "../../../cursos/services/curso.service";
+import {ActivatedRoute} from "@angular/router";
 
 
 @Component({
@@ -27,7 +28,8 @@ export class EditarAlumnoFormComponent implements OnInit {
   alumnoActualizado = new EventEmitter<any>();
 
   constructor(private fb: FormBuilder,
-              private  cursoService: CursoService) {
+              private  cursoService: CursoService,
+              private activatedRoute: ActivatedRoute) {
     this.formularioPersona = fb.group({
       nombre: ['', [Validators.required]],
       apellido: ['', [Validators.required]],
@@ -51,7 +53,9 @@ export class EditarAlumnoFormComponent implements OnInit {
 
 
   ngOnInit(): void {
-
+    this.activatedRoute.paramMap.subscribe((parametros)=>{
+      console.log(parametros)
+    })
     this.completarFormulario();
   }
 
@@ -68,7 +72,8 @@ export class EditarAlumnoFormComponent implements OnInit {
 //funcion para generar el alumno que fue editado y sera enviado al componente padre
   guardarAlumno() {
     this.alumnoActualizado.emit(
-      { id:this.alumno.id,
+      {
+        id: this.alumno.id,
         nombre: this.formularioPersona.get('nombre')?.value,
         apellido:this.formularioPersona.get('apellido')?.value,
         comision:this.formularioPersona.get('comision')?.value,

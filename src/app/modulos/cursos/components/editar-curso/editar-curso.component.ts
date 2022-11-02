@@ -3,6 +3,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Curso} from "../../../../models/curso";
 import {CursoService} from "../../services/curso.service";
 import {ListaCursoService} from "../../services/lista-curso.service";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-editar-curso',
@@ -16,7 +17,8 @@ export class EditarCursoComponent implements OnInit {
 
   listaCursos: Array<Curso> = [];
   cursos = [];
-  formulario: FormGroup;
+  formulario!: FormGroup;
+  idCurso!: string;
 
   //recibe curso a actualizar
   @Input()
@@ -30,15 +32,11 @@ export class EditarCursoComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
               private  cursoService: CursoService,
-              private listaCursoService: ListaCursoService) {
-    this.formulario = fb.group({
+              private listaCursoService: ListaCursoService,
+              private activatedRoute: ActivatedRoute,
+              private router: Router
+  ) {
 
-      nombreCurso: ['', [Validators.required]],
-      comision: ['', [Validators.required]],
-      profesor: ['', [Validators.required, Validators.email]],
-      fechaInicio: ['', [Validators.required]],
-      fechaFin: ['', [Validators.required]]
-    });
 
     this.obtenerCursos().then(data => {
       this.cursos = data;
@@ -56,31 +54,37 @@ export class EditarCursoComponent implements OnInit {
 
 
   ngOnInit(): void {
-    // se completa el formulario solo si la variable de curso a editar tiene informacion
-    if(this.cursoEditar.length > 0){
-      this.completarFormulario();
-    }
+    this.activatedRoute.paramMap.subscribe((parametros) =>{
+      console.log(parametros)
+      this.idCurso = parametros.get('idCurso') || '0';
+
+      this.formulario = this.fb.group({
+
+        nombreCurso: [parametros.get('nombreCurso'), [Validators.required]],
+        comision: [parametros.get('comision'), [Validators.required]],
+        profesor: [parametros.get('profesor'), [Validators.required]],
+        fechaInicio: [parametros.get('fechaInicio'), [Validators.required]],
+        fechaFin: [parametros.get('fechaFin'), [Validators.required]],
+        inscripcionAbierta: [parametros.get('inscripcionAbierta'), [Validators.required]],
+
+      });
+    })
   }
 
-  //funcion para completar el formulario del curso a editar
-  completarFormulario(){
-    this.formulario.patchValue({nombreCurso:this.cursoEditar[0].nombreCurso})
-    this.formulario.patchValue({comision:this.cursoEditar[0].comision})
-    this.formulario.patchValue({profesor:this.cursoEditar[0].profesor})
-    this.formulario.patchValue({fechaInicio:this.cursoEditar[0].fechaInicio})
-    this.formulario.patchValue({fechafin:this.cursoEditar[0].fechaFin})
 
-  }
-//funcion para generar el curso que fue editado y sera enviado al componente padre
   guardarCurso() {
-    this.cursoActualizado.emit(
-      { id:this.curso.id,
-        nombreCurso: this.formulario.get('nombreCurso')?.value,
-        comision:this.formulario.get('comision')?.value,
-        profesor:this.formulario.get('profesor')?.value,
-        fechaInicio: this.formulario.get('fechaInicio')?.value,
-        fechafin:this.formulario.get('fechafin')?.value
-      }
-    )
+    console.log(this)
+    let curso: Curso = {
+      idCurso: this.idCurso,
+      nombreCurso: this.formulario.value.nombreCurso,
+      comision: this.formulario.value.comision,
+      profesor: this.formulario.value.profesor,
+      fechaInicio: this.formulario.value.fechaInicio,
+      fechaFin: this.formulario.value.fechaFin,
+      inscripcionAbierta: this.formulario.value.inscripcionAbierta,
+    }
+    this.cursoService.editarCurso(curso)
+
+    this.router.navigate(['cursos/lista-curso'])
   }
 }

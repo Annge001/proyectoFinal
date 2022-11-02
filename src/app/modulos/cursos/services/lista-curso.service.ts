@@ -15,7 +15,7 @@ export class ListaCursoService {
     profesor: 'Juan',
     fechaInicio: new Date(2022,2,1),
     fechaFin: new Date(2023,2,1),
-    inscripcionABierta: true,
+    inscripcionAbierta: true,
   },
     {
       idCurso:'2',
@@ -24,7 +24,7 @@ export class ListaCursoService {
       profesor: 'Sandra',
       fechaInicio: new Date(2022,3,1),
       fechaFin:  new Date(2023,3,1),
-      inscripcionABierta: true,
+      inscripcionAbierta: true,
     },
     {
       idCurso:'3',
@@ -33,7 +33,7 @@ export class ListaCursoService {
       profesor: 'Marcos',
       fechaInicio: new Date(2022,4,1),
       fechaFin: new Date(2023,4,1),
-      inscripcionABierta:false,
+      inscripcionAbierta:false,
     }];
 
   private cursosSubject: BehaviorSubject<Curso[]>;
