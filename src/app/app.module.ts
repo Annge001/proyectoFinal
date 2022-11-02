@@ -18,6 +18,7 @@ import {AlumnosModule} from "./modulos/alumnos/alumnos.module";
 import {ListaCursoService} from "./modulos/cursos/services/lista-curso.service";
 import {CursosModule} from "./modulos/cursos/cursos.module";
 import {FormInscripcionComponent} from "./modulos/inscripciones/components/form-inscripcion/form-inscripcion.component";
+import {SharedModule} from "./shared/shared.module";
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import {FormInscripcionComponent} from "./modulos/inscripciones/components/form-
     AutenticacionModule,
     ReactiveFormsModule,
     CoreModule,
+    SharedModule,
     AlumnosModule,
     CursosModule,
 

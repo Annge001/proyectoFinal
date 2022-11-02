@@ -122,4 +122,7 @@ export class ListaComponent  implements OnInit {
   }
 
 
+  agrgarAlumno() {
+    this.router.navigate(['alumnos/agregar-alumno'])
+  }
 }

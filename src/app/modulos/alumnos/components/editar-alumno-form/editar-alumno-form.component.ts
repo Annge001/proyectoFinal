@@ -2,7 +2,9 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Curso} from "../../../../models/curso";
 import {CursoService} from "../../../cursos/services/curso.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
+import {Alumnos} from "../../../../models/alumnos";
+import {AlumnosService} from "../../services/alumnos.service";
 
 
 @Component({
@@ -17,7 +19,8 @@ export class EditarAlumnoFormComponent implements OnInit {
 
   listaCursos: Array<Curso> = [];
   cursos = [];
-  formularioPersona: FormGroup;
+  formularioPersona!: FormGroup;
+  id!: string;
 
   // Recibe alumno a actualizar
   @Input()
@@ -28,17 +31,12 @@ export class EditarAlumnoFormComponent implements OnInit {
   alumnoActualizado = new EventEmitter<any>();
 
   constructor(private fb: FormBuilder,
+              private alumnosService: AlumnosService,
               private  cursoService: CursoService,
-              private activatedRoute: ActivatedRoute) {
-    this.formularioPersona = fb.group({
-      nombre: ['', [Validators.required]],
-      apellido: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]],
-      curso: ['', [Validators.required]],
-      comision: ['', [Validators.required]],
-      telefono: ['', [Validators.required]],
-      cursos: ['', [Validators.required]]
-    });
+              private activatedRoute: ActivatedRoute,
+              private router: Router) {
+
+
 
     this.obtenerCursos().then(data => {
       this.cursos = data;
@@ -55,32 +53,34 @@ export class EditarAlumnoFormComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((parametros)=>{
       console.log(parametros)
+      this.id = parametros.get('id') || '0';
+      this.formularioPersona = this.fb.group({
+
+        nombre: [parametros.get('nombre'), [Validators.required]],
+        apellido: [parametros.get('apellido'), [Validators.required]],
+        comision: [parametros.get('comision'), [Validators.required]],
+        curso    : [parametros.get('curso'), [Validators.required]],
+        email: [parametros.get('email'), [Validators.required]],
+        telefono: [parametros.get('telefono'), [Validators.required]],
+        cursos: [parametros.get('curso'), [Validators.required]]
+      })
+
     })
-    this.completarFormulario();
   }
 
-  //funcion para completar el formulario con la persona a editar
-  completarFormulario(){
-    this.formularioPersona.patchValue({nombre:this.alumno.nombre})
-    this.formularioPersona.patchValue({apellido:this.alumno.apellido})
-    this.formularioPersona.patchValue({email:this.alumno.email})
-    this.formularioPersona.patchValue({comision:this.alumno.curso[0].comision})
-    this.formularioPersona.patchValue({telefono:this.alumno.telefono})
-    this.formularioPersona.patchValue({curso:this.alumno.curso[0].nombreCurso})
-
-  }
-//funcion para generar el alumno que fue editado y sera enviado al componente padre
   guardarAlumno() {
-    this.alumnoActualizado.emit(
-      {
-        id: this.alumno.id,
-        nombre: this.formularioPersona.get('nombre')?.value,
-        apellido:this.formularioPersona.get('apellido')?.value,
-        comision:this.formularioPersona.get('comision')?.value,
-        curso: this.formularioPersona.get('cursos')?.value,
-        email:this.formularioPersona.get('email')?.value,
-        telefono: this.formularioPersona.get('telefono')?.value,
-      }
-    )
+    let alumno: Alumnos = {
+    id: this.id,
+    nombre: this.formularioPersona.value.nombre,
+    apellido: this.formularioPersona.value.apellido,
+    comision: this.formularioPersona.value.comision,
+    curso: [],
+    email: this.formularioPersona.value.email,
+    telefono: this.formularioPersona.value.telefono,
+    }
+    alumno.curso.push(this.formularioPersona.value.cursos)
+    console.log(alumno)
+  this.alumnosService.editarAlumno(alumno)
+    this.router.navigate(['alumnos/lista-alumnos'])
   }
 }

@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Alumnos} from "../../../models/alumnos";
 import {BehaviorSubject} from "rxjs";
 import {CursoService} from "../../cursos/services/curso.service";
+import {Curso} from "../../../models/curso";
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +27,7 @@ export class AlumnosService {
 
       this.alumnos = [
         {
-          id:1,
+          id:'1',
           nombre:'Andrea',
           apellido:'Castillo',
           comision:'32566',
@@ -35,7 +36,7 @@ export class AlumnosService {
           telefono: '958641238'
         },
         {
-          id:2,
+          id:'2',
           nombre:'Constanza',
           apellido:'Rojas',
           comision:'32577',
@@ -45,7 +46,7 @@ export class AlumnosService {
 
         },
         {
-          id:3,
+          id:'3',
           nombre:'Javiera',
           apellido:'Bello',
           comision:'32588',
@@ -87,6 +88,18 @@ export class AlumnosService {
     return this.cursoService.obtenerCursosPromise();
   }
 
+  editarAlumno(alumno: Alumnos){
+    console.log(alumno)
+    let indice = this.alumnos.findIndex((c: Alumnos) => c.id === alumno.id);
+    console.log(indice)
+
+    if(indice > -1){
+      this.alumnos[indice] = alumno;
+      console.log(this.alumnos)
+    }
+
+    this.alumnosSubject.next(this.alumnos);
+  }
 }
 
 

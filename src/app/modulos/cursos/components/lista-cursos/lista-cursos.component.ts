@@ -70,9 +70,7 @@ export class ListaCursosComponent implements OnInit {
   }
 
   editar(curso: any) {
-    //this.curso.emit(idCurso)
     console.log(curso)
-    // se guarda el id de curso en el servicio para recuperarlo en el componente editar
     this.router.navigate(['cursos/editar-curso', {
       idCurso: curso.idCurso,
       nombreCurso: curso.nombreCurso,

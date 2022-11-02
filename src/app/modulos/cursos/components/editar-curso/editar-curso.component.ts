@@ -56,7 +56,15 @@ export class EditarCursoComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((parametros) =>{
       console.log(parametros)
-      this.idCurso = parametros.get('idCurso') || '0';
+      this.curso = {
+        idCurso: parseInt(parametros.get('idCurso') || '0'),
+        nombreCurso: parametros.get('nombreCurso') || '',
+        comision: parametros.get('comision') || '',
+        profesor: parametros.get('profesor') || '',
+        fechaInicio: new Date (parametros.get('fechaInicio') || ''),
+        fechaFin: new Date (parametros.get('fechaFin') || ''),
+        inscripcionAbierta: parametros.get('inscripcionAbierta') === 'true'
+      }
 
       this.formulario = this.fb.group({
 
