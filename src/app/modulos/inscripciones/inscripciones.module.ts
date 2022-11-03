@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { InscripcionesRoutingModule } from './inscripciones-routing.module';
 import { FormInscripcionComponent } from './components/form-inscripcion/form-inscripcion.component';
+import {SharedModule} from "../../shared/shared.module";
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { FormInscripcionComponent } from './components/form-inscripcion/form-ins
   ],
   imports: [
     CommonModule,
-    InscripcionesRoutingModule
+    InscripcionesRoutingModule,
+    SharedModule
   ]
 })
 export class InscripcionesModule { }

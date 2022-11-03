@@ -17,6 +17,10 @@ const routes: Routes = [
     loadChildren: () => import('./modulos/alumnos/alumnos.module').then((m) =>m.AlumnosModule),
     canActivate: [AutenticacionGuard]
   },
+  {path: 'inscripciones',
+    loadChildren: () => import('./modulos/inscripciones/inscripciones.module').then((m) =>m.InscripcionesModule),
+    canActivate: [AutenticacionGuard]
+  },
   {path: 'autenticacion',
     loadChildren: () => import('./modulos/autenticacion/autenticacion.module').then((m) =>m.AutenticacionModule)
   },
