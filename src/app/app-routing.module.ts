@@ -23,7 +23,7 @@ const routes: Routes = [
       {path: 'lista-curso',  component: ListaCursosComponent},
       {path: 'agregar-curso',  component: AgregarCursoComponent},
       {path: 'editar-curso',  component: EditarCursoComponent},
-      {path: 'detalle-curso',  component: VerDetalleComponent}
+      {path: ':id',  component: VerDetalleComponent}
     ]},
   { path: 'alumnos', children:[
       {path: 'lista-alumnos',  component: ListaComponent},

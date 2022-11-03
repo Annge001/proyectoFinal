@@ -2,7 +2,6 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Curso} from "../../../../models/curso";
 import {CursoService} from "../../services/curso.service";
-import {ListaCursoService} from "../../services/lista-curso.service";
 import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
@@ -24,7 +23,6 @@ export class EditarCursoComponent implements OnInit {
   @Input()
   curso:any;
 
-  cursoEditar:Array<Curso>=[];
 
   // variable que envia curso actualizado al componente padre
   @Output()
@@ -32,7 +30,6 @@ export class EditarCursoComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
               private  cursoService: CursoService,
-              private listaCursoService: ListaCursoService,
               private activatedRoute: ActivatedRoute,
               private router: Router
   ) {
@@ -41,11 +38,6 @@ export class EditarCursoComponent implements OnInit {
     this.obtenerCursos().then(data => {
       this.cursos = data;
       this.listaCursos = this.cursos;
-      // se recupera id de curso desde el lista-curso.services para buscarlo en el array de cursos
-      let idCurso = this.listaCursoService.getIdCurso();
-      this.cursoEditar = this.cursos.filter((curso:Curso) => curso.idCurso === idCurso)
-      console.log(this.cursoEditar);
-
     })
   }
   obtenerCursos() {
@@ -57,7 +49,7 @@ export class EditarCursoComponent implements OnInit {
     this.activatedRoute.paramMap.subscribe((parametros) =>{
       console.log(parametros)
       this.curso = {
-        idCurso: parseInt(parametros.get('idCurso') || '0'),
+        idCurso: parametros.get('idCurso') || '0',
         nombreCurso: parametros.get('nombreCurso') || '',
         comision: parametros.get('comision') || '',
         profesor: parametros.get('profesor') || '',
@@ -81,9 +73,9 @@ export class EditarCursoComponent implements OnInit {
 
 
   guardarCurso() {
-    console.log(this)
+    console.log(this.formulario.value.idCurso)
     let curso: Curso = {
-      idCurso: this.idCurso,
+      idCurso: this.curso.idCurso,
       nombreCurso: this.formulario.value.nombreCurso,
       comision: this.formulario.value.comision,
       profesor: this.formulario.value.profesor,
@@ -91,6 +83,7 @@ export class EditarCursoComponent implements OnInit {
       fechaFin: this.formulario.value.fechaFin,
       inscripcionAbierta: this.formulario.value.inscripcionAbierta,
     }
+    console.log(curso)
     this.cursoService.editarCurso(curso)
 
     this.router.navigate(['cursos/lista-curso'])

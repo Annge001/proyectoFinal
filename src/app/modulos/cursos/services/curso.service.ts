@@ -43,7 +43,7 @@ export class CursoService {
     this.cursosSubect = new BehaviorSubject<Curso[]>(this.cursos);
   }
 
-  obtenerCursosPromise(): Promise<Curso[] | any>{
+  obtenerCursosPromise(): Promise<Curso []| any>{
     return new Promise((resolve, reject) => {
       if(this.cursos.length > 0){
         resolve(this.cursos);

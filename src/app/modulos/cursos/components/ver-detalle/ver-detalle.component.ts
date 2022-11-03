@@ -1,9 +1,7 @@
-import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Curso} from "../../../../models/curso";
-import {ListaCursoService} from "../../services/lista-curso.service";
 import {CursoService} from "../../services/curso.service";
-import {FormBuilder, FormGroup} from "@angular/forms";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-ver-detalle',
@@ -20,7 +18,6 @@ export class VerDetalleComponent implements OnInit {
   cursoVerMas:Array<Curso>=[];
 
   constructor(
-    private listaCursoService: ListaCursoService,
     private  cursoService: CursoService,
     private route : Router) {
 
@@ -40,6 +37,7 @@ export class VerDetalleComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
   }
 
   OnCerrar() {

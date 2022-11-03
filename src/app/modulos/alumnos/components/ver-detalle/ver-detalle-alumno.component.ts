@@ -1,7 +1,5 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Curso} from "../../../../models/curso";
-import {ListaCursoService} from "../../../cursos/services/lista-curso.service";
-import {CursoService} from "../../../cursos/services/curso.service";
 import {Router} from "@angular/router";
 import {AlumnosService} from "../../services/alumnos.service";
 import {Alumnos} from "../../../../models/alumnos";

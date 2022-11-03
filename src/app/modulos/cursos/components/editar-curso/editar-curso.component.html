@@ -42,7 +42,6 @@
             <mat-form-field appearance="fill" class="example-full-width">
               <mat-label>Inicio del curso</mat-label>
               <input matInput [matDatepicker]="fechaInicio" formControlName="fechaInicio">
-              <input matInput formControlName="fechaInicio">
               <mat-datepicker-toggle matSuffix [for]="fechaInicio"></mat-datepicker-toggle>
               <mat-datepicker #fechaInicio></mat-datepicker>
             </mat-form-field>
@@ -50,7 +49,6 @@
           <div class="col-6">
             <mat-form-field appearance="fill" class="example-full-width">
               <mat-label>Fin del curso</mat-label>
-              <input matInput formControlName="fechaFin">
               <input matInput [matDatepicker]="fechaFin" formControlName="fechaFin">
               <mat-datepicker-toggle matSuffix [for]="fechaFin"></mat-datepicker-toggle>
               <mat-datepicker #fechaFin></mat-datepicker>

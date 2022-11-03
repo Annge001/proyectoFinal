@@ -2,7 +2,6 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {MatTableDataSource} from "@angular/material/table";
 import {Curso} from "../../../../models/curso";
 import {Observable} from "rxjs";
-import {ListaCursoService} from "../../services/lista-curso.service";
 import {Alumnos} from "../../../../models/alumnos";
 import {Router} from "@angular/router";
 import {CursoService} from "../../services/curso.service";
