@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ValidatorLoginService} from "../../services/validator-login.service";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -13,11 +14,13 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    public validator: ValidatorLoginService
+    private validator: ValidatorLoginService,
+    private router: Router
   ) {
     this.formularioPersona = fb.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required]]
+      password: ['', [Validators.required]],
+      admin: new FormControl()
     });
   }
 
@@ -26,10 +29,19 @@ export class LoginComponent implements OnInit {
 
   }
 
+
   loginUsuario(){
+    console.log(this.formularioPersona.value);
+    this.validator.login(
+      this.formularioPersona.value.usuario,
+      this.formularioPersona.value.contranena,
+      this.formularioPersona.value.admin)
+
+
+    this.router.navigate(['principal'])
+
     this.validarEmail();
     this.formularioPersona.reset();
-
   }
   validarEmail(){
     // @ts-ignore

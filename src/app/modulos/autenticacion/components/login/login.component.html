@@ -38,6 +38,9 @@
           <label class="form-check-label" for="exampleCheck1">Recordar la pr&oacute;xima vez</label>
         </div>
 
+        <div class="col-md-2">
+          <mat-slide-toggle formControlName="admin">Es admin</mat-slide-toggle>
+        </div>
 
         <div class="mt-3">
           <button type="submit" class="btn btn-primary" [disabled]="!this.formularioPersona.valid"

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {ValidatorLoginService} from "../../../modulos/autenticacion/services/validator-login.service";
+import {Sesion} from "../../../models/login";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-header',
@@ -7,9 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  sesion$!: Observable<Sesion>;
+
+  constructor(
+    private validator: ValidatorLoginService
+  ) { }
 
   ngOnInit(): void {
+    this.sesion$ = this.validator.obtenerSesion()
   }
 
 
