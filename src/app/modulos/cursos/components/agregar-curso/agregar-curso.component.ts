@@ -32,7 +32,7 @@ export class AgregarCursoComponent implements OnInit {
       cursos: ['', [Validators.required]]
     });
 
-    this.obtenerCursos().then(data => {
+    this.obtenerCursos().subscribe(data => {
       this.cursos = data
       console.log(this.cursos)
 

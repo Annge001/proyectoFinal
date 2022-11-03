@@ -7,7 +7,5 @@ export interface Curso{
   fechaInicio: Date,
   fechaFin: Date,
   inscripcionAbierta: boolean,
-  //alumnos: Alumnos[],
-
 }
 

@@ -11,7 +11,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 export class VerDetalleComponent implements OnInit {
 
   listaCursos: Array<Curso> = [];
-  cursos = [];
+  cursos:Array<Curso> = [];
 
   @Output() cerrar = new EventEmitter();
   cursosDetalle: any;
@@ -21,7 +21,7 @@ export class VerDetalleComponent implements OnInit {
     private  cursoService: CursoService,
     private route : Router) {
 
-    this.obtenerCursos().then(data => {
+    this.obtenerCursos().subscribe(data => {
       this.cursos = data;
       this.listaCursos = this.cursos;
       // se recupera id de curso desde el lista-curso.services para buscarlo en el array de cursos

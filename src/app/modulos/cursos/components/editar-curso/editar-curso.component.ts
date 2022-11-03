@@ -15,7 +15,7 @@ export class EditarCursoComponent implements OnInit {
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
 
   listaCursos: Array<Curso> = [];
-  cursos = [];
+  cursos:Array<Curso> = [];
   formulario!: FormGroup;
   idCurso!: string;
 
@@ -35,7 +35,7 @@ export class EditarCursoComponent implements OnInit {
   ) {
 
 
-    this.obtenerCursos().then(data => {
+    this.obtenerCursos().subscribe(data => {
       this.cursos = data;
       this.listaCursos = this.cursos;
     })

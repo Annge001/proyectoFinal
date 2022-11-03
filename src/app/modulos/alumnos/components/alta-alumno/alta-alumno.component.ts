@@ -12,7 +12,7 @@ export class AltaAlumnoComponent implements OnInit {
 
 
   listaCursos: Array<Curso> =[];
-  cursos = [];
+  cursos :Array<Curso>= [];
   formularioPersona: FormGroup;
 
 
@@ -35,7 +35,7 @@ export class AltaAlumnoComponent implements OnInit {
       cursos: ['', [Validators.required]]
     });
 
-    this.obtenerCursos().then(data => {
+    this.obtenerCursos().subscribe(data => {
       this.cursos = data
       console.log(this.cursos)
 
@@ -70,7 +70,7 @@ export class AltaAlumnoComponent implements OnInit {
   }
 
   obtenerCursos() {
-    return this.cursoService.obtenerCursosPromise();
+    return this.cursoService.obtenerCursosPromise()
   }
 
 }

@@ -17,6 +17,7 @@ import {MatSelectModule} from "@angular/material/select";
 import {MostrarApellidoPipe} from "./pipes/mostrar-apellido.pipe";
 import {VerDetalleAlumnoComponent} from './components/ver-detalle/ver-detalle-alumno.component';
 import {MaterialModule} from "../../material.module";
+import {SharedModule} from "../../shared/shared.module";
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import {MaterialModule} from "../../material.module";
     ReactiveFormsModule,
     MatInputModule,
     MatSelectModule,
-    MaterialModule
+    MaterialModule,
+    SharedModule
 
   ],
     exports: [

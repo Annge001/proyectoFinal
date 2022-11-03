@@ -40,7 +40,7 @@ export class ListaCursosComponent implements OnInit {
 
   ngOnInit(): void {
     // @ts-ignore
-    this.obtenerAlumnos().then(data => {
+    this.obtenerCursos().subscribe(data => {
       console.log(data)
       this.dataInicial = data
       this.ELEMENT_DATA.data = this.dataInicial
@@ -48,7 +48,7 @@ export class ListaCursosComponent implements OnInit {
     });
   }
 
-  obtenerAlumnos() {
+  obtenerCursos() {
     return this.cursoService.obtenerCursosPromise();
   }
 

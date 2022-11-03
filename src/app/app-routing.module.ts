@@ -8,7 +8,6 @@ import {AutenticacionGuard} from "./core/guards/autenticacion.guard";
 
 const routes: Routes = [
   { path: 'principal', component: PrincipalComponent},
-  {path: 'inscripcion', component: FormInscripcionComponent},
   {path: 'curso',
   loadChildren: () => import('./modulos/cursos/cursos.module').then((m) => m.CursosModule),
   //  canActivate: [AutenticacionGuard, AdminGuard]

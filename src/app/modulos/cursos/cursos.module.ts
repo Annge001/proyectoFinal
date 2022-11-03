@@ -8,6 +8,7 @@ import {EditarCursoComponent} from './components/editar-curso/editar-curso.compo
 import {ListaCursosComponent} from './components/lista-cursos/lista-cursos.component';
 import {VerDetalleComponent} from './components/ver-detalle/ver-detalle.component';
 import {CursosRoutingModule} from "./cursos-routing.module";
+import {SharedModule} from "../../shared/shared.module";
 
 
 @NgModule({
@@ -21,9 +22,8 @@ import {CursosRoutingModule} from "./cursos-routing.module";
   imports: [
     CommonModule,
     MaterialModule,
-    CursosRoutingModule
-
-
+    CursosRoutingModule,
+    SharedModule
 
   ],
   providers:[

@@ -15,13 +15,13 @@ export class AlumnosService {
 // @ts-ignore
   alumnosSubject: BehaviorSubject<Alumnos[]>;
 
-  cursos = [];
+  cursos:Array<Curso> = [];
 
   constructor(
     private cursoService : CursoService,
   ) {
     this.alumnosSubject = new BehaviorSubject<Alumnos[]>(this.alumnos);
-    this.obtenerCursos().then(data => {
+    this.obtenerCursos().subscribe(data => {
       this.cursos = data
       console.log(this.cursos)
 
