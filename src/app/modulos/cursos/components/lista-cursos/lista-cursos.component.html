@@ -1,3 +1,10 @@
+<div class="btn-agregar" >
+  <button  mat-stroked-button color="basic" (click)="agregarCurso()">
+    Agregar Curso <mat-icon>add</mat-icon>
+  </button>
+</div>
+
+
 <div class="container border">
   <div class="row-">
     <div class="col-auto">
@@ -49,10 +56,10 @@
           </mat-cell>
         </ng-container>
         <ng-container matColumnDef="verDetalle">
-          <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+          <mat-header-cell *matHeaderCellDef></mat-header-cell>
           <mat-cell *matCellDef="let curso">
             <button mat-button mat-icon-button (click)="verMas(curso.cursosDetalle)" title="Ver más">
-              <mat-icon matSuffix >loupe</mat-icon>
+              <mat-icon matSuffix>loupe</mat-icon>
             </button>
           </mat-cell>
         </ng-container>

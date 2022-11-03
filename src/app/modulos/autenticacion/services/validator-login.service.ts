@@ -27,7 +27,9 @@ export class ValidatorLoginService {
         admin: admin
       }
     }
+    console.log(sesion)
     this.sesionSubject.next(sesion);
+    console.log(this.sesionSubject)
   }
 
   obtenerSesion(): Observable<Sesion>{

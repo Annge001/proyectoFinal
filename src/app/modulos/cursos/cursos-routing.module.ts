@@ -4,14 +4,15 @@ import {ListaCursosComponent} from "./components/lista-cursos/lista-cursos.compo
 import {AgregarCursoComponent} from "./components/agregar-curso/agregar-curso.component";
 import {EditarCursoComponent} from "./components/editar-curso/editar-curso.component";
 import {VerDetalleComponent} from "./components/ver-detalle/ver-detalle.component";
-import {HomeCursosComponent} from "./components/home-cursos/home-cursos.component";
-import {CursosComponent} from "./components/cursos/cursos.component";
+
+import {AutenticacionGuard} from "../../core/guards/autenticacion.guard";
+import {AdminGuard} from "../../core/guards/admin.guard";
 
 const routes: Routes = [
       { path: '',  children:[
         {path: 'lista-curso',  component: ListaCursosComponent},
-        {path: 'agregar-curso',  component: AgregarCursoComponent},
-        {path: 'editar-curso',  component: EditarCursoComponent},
+        {path: 'agregar-curso',  component: AgregarCursoComponent, canActivate: [AutenticacionGuard,AdminGuard]},
+        {path: 'editar-curso',  component: EditarCursoComponent, canActivate: [AutenticacionGuard,AdminGuard]} ,
         {path: 'detalle-curso',  component: VerDetalleComponent}
     ]},
 ];

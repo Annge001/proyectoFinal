@@ -11,15 +11,15 @@ const routes: Routes = [
   {path: 'inscripcion', component: FormInscripcionComponent},
   {path: 'curso',
   loadChildren: () => import('./modulos/cursos/cursos.module').then((m) => m.CursosModule),
-    canActivate: [AutenticacionGuard]
+  //  canActivate: [AutenticacionGuard, AdminGuard]
   },
   {path: 'alumno',
     loadChildren: () => import('./modulos/alumnos/alumnos.module').then((m) =>m.AlumnosModule),
-    canActivate: [AutenticacionGuard]
+    //canActivate: [AutenticacionGuard, AdminGuard]
   },
   {path: 'inscripciones',
     loadChildren: () => import('./modulos/inscripciones/inscripciones.module').then((m) =>m.InscripcionesModule),
-    canActivate: [AutenticacionGuard]
+   // canActivate: [AutenticacionGuard, AdminGuard]
   },
   {path: 'autenticacion',
     loadChildren: () => import('./modulos/autenticacion/autenticacion.module').then((m) =>m.AutenticacionModule)

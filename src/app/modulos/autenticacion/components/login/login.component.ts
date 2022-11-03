@@ -32,6 +32,7 @@ export class LoginComponent implements OnInit {
 
   loginUsuario(){
     console.log(this.formularioPersona.value);
+    console.log(this.formularioPersona.value)
     this.validator.login(
       this.formularioPersona.value.usuario,
       this.formularioPersona.value.contranena,

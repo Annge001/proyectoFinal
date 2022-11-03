@@ -96,4 +96,8 @@ export class ListaCursosComponent implements OnInit {
   cerrarDetalle(){
     this.cursosDetalle = null;
   }
+
+  agregarCurso() {
+    this.router.navigate(['curso/agregar-curso'])
+  }
 }
