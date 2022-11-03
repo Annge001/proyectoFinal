@@ -43,7 +43,7 @@ export class VerDetalleAlumnoComponent implements OnInit {
   }
 
   OnCerrar() {
-    this.redirect('alumnos/lista-alumnos')
+    this.redirect('alumno/lista-alumnos')
   }
 
   redirect(url:string){

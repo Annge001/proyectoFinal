@@ -14,8 +14,6 @@ import {CursoService} from "./modulos/cursos/services/curso.service";
 import {AlumnosService} from "./modulos/alumnos/services/alumnos.service";
 import {AutenticacionModule} from "./modulos/autenticacion/autenticacion.module";
 import {CoreModule} from "./core/core.module";
-import {AlumnosModule} from "./modulos/alumnos/alumnos.module";
-import {CursosModule} from "./modulos/cursos/cursos.module";
 import {FormInscripcionComponent} from "./modulos/inscripciones/components/form-inscripcion/form-inscripcion.component";
 import {SharedModule} from "./shared/shared.module";
 
@@ -40,8 +38,6 @@ import {SharedModule} from "./shared/shared.module";
     ReactiveFormsModule,
     CoreModule,
     SharedModule,
-    AlumnosModule,
-    CursosModule,
 
 
   ],

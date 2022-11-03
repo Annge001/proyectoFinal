@@ -41,7 +41,7 @@ export class VerDetalleComponent implements OnInit {
   }
 
   OnCerrar() {
-   this.redirect('cursos/lista-curso')
+   this.redirect('curso/lista-curso')
   }
 
   redirect(url:string){

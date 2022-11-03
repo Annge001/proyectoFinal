@@ -1,37 +1,20 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 import {PrincipalComponent} from "./components/principal/principal.component";
 import {PaginaNoEncontradaComponent} from "./core/components/pagina-no-encontrada/pagina-no-encontrada.component";
-import {AgregarCursoComponent} from "./modulos/cursos/components/agregar-curso/agregar-curso.component";
-import {EditarCursoComponent} from "./modulos/cursos/components/editar-curso/editar-curso.component";
 import {LoginComponent} from "./modulos/autenticacion/components/login/login.component";
-import {ListaCursosComponent} from "./modulos/cursos/components/lista-cursos/lista-cursos.component";
-import {ListaComponent} from "./modulos/alumnos/components/lista/lista.component";
-import {AltaAlumnoComponent} from "./modulos/alumnos/components/alta-alumno/alta-alumno.component";
-import {EditarAlumnoFormComponent} from "./modulos/alumnos/components/editar-alumno-form/editar-alumno-form.component";
 import {FormInscripcionComponent} from "./modulos/inscripciones/components/form-inscripcion/form-inscripcion.component";
-import {VerDetalleComponent} from "./modulos/cursos/components/ver-detalle/ver-detalle.component";
-import {VerDetalleAlumnoComponent} from "./modulos/alumnos/components/ver-detalle/ver-detalle-alumno.component";
 
 
 const routes: Routes = [
   { path: 'principal', component: PrincipalComponent},
   {path: 'inscripcion', component: FormInscripcionComponent},
-
-
-  { path: 'cursos', children:[
-      {path: 'lista-curso',  component: ListaCursosComponent},
-      {path: 'agregar-curso',  component: AgregarCursoComponent},
-      {path: 'editar-curso',  component: EditarCursoComponent},
-      {path: ':id',  component: VerDetalleComponent}
-    ]},
-  { path: 'alumnos', children:[
-      {path: 'lista-alumnos',  component: ListaComponent},
-      {path: 'agregar-alumno',  component: AltaAlumnoComponent},
-      {path: 'editar-alumno',  component: EditarAlumnoFormComponent},
-      {path: 'detalle-alumno',  component: VerDetalleAlumnoComponent}
-
-    ]},
+  {path: 'curso',
+  loadChildren: () => import('./modulos/cursos/cursos.module').then((m) => m.CursosModule)
+  },
+  {path: 'alumno',
+    loadChildren: () => import('./modulos/alumnos/alumnos.module').then((m) =>m.AlumnosModule)
+  },
 
   { path: 'login', component: LoginComponent},
   { path: '', redirectTo: 'principal', pathMatch: 'full'},
@@ -41,7 +24,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [ RouterModule.forRoot(routes)],
+  exports: [ RouterModule]
 })
 export class AppRoutingModule { }

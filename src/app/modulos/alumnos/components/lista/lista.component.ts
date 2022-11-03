@@ -90,7 +90,7 @@ export class ListaComponent  implements OnInit {
 
 
   editar(alumno:Alumnos) {
-    this.router.navigate(['alumnos/editar-alumno', {
+    this.router.navigate(['alumno/editar-alumno', {
       id: alumno.id,
       nombre: alumno.nombre,
       apellido: alumno.apellido,
@@ -115,7 +115,7 @@ export class ListaComponent  implements OnInit {
 
   verMas(id: any) {
     console.log(id)
-    this.redirect('alumnos/detalle-alumno')
+    this.redirect('alumno/detalle-alumno')
   }
   cerrarDetalle(){
     this.alumnoDetalle = null;

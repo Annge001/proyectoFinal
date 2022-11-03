@@ -81,6 +81,6 @@ export class EditarAlumnoFormComponent implements OnInit {
     alumno.curso.push(this.formularioPersona.value.cursos)
     console.log(alumno)
   this.alumnosService.editarAlumno(alumno)
-    this.router.navigate(['alumnos/lista-alumnos'])
+    this.router.navigate(['alumno/lista-alumnos'])
   }
 }

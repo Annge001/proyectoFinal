@@ -70,7 +70,7 @@ export class ListaCursosComponent implements OnInit {
 
   editar(curso: any) {
     console.log(curso)
-    this.router.navigate(['cursos/editar-curso', {
+    this.router.navigate(['curso/editar-curso', {
       idCurso: curso.idCurso,
       nombreCurso: curso.nombreCurso,
       comision: curso.comision,
@@ -91,7 +91,7 @@ export class ListaCursosComponent implements OnInit {
 
   verMas(idCurso: any) {
     console.log(idCurso)
-    this.redirect('cursos/detalle-curso')
+    this.redirect('curso/detalle-curso')
   }
   cerrarDetalle(){
     this.cursosDetalle = null;

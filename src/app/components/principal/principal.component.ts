@@ -39,10 +39,10 @@ export class PrincipalComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.obtenerAlumnos().then(data => {
+   /* this.obtenerAlumnos().then(data => {
       this.listaAlumnos = data;
       console.log(this.listaAlumnos)
-    });
+    });*/
 
   }
 

@@ -86,6 +86,6 @@ export class EditarCursoComponent implements OnInit {
     console.log(curso)
     this.cursoService.editarCurso(curso)
 
-    this.router.navigate(['cursos/lista-curso'])
+    this.router.navigate(['curso/lista-curso'])
   }
 }
