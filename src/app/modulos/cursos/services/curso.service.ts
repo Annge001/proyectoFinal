@@ -16,6 +16,6 @@ export class CursoService {
   }
 
   editarCurso(curso: Curso){
-    this.http.put(`https://63642d227b209ece0f42366f.mockapi.io/cursos/+{curso.id}`)
+    this.http.put(`https://63642d227b209ece0f42366f.mockapi.io/cursos/${curso.idCurso}`, curso)
   }
 }
