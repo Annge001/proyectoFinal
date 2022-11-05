@@ -4,8 +4,8 @@ import { CommonModule } from '@angular/common';
 import { InscripcionesRoutingModule } from './inscripciones-routing.module';
 import { FormInscripcionComponent } from './components/form-inscripcion/form-inscripcion.component';
 import {SharedModule} from "../../shared/shared.module";
-import { AgregarInscripcionComponent } from './agregar-inscripcion/agregar-inscripcion.component';
-import { ListaInscripcionesComponent } from './lista-inscripciones/lista-inscripciones.component';
+import { AgregarInscripcionComponent } from './components/agregar-inscripcion/agregar-inscripcion.component';
+import { ListaInscripcionesComponent } from './components/lista-inscripciones/lista-inscripciones.component';
 
 
 @NgModule({

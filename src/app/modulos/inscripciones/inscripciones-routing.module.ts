@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {FormInscripcionComponent} from "./components/form-inscripcion/form-inscripcion.component";
+import {ListaInscripcionesComponent} from "./components/lista-inscripciones/lista-inscripciones.component";
 
 const routes: Routes = [
   {path: '', children:[
-      {path: 'form', component: FormInscripcionComponent }
+      {path: 'lista-inscripcion', component: ListaInscripcionesComponent }
     ]},
 ];
 
