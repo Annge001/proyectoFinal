@@ -1,1 +1,18 @@
-<p>ver-detalle-inscripcion works!</p>
+<mat-card *ngIf="inscripcionDetalle">
+  <mat-card-title>
+    Detalle de inscripcion
+  </mat-card-title>
+  <mat-card-content>
+    id de inscripcion: {{inscripcionDetalle.idCurso}}<br>
+    id de curso: {{inscripcionDetalle.nombreCurso}}<br>
+    id de alumno: {{inscripcionDetalle.comision}}<br>
+    Profesor: {{inscripcionDetalle.profesor}}<br>
+    Inicio: {{inscripcionDetalle.fechaInicio | date: 'dd/MM/yyyy'}}<br>
+    Fin: {{inscripcionDetalle.fechaFin | date: 'dd/MM/yyyy'}}<br>
+    Inscripci&oacute;n abierta: {{inscripcionDetalle.inscripcionAbierta}}<br>
+
+
+    <button  mat-icon-button (click)="OnCerrar()">close</button>
+
+  </mat-card-content>
+</mat-card>
