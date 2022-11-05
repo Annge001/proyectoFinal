@@ -6,10 +6,35 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./lista-inscripciones.component.css']
 })
 export class ListaInscripcionesComponent implements OnInit {
+  ELEMENT_DATA: any;
+  displayedColumns: any;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  agregarInscripcion() {
+
+  }
+
+  filtrar($event: KeyboardEvent) {
+
+  }
+
+  borrar() {
+
+  }
+
+  editar() {
+
+  }
+
+  verMas() {
+
+  }
+
+  cerrarDetalle() {
+
+  }
 }

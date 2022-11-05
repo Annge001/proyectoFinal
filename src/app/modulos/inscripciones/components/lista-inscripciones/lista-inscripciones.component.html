@@ -1,6 +1,7 @@
 <div class="btn-agregar">
-  <button  mat-stroked-button color="basic" (click)="agrgarAlumno()">
-    Alta Alumno <mat-icon>person_add</mat-icon>
+  <button mat-stroked-button color="basic" (click)="agregarInscripcion()">
+    Alta Inscripcion
+    <mat-icon>add</mat-icon>
   </button>
 </div>
 
@@ -10,13 +11,13 @@
 
 
       <div class="center">
-        <h1>Alumnos</h1>
+        <h1>Inscripciones</h1>
       </div>
 
       <div>
         <mat-form-field appearance="standard">
           <mat-label>Filtrar</mat-label>
-          <input matInput type="text" (keyup)="filtrar($event)" placeholder="Buscar..." >
+          <input matInput type="text" (keyup)="filtrar($event)" placeholder="Buscar...">
         </mat-form-field>
       </div>
 
@@ -25,13 +26,13 @@
       <mat-table [dataSource]="ELEMENT_DATA">
         <ng-container matColumnDef="nombre">
           <mat-header-cell *matHeaderCellDef> Nombre</mat-header-cell>
-          <mat-cell *matCellDef="let persona"> {{persona.nombre | mostrarApellido : persona.apellido }} </mat-cell>
+          <mat-cell *matCellDef="let persona"></mat-cell>
         </ng-container>
 
-        <!-- <ng-container matColumnDef="apellido">
-           <mat-header-cell *matHeaderCellDef > Apellido </mat-header-cell>
-           <mat-cell *matCellDef="let persona"> {{persona.apellido}} </mat-cell>
-         </ng-container>-->
+        <ng-container matColumnDef="apellido">
+          <mat-header-cell *matHeaderCellDef> Apellido</mat-header-cell>
+          <mat-cell *matCellDef="let persona"> {{persona.apellido}} </mat-cell>
+        </ng-container>
 
         <ng-container matColumnDef="email">
           <mat-header-cell *matHeaderCellDef> Correo</mat-header-cell>
@@ -42,14 +43,14 @@
         <ng-container matColumnDef="borrar">
           <mat-header-cell *matHeaderCellDef> Borrar</mat-header-cell>
           <mat-cell *matCellDef="let persona">
-            <mat-icon class="mat-18 pointer" (click)="borrar (persona.id)">delete</mat-icon>
+            <mat-icon class="mat-18 pointer" (click)="borrar ()">delete</mat-icon>
           </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="editar">
           <mat-header-cell *matHeaderCellDef> Editar</mat-header-cell>
           <mat-cell *matCellDef="let persona">
-            <button mat-button mat-icon-button (click)="editar(persona)">
+            <button mat-button mat-icon-button (click)="editar()">
               <mat-icon matSuffix>mode_edit</mat-icon>
             </button>
           </mat-cell>
@@ -69,15 +70,14 @@
         </ng-container>
 
         <ng-container matColumnDef="verDetalle">
-          <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+          <mat-header-cell *matHeaderCellDef></mat-header-cell>
           <mat-cell *matCellDef="let persona">
-            <button mat-button mat-icon-button (click)="verMas(persona.id)" title="Ver más">
+            <button mat-button mat-icon-button (click)="verMas()" title="Ver más">
               <mat-icon matSuffix>loupe</mat-icon>
             </button>
           </mat-cell>
         </ng-container>
         <app-ver-detalle-alumno (cerrar)="cerrarDetalle()"></app-ver-detalle-alumno>
-
 
 
         <!-- variable para indicar cada columna de la pagina. siempre al final -->
