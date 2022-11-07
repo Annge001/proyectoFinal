@@ -6,13 +6,15 @@ import {SharedModule} from "../../shared/shared.module";
 import { AgregarInscripcionComponent } from './components/agregar-inscripcion/agregar-inscripcion.component';
 import { ListaInscripcionesComponent } from './components/lista-inscripciones/lista-inscripciones.component';
 import { VerDetalleInscripcionComponent } from './components/ver-detalle-inscripcion/ver-detalle-inscripcion.component';
+import { EditarInscripcionComponent } from './components/editar-inscripcion/editar-inscripcion.component';
 
 
 @NgModule({
   declarations: [
     AgregarInscripcionComponent,
     ListaInscripcionesComponent,
-    VerDetalleInscripcionComponent
+    VerDetalleInscripcionComponent,
+    EditarInscripcionComponent
   ],
   imports: [
     CommonModule,

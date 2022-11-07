@@ -15,6 +15,7 @@ import {AlumnosService} from "./modulos/alumnos/services/alumnos.service";
 import {AutenticacionModule} from "./modulos/autenticacion/autenticacion.module";
 import {CoreModule} from "./core/core.module";
 import {SharedModule} from "./shared/shared.module";
+import {InscripcionesService} from "./modulos/inscripciones/services/inscripciones.service";
 
 
 @NgModule({
@@ -39,7 +40,7 @@ import {SharedModule} from "./shared/shared.module";
 
 
   ],
-  providers: [CursoService, AlumnosService],
+  providers: [CursoService, AlumnosService, InscripcionesService],
   exports: [
     TamanoLetraDirective
   ],

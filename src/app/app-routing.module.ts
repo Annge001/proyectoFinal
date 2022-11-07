@@ -15,7 +15,7 @@ const routes: Routes = [
     loadChildren: () => import('./modulos/alumnos/alumnos.module').then((m) =>m.AlumnosModule),
     //canActivate: [AutenticacionGuard, AdminGuard]
   },
-  {path: 'inscripciones',
+  {path: 'inscripcion',
     loadChildren: () => import('./modulos/inscripciones/inscripciones.module').then((m) =>m.InscripcionesModule),
    // canActivate: [AutenticacionGuard, AdminGuard]
   },

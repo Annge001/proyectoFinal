@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {InscripcionesService} from "../../services/inscripciones.service";
+import {Inscripcion} from "../../../../models/inscripcion";
 
 @Component({
   selector: 'app-agregar-inscripcion',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AgregarInscripcionComponent implements OnInit {
 
-  constructor() { }
+  inscripcion: Array<Inscripcion> = []
+
+  constructor(
+    private inscripcionService: InscripcionesService
+  ) {
+
+  }
 
   ngOnInit(): void {
   }
 
+  obtenerInscripcion(){
+
+  }
 }
