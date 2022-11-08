@@ -1,29 +1,27 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {HeaderComponent} from "./components/header/header.component";
-import {SesionService} from "./services/sesion.service";
+import { InicioComponent } from './components/inicio/inicio.component';
 import { PaginaNoEncontradaComponent } from './components/pagina-no-encontrada/pagina-no-encontrada.component';
-import {RouterModule} from "@angular/router";
-import {ValidatorLoginService} from "./services/validator-login.service";
-
+import { ToolbarComponent } from './components/toolbar/toolbar.component';
+import { SesionService } from './services/sesion.service';
+import { MaterialModule } from '../material.module';
 
 
 
 @NgModule({
   declarations: [
-    HeaderComponent,
+    InicioComponent,
     PaginaNoEncontradaComponent
-
   ],
   imports: [
     CommonModule,
-    RouterModule
-  ],
-  exports: [
-    HeaderComponent
+    MaterialModule
   ],
   providers: [
-    ValidatorLoginService
+    SesionService
+  ],
+  exports:[
+    
   ]
 })
 export class CoreModule { }
