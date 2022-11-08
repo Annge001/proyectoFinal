@@ -6,18 +6,18 @@ import {AutenticacionGuard} from "./core/guards/autenticacion.guard";
 
 
 const routes: Routes = [
-  { path: 'principal', component: PrincipalComponent},
+  { path: 'principal', component: PrincipalComponent,canActivate: [AutenticacionGuard]},
   {path: 'curso',
   loadChildren: () => import('./modulos/cursos/cursos.module').then((m) => m.CursosModule),
-  //  canActivate: [AutenticacionGuard, AdminGuard]
+   canActivate: [AutenticacionGuard]
   },
   {path: 'alumno',
     loadChildren: () => import('./modulos/alumnos/alumnos.module').then((m) =>m.AlumnosModule),
-    //canActivate: [AutenticacionGuard, AdminGuard]
+    canActivate: [AutenticacionGuard]
   },
   {path: 'inscripcion',
     loadChildren: () => import('./modulos/inscripciones/inscripciones.module').then((m) =>m.InscripcionesModule),
-   // canActivate: [AutenticacionGuard, AdminGuard]
+    canActivate: [AutenticacionGuard]
   },
   {path: 'autenticacion',
     loadChildren: () => import('./modulos/autenticacion/autenticacion.module').then((m) =>m.AutenticacionModule)
