@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ValidatorLoginService} from "../../../modulos/autenticacion/services/validator-login.service";
+import {ValidatorLoginService} from "../../services/validator-login.service";
 import {Sesion} from "../../../models/login";
 import {Observable} from "rxjs";
 
@@ -17,7 +17,7 @@ export class HeaderComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.sesion$ = this.validator.obtenerSesion()
+    //this.sesion$ = this.validator.obtenerSesion()
   }
 
 
