@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ValidatorLoginService} from "../../services/validator-login.service";
+import {ValidatorLoginService} from "../../../../core/services/validator-login.service";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 
@@ -18,9 +18,9 @@ export class LoginComponent implements OnInit {
     private router: Router
   ) {
     this.formularioPersona = fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required]],
-      admin: new FormControl()
+      email: ['aaaaaaaaa@qa.cl', [Validators.required, Validators.email]],
+      password: ['aaaaaaa', [Validators.required]],
+      admin: new FormControl(true)
     });
   }
 
@@ -31,18 +31,16 @@ export class LoginComponent implements OnInit {
 
 
   loginUsuario(){
-    console.log(this.formularioPersona.value);
-    console.log(this.formularioPersona.value)
     this.validator.login(
       this.formularioPersona.value.usuario,
-      this.formularioPersona.value.contranena,
+      this.formularioPersona.value.contrasena,
       this.formularioPersona.value.admin)
 
 
-    this.router.navigate(['principal'])
+    this.router.navigate(['principal']);
 
-    this.validarEmail();
-    this.formularioPersona.reset();
+   // this.validarEmail();
+   // this.formularioPersona.reset();
   }
   validarEmail(){
     // @ts-ignore
