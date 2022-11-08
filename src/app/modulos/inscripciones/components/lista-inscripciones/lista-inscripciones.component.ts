@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {InscripcionesService} from "../../services/inscripciones.service";
 import {Inscripcion} from "../../../../models/inscripcion";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {MatTableDataSource} from "@angular/material/table";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-lista-inscripciones',
@@ -10,15 +11,16 @@ import {MatTableDataSource} from "@angular/material/table";
   styleUrls: ['./lista-inscripciones.component.css']
 })
 export class ListaInscripcionesComponent implements OnInit {
-
+  inscripcionDetalle = null;
   dataInicial:any=[];
   ELEMENT_DATA = new MatTableDataSource([])
   inscripcion: Array<Inscripcion> = []
   displayedColumns: string[] = ['idInscripcion', 'idCurso', 'idAlumno', 'profesor', 'fechaInicio','fechaFin', 'acciones'];
-
+  inscripcion$!: Observable<Inscripcion []>;
 
 
   constructor(
+    private activatedRoute: ActivatedRoute,
     private router: Router,
     private inscripcionesService: InscripcionesService
   ) {
@@ -33,13 +35,15 @@ export class ListaInscripcionesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.inscripcion$ = this.inscripcionesService.obtenerInscripcion();
   }
 
 
 
-  agregarInscripcion() {
 
+
+  agregarIncripcion() {
+    this.router.navigate(['inscripcion/agregar-inscripcion'])
   }
 
   filtrar($event: KeyboardEvent) {
@@ -47,13 +51,8 @@ export class ListaInscripcionesComponent implements OnInit {
   }
 
   borrar(idInscipcion: number) {
-    let position = this.dataInicial.findIndex((inscipcion: {idInscipcion: number;}) => inscipcion.idInscipcion === idInscipcion)
-    this.dataInicial.splice(position, 1)
-    console.log(this.dataInicial)
-
-    this.ELEMENT_DATA.data = this.dataInicial
-    console.log(this.ELEMENT_DATA)
-
+    this.inscripcionesService.borrarInscripcion(idInscipcion);
+    this.inscripcion$ = this.inscripcionesService.obtenerInscripcion()
   }
 
   editar(inscripcion: any) {
@@ -78,6 +77,7 @@ export class ListaInscripcionesComponent implements OnInit {
 
 
   cerrarDetalle() {
+    this.inscripcionDetalle = null;
 
   }
 }

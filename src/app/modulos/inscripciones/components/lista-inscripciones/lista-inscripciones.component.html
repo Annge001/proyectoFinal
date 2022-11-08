@@ -1,5 +1,5 @@
 <div class="btn-agregar">
-  <button mat-stroked-button color="basic" (click)="agregarInscripcion()">
+  <button mat-stroked-button color="basic" (click)="agregarIncripcion()">
     Alta Inscripcion
     <mat-icon>add</mat-icon>
   </button>
@@ -24,8 +24,10 @@
 
       <!--dataSource siempre al inicio de la lista-->
       <mat-table [dataSource]="ELEMENT_DATA">
+
+
         <ng-container matColumnDef="idInscripcion">
-          <mat-header-cell *matHeaderCellDef>id:</mat-header-cell>
+          <mat-header-cell *matHeaderCellDef>id de inscripcion:</mat-header-cell>
           <mat-cell *matCellDef="let inscripcion"> {{inscripcion.idInscripcion}}</mat-cell>
         </ng-container>
 
@@ -62,13 +64,14 @@
           <mat-header-cell *matHeaderCellDef> Acciones</mat-header-cell>
           <mat-cell *matCellDef="let inscripcion">
 
-            <mat-icon matSuffix class="mat-18 pointer"(click)="editar(editar(inscripcion))" title="Editar">mode_edit</mat-icon>
-            <mat-icon matSuffix class="mat-18 pointer" (click)="borrar (inscripcion.idInscipcion)" title="Eliminar">delete_outline</mat-icon>
+            <mat-icon matSuffix class="mat-18 pointer me-2"(click)="editar(editar(inscripcion))" title="Editar">mode_edit</mat-icon>
+            <mat-icon matSuffix class="mat-18 pointer me-2" (click)="borrar (inscripcion.idInscipcion)" title="Eliminar">delete_outline</mat-icon>
             <mat-icon matSuffix  class="mat-18 pointer" (click)="verMas(inscripcion.inscripcionDetalle)" title="Ver más">loupe</mat-icon>
 
 
           </mat-cell>
         </ng-container>
+        <app-ver-detalle-inscripcion (cerrar)="cerrarDetalle()"></app-ver-detalle-inscripcion>
 
 
         <!--<app-ver-detalle-inscripcion (cerrar)="cerrarDetalle()"></app-ver-detalle-inscripcion>-->
