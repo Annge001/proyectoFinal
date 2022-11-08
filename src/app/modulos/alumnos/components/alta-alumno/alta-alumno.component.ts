@@ -2,6 +2,9 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Curso} from "../../../../models/curso";
 import {CursoService} from "../../../cursos/services/curso.service";
+import {Observable} from "rxjs";
+import {Sesion} from "../../../../models/login";
+import {ValidatorLoginService} from "../../../../core/services/validator-login.service";
 
 @Component({
   selector: 'app-alta-alumno',
@@ -10,22 +13,23 @@ import {CursoService} from "../../../cursos/services/curso.service";
 })
 export class AltaAlumnoComponent implements OnInit {
 
-
-  listaCursos: Array<Curso> =[];
-  cursos :Array<Curso>= [];
+  sesion$!: Observable<Sesion>;
+  listaCursos: Array<Curso> = [];
+  cursos: Array<Curso> = [];
   formularioPersona: FormGroup;
 
 
   @Input()
-  alumno:any;
+  alumno: any;
 
   @Output()
   alumnoNuevo = new EventEmitter<any>();
-  isCorreoConfirmado = false ;
+  isCorreoConfirmado = false;
 
 
   constructor(private fb: FormBuilder,
-            private  cursoService: CursoService) {
+              private cursoService: CursoService,
+              private sesionService: ValidatorLoginService) {
     this.formularioPersona = fb.group({
       nombre: ['', [Validators.required]],
       apellido: ['', [Validators.required]],
@@ -43,15 +47,19 @@ export class AltaAlumnoComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.sesion$ = this.sesionService.obtenerSesion();
+    console.log(this.sesion$)
   }
+
   crearAlumno() {
     this.alumnoNuevo.emit(
-      { id:'8',
+      {
+        id: '8',
         nombre: this.formularioPersona.get('nombre')?.value,
-        apellido:this.formularioPersona.get('apellido')?.value,
-        comision:this.formularioPersona.get('comision')?.value,
+        apellido: this.formularioPersona.get('apellido')?.value,
+        comision: this.formularioPersona.get('comision')?.value,
         curso: this.formularioPersona.get('cursos')?.value,
-        email:this.formularioPersona.get('email')?.value,
+        email: this.formularioPersona.get('email')?.value,
         telefono: this.formularioPersona.get('telefono')?.value,
       }
     )
@@ -60,10 +68,10 @@ export class AltaAlumnoComponent implements OnInit {
 
   validarCorreo() {
     console.log('entroIf')
-    if(this.formularioPersona.get('email')?.value === this.formularioPersona.get('confirmarEmail')?.value ){
+    if (this.formularioPersona.get('email')?.value === this.formularioPersona.get('confirmarEmail')?.value) {
       this.isCorreoConfirmado = false;
       console.log('false')
-    }else{
+    } else {
       this.isCorreoConfirmado = true;
       console.log('true')
     }
