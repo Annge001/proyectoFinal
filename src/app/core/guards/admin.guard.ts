@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree} from '@angular/router';
 import {map, Observable} from 'rxjs';
 import {Sesion} from "../../models/login";
-import {ValidatorLoginService} from "../../modulos/autenticacion/services/validator-login.service";
+import {ValidatorLoginService} from "../services/validator-login.service";
 
 @Injectable({
   providedIn: 'root'
