@@ -1,6 +1,7 @@
 <!--{{this.formularioPersona.value | json}}-->
-
-<div class="container mt-5">
+<ng-container *ngIf="sesion$ | async as sesion">
+  {{sesion | json}}
+<div class="container mt-5" *ngIf="sesion.usuarioActivo!.admin">
   <!--{{this.formularioPersona.value | json}}-->
   <div class="row">
     <div class="col">
@@ -89,3 +90,4 @@
     </div>
   </div>
 </div>
+</ng-container>
