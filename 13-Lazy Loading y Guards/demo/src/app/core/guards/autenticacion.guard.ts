@@ -1,34 +1,25 @@
 import { Injectable } from '@angular/core';
-import {
-  ActivatedRouteSnapshot,
-  CanActivate,
-  Route,
-  Router,
-  RouterStateSnapshot,
-  UrlSegment,
-  UrlTree
-} from '@angular/router';
-import {map, Observable} from 'rxjs';
-import {ValidatorLoginService} from "../services/validator-login.service";
-import {Sesion} from "../../models/login";
+import { ActivatedRouteSnapshot, CanActivate, CanActivateChild, CanDeactivate, CanLoad, Route, Router, RouterStateSnapshot, UrlSegment, UrlTree } from '@angular/router';
+import { map, Observable } from 'rxjs';
+import { Sesion } from 'src/app/models/sesion';
+import { SesionService } from '../services/sesion.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AutenticacionGuard implements CanActivate {
-
+export class AutenticacionGuard implements CanActivate, CanActivateChild, CanDeactivate<unknown>, CanLoad {
   constructor(
-    private sesion: ValidatorLoginService,
+    private sesion: SesionService,
     private router: Router
-  ) {
-  }
+  ){
 
+  }
+  
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     return this.sesion.obtenerSesion().pipe(
       map((sesion: Sesion) => {
-        console.log(sesion)
         if(sesion.sesionActiva){
           return true;
         }else{
@@ -58,5 +49,4 @@ export class AutenticacionGuard implements CanActivate {
     segments: UrlSegment[]): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     return true;
   }
-
 }
