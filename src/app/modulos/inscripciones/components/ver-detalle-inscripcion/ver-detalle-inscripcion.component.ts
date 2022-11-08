@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Router} from "@angular/router";
 import {InscripcionesService} from "../../services/inscripciones.service";
 import {Inscripcion} from "../../../../models/inscripcion";
@@ -17,7 +17,8 @@ export class VerDetalleInscripcionComponent implements OnInit {
   inscVerMas:Array<Inscripcion>=[];
   cursos:Array<Curso> = [];
 
-
+  @Output()
+  cerrar = new EventEmitter();
 
 
 

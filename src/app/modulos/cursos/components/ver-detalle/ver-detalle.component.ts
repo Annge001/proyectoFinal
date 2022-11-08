@@ -13,7 +13,8 @@ export class VerDetalleComponent implements OnInit {
   listaCursos: Array<Curso> = [];
   cursos:Array<Curso> = [];
 
-  @Output() cerrar = new EventEmitter();
+  @Output()
+  cerrar = new EventEmitter();
   cursosDetalle: any;
   cursoVerMas:Array<Curso>=[];
 
