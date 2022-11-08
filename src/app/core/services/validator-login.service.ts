@@ -1,40 +1,42 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from "rxjs";
-import {Sesion} from "../../../models/login";
-import {ConnectedOverlayPositionChange} from "@angular/cdk/overlay";
+import {Sesion} from "../../models/login";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ValidatorLoginService {
 
-  sesionSubject!: BehaviorSubject<Sesion>
+  sesionSubject!: BehaviorSubject<Sesion>;
 
   constructor() {
     const sesion: Sesion = {
-      loginActivo: false
-    };
+      sesionActiva: false,
+      usuarioActivo: {
+        usuario: '',
+        contrasena: '',
+        admin: false
+      }
+    }
     this.sesionSubject = new BehaviorSubject(sesion);
   }
 
-  login(usuario: string, contrasena: string,admin:boolean) {
-
+  login(usuario: string, contrasena: string, admin: boolean){
     const sesion: Sesion = {
-      loginActivo: true,
+      sesionActiva: true,
       usuarioActivo: {
         usuario: usuario,
         contrasena: contrasena,
         admin: admin
       }
     }
-    console.log(sesion)
     this.sesionSubject.next(sesion);
     console.log(this.sesionSubject)
   }
 
   obtenerSesion(): Observable<Sesion>{
+    console.log(this.sesionSubject)
     return this.sesionSubject.asObservable();
-
   }
 
 
