@@ -28,16 +28,10 @@ export class EditarInscripcionComponent implements OnInit {
     private inscripcionService: InscripcionesService
   ) {
 
-    this.obtenerInscripcion().subscribe(data => {
-      this.Inscripcion = data;
-      this.listaInscripcion = this.Inscripcion;
-    })
   }
 
 
-  obtenerInscripcion() {
-    return this.inscripcionService.obtenerDetalleInscripcion();
-  }
+
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((parametros) =>{

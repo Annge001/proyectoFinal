@@ -1,8 +1,9 @@
 import {Injectable} from '@angular/core';
 import {Curso} from "../../../models/curso";
-import {BehaviorSubject, Observable} from "rxjs";
-import {HttpClient} from "@angular/common/http";
+import {BehaviorSubject, catchError, Observable, throwError} from "rxjs";
+import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {environment} from "../../../../environments/environment";
+import {Inscripcion} from "../../../models/inscripcion";
 
 @Injectable()
 export class CursoService {
@@ -12,11 +13,47 @@ export class CursoService {
   ) {
   }
 
+
   obtenerCursosPromise(): Observable<Curso[]>{
-    return this.http.get<Curso[]>(`${environment.api}/curso/`)
+    return this.http.get<Curso[]>(`${environment.api}/cursos`, {
+      headers: new HttpHeaders({
+        'content-type': 'application/json',
+        'encoding': 'UTF-8'
+      })
+    }).pipe(
+    )
+  }
+
+  agregarCurso(curso: Curso){
+    this.http.post(`${environment.api}/cursos/`, curso, {
+      headers: new HttpHeaders({
+        'content-type': 'application/json',
+        'encoding': 'UTF-8'
+      })
+    }).pipe(
+      //catchError(this.manejarError)
+    ).subscribe(console.log);
+  }
+
+  obtenerDetalleCurso(): Observable<Curso[]> {
+    return this.http.get<Curso[]>(`${environment.api}/cursos`, {
+      headers: new HttpHeaders({
+        'content-type': 'application/json',
+        'encoding': 'UTF-8'
+      })
+    })//.pipe(
+      //catchError(this.manejarError)
+    //)
   }
 
   editarCurso(curso: Curso){
-    this.http.put(`https://63642d227b209ece0f42366f.mockapi.io/cursos/${curso.idCurso}`, curso)
+    this.http.put<Curso>(`${environment.api}/cursos/${curso.idCurso}`, curso).pipe(
+     // catchError(this.manejarError)
+    ).subscribe(console.log);
   }
+  borrarCurso(id: number) {
+    console.log(id)
+   return this.http.delete(`${environment.api}/cursos/${id}`);
+  }
+
 }

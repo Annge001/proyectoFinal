@@ -3,6 +3,7 @@ import {Inscripcion} from "../../../models/inscripcion";
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import {Observable, BehaviorSubject, catchError, filter, map, Subject, throwError} from "rxjs";
 import {environment} from "../../../../environments/environment";
+import {Curso} from "../../../models/curso";
 
 @Injectable({
   providedIn: 'root'
@@ -31,19 +32,17 @@ export class InscripcionesService {
     )
   }
 
-  obtenerDetalleInscripcion(): Observable<Inscripcion[]> {
-    return this.http.get<Inscripcion[]>(`${environment.api}/inscripcion`, {
+  obtenerDetalleInscripcion(id: string): Observable<Inscripcion> {
+    return this.http.get<Inscripcion>(`${environment.api}inscripcion/${id}`, {
       headers: new HttpHeaders({
         'content-type': 'application/json',
         'encoding': 'UTF-8'
       })
-    })//.pipe(
-      //catchError(this.manejarError)
-    //)
+    })
   }
 
   editarInscripcion(inscripcion: Inscripcion) {
-    this.http.put(`${environment.api}/inscripcion${inscripcion.idInscripcion}`, inscripcion, {
+    this.http.put(`${environment.api}inscripcion${inscripcion.idInscripcion}`, inscripcion, {
       headers: new HttpHeaders({
         'content-type': 'application/json',
         'encoding': 'UTF-8'
@@ -55,19 +54,19 @@ export class InscripcionesService {
 
   borrarInscripcion(id: number) {
     // @ts-ignore
-    this.http.delete<Inscripcion>(`${environment.api}/inscripcion/${id}/inscripcion`)
-    (catchError(this.obtenerInscripcion)
-   ).subscribe(console.log);
-    alert("Registro eliminado");
+   return  this.http.delete(`${environment.api}inscripcion/${id}`)
   }
 
-  agregarIncripcion(inscripcion: Inscripcion) {
-    this.http.post(`${environment.api}/inscripcion/`,inscripcion,{
+
+  agregarInscripcion(inscripcion: Inscripcion){
+    this.http.post(`${environment.api}inscripcion/`, inscripcion, {
       headers: new HttpHeaders({
         'content-type': 'application/json',
         'encoding': 'UTF-8'
       })
-    })
+    }).pipe(
+      //catchError(this.manejarError)
+    ).subscribe(console.log);
   }
 
 

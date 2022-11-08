@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Curso} from "../../../../models/curso";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {CursoService} from "../../services/curso.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-agregar-curso',
@@ -24,7 +25,9 @@ export class AgregarCursoComponent implements OnInit {
 
 
   constructor(private fb: FormBuilder,
-              private cursoService: CursoService) {
+              private cursoService: CursoService,
+              private router: Router
+  ) {
     this.formulario = fb.group({
       profesor: ['', [Validators.required]],
       fechaInicio: ['', [Validators.required]],
@@ -58,5 +61,24 @@ export class AgregarCursoComponent implements OnInit {
   obtenerCursos() {
     return this.cursoService.obtenerCursosPromise();
   }
+
+  agregarCurso(){
+    const curso: Curso = {
+      //idCurso: Math.round(Math.random()*1000),
+      idCurso: this.formulario.value.idCurso,
+      nombreCurso: this.formulario.value.nombreCurso,
+      comision: this.formulario.value.comision,
+      fechaInicio: this.formulario.value.inicio,
+      fechaFin: this.formulario.value.fin,
+      profesor: this.formulario.value.profesor,
+      inscripcionAbierta: this.formulario.value.inscripcionAbierta,
+    };
+    console.log(curso);
+    this.cursoService.agregarCurso(curso);
+    this.router.navigate(['curso/lista-curso']);
+  }
+
+
+
 }
 

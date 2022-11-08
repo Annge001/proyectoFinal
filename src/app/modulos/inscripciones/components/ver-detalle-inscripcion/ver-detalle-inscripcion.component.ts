@@ -1,9 +1,10 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {InscripcionesService} from "../../services/inscripciones.service";
 import {Inscripcion} from "../../../../models/inscripcion";
 import {Curso} from "../../../../models/curso";
 import {CursoService} from "../../../cursos/services/curso.service";
+import {Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-ver-detalle-inscripcion',
@@ -13,49 +14,49 @@ import {CursoService} from "../../../cursos/services/curso.service";
 export class VerDetalleInscripcionComponent implements OnInit {
 
   inscripcionDetalle: any;
-  InscripcionVerMas: Array<Inscripcion> = [];
-  inscVerMas:Array<Inscripcion>=[];
-  cursos:Array<Curso> = [];
+  cursos: Array<Curso> = [];
+  idInscripcion!: string;
 
   @Output()
   cerrar = new EventEmitter();
 
 
-
   constructor(
-    private  cursoService: CursoService,
+    private cursoService: CursoService,
     private inscripcionService: InscripcionesService,
-    private route : Router
+    private route: Router,
+    private activatedRoute: ActivatedRoute,
   ) {
-
-    this.obtenerCursos().subscribe(data => {
-    this.inscripcionDetalle = data;
-    this.InscripcionVerMas = this.inscripcionDetalle;
-    // se recupera id de curso desde el lista-curso.services para buscarlo en el array de cursos
-    let idInscipcion = '1';//this.listaCursoService.getIdCurso();
-    // @ts-ignore
-      this.inscVerMas = this.cursos.filter((inscripcion:Inscripcion) => inscripcion.idInscipcion === idInscipcion)
-    console.log(this.inscVerMas);
-    this.inscripcionDetalle = this.inscripcionDetalle[0];
-
-  })
   }
 
-  obtenerCursos() {
-    return this.inscripcionService.obtenerDetalleInscripcion();
+  obtenerInscripcion() {
+    this.activatedRoute.paramMap.subscribe((parametros) =>{
+      console.log(parametros)
+      this.idInscripcion = parametros.get('idInscripcion') || '0'
+      console.log(this.idInscripcion)
+      this.obtenerInscripcionService();
+    })
+
   }
 
-
+  obtenerInscripcionService(){
+    this.inscripcionService.obtenerDetalleInscripcion(this.idInscripcion).subscribe(data => {
+      console.log(data)
+      this.inscripcionDetalle = data;
+    })
+  }
 
 
   ngOnInit(): void {
+    this.obtenerInscripcion();
   }
 
 
   OnCerrar() {
     this.redirect('inscripcion/lista-inscripcion')
   }
-  redirect(url:string){
+
+  redirect(url: string) {
     this.route.navigate([url])
   }
 }

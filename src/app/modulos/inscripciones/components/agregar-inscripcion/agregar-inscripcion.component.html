@@ -7,7 +7,7 @@
       <div class="center">
         <h1>Agregar Inscripcion</h1>
       </div>
-      <form class="example-form" [formGroup]="formulario">
+      <form class="example-form" [formGroup]="formulario" (ngSubmit)="agregarInscripcion()">
         <div class="col-12 d-flex">
           <div class="col-5 me-2">
             <mat-form-field class="example-full-width" appearance="fill">

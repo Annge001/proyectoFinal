@@ -7,7 +7,7 @@
       <div class="center">
         <h1>Agregar Curso</h1>
       </div>
-      <form class="example-form" [formGroup]="formulario">
+      <form class="example-form" [formGroup]="formulario" (ngSubmit)="agregarCurso()">
         <div class="col-12 d-flex">
 
           <div class="col-md-6">

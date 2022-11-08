@@ -3,6 +3,7 @@ import {InscripcionesService} from "../../services/inscripciones.service";
 import {Inscripcion} from "../../../../models/inscripcion";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
+import {Curso} from "../../../../models/curso";
 
 @Component({
   selector: 'app-agregar-inscripcion',
@@ -58,6 +59,21 @@ export class AgregarInscripcionComponent implements OnInit {
   }
   obtenerInscripcion() {
     return this.inscripcionService.obtenerInscripcion();
+  }
+
+  agregarInscripcion(){
+    const inscripcion: Inscripcion = {
+      //idCurso: Math.round(Math.random()*1000),
+      idInscripcion: this.formulario.value.idInscripcion,
+      idCurso: this.formulario.value.idCurso,
+      idAlumno: this.formulario.value.idAlumno,
+      fechaInicio: this.formulario.value.inicio,
+      fechaFin: this.formulario.value.fin,
+      profesor: this.formulario.value.profesor,
+    };
+    console.log(inscripcion);
+    this.inscripcionService.agregarInscripcion(inscripcion);
+    this.router.navigate(['inscripcion/lista-inscripcion']);
   }
 
 }

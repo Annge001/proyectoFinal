@@ -25,17 +25,21 @@ export class ListaInscripcionesComponent implements OnInit {
     private inscripcionesService: InscripcionesService
   ) {
 
-    this.inscripcionesService.obtenerDetalleInscripcion().subscribe(data => {
+    this.obtenerInscripciones()
+
+  }
+
+  ngOnInit(): void {
+  }
+
+  obtenerInscripciones(){
+    this.inscripcionesService.obtenerInscripcion().subscribe(data => {
       this.dataInicial = data
 
       this.ELEMENT_DATA.data = this.dataInicial
       console.log(this.inscripcion)
 
     })
-  }
-
-  ngOnInit(): void {
-    this.inscripcion$ = this.inscripcionesService.obtenerInscripcion();
   }
 
 
@@ -51,7 +55,11 @@ export class ListaInscripcionesComponent implements OnInit {
   }
 
   borrar(idInscipcion: number) {
-    this.inscripcionesService.borrarInscripcion(idInscipcion);
+    console.log(idInscipcion)
+    this.inscripcionesService.borrarInscripcion(idInscipcion).subscribe(data => {
+      console.log(data)
+      this.obtenerInscripciones()
+    })
     this.inscripcion$ = this.inscripcionesService.obtenerInscripcion()
   }
 
@@ -69,7 +77,9 @@ export class ListaInscripcionesComponent implements OnInit {
 
   verMas(idInscripcion: any) {
     console.log(idInscripcion)
-    this.redirect('inscripcion/detalle-inscripcion')
+    this.router.navigate(['inscripcion/detalle-inscripcion', {
+      idInscripcion: idInscripcion,
+    }])
   }
   redirect(url: string) {
     this.router.navigate([url]);

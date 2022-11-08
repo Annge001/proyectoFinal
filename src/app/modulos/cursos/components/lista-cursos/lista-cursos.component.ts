@@ -35,22 +35,35 @@ export class ListaCursosComponent implements OnInit {
     private cursoService: CursoService,
     private router: Router
   ) {
+
+   this.obtenerCursos();
+  }
+
+  obtenerCursos(){
+    this.cursoService.obtenerDetalleCurso().subscribe(data => {
+      this.dataInicial = data
+
+      this.ELEMENT_DATA.data = this.dataInicial
+      console.log(this.curso)
+
+    })
   }
 
 
+
   ngOnInit(): void {
+
+   // this.cursos$ = this.cursoService.obtenerCursosPromise();
+
     // @ts-ignore
-    this.obtenerCursos().subscribe(data => {
+   /* this.obtenerCursos().subscribe(data => {
       console.log(data)
       this.dataInicial = data
       this.ELEMENT_DATA.data = this.dataInicial
       console.log(this.dataInicial)
-    });
+    });*/
   }
 
-  obtenerCursos() {
-    return this.cursoService.obtenerCursosPromise();
-  }
 
   filtrar(event: Event) {
     const filtro = (event.target as HTMLInputElement).value;
@@ -59,14 +72,14 @@ export class ListaCursosComponent implements OnInit {
 
   }
 
-  borrar(id: number) {
+ /* borrar(id: number) {
     //aqui busco curso por id y me retorna la pocisin en el arreglo
     let position = this.dataInicial.findIndex((curso: { id: number; }) => curso.id === id)
     this.dataInicial.splice(position, 1)
     console.log(this.dataInicial)
     //en esta linea paso la posicion entregada y lo elimina
     this.ELEMENT_DATA.data = this.dataInicial
-  }
+  }*/
 
   editar(curso: any) {
     console.log(curso)
@@ -99,5 +112,13 @@ export class ListaCursosComponent implements OnInit {
 
   agregarCurso() {
     this.router.navigate(['curso/agregar-curso'])
+  }
+
+  borrar(idCurso: number) {
+    this.cursoService.borrarCurso(idCurso).subscribe(data => {
+      console.log(data)
+      this.obtenerCursos()
+    })
+    this.cursos$ = this.cursoService.obtenerCursosPromise()
   }
 }

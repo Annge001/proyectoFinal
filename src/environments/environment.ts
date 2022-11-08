@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  api: 'https://63642d227b209ece0f42366f.mockapi.io/inscripcion'
+  api: 'https://63642d227b209ece0f42366f.mockapi.io/'
 };
 
 /*
