@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import {Observable} from "rxjs";
 import {Sesion} from "../../../models/login";
-import {ValidatorLoginService} from "../../../modulos/autenticacion/services/validator-login.service";
+import {ValidatorLoginService} from "../../services/validator-login.service";
 
 @Component({
   selector: 'app-lateral-navbar',
