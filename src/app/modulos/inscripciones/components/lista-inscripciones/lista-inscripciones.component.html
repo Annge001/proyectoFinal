@@ -64,14 +64,13 @@
           <mat-header-cell *matHeaderCellDef> Acciones</mat-header-cell>
           <mat-cell *matCellDef="let inscripcion">
 
-            <mat-icon matSuffix class="mat-18 pointer me-2"(click)="editar(editar(inscripcion))" title="Editar">mode_edit</mat-icon>
+            <mat-icon matSuffix class="mat-18 pointer me-2"(click)="editar(inscripcion)" title="Editar">mode_edit</mat-icon>
             <mat-icon matSuffix class="mat-18 pointer me-2" (click)="borrar (inscripcion.idInscripcion)" title="Eliminar">delete_outline</mat-icon>
             <mat-icon matSuffix  class="mat-18 pointer" (click)="verMas(inscripcion.idInscripcion)" title="Ver más">loupe</mat-icon>
 
 
           </mat-cell>
         </ng-container>
-        <app-ver-detalle-inscripcion (cerrar)="cerrarDetalle()"></app-ver-detalle-inscripcion>
 
 
         <!--<app-ver-detalle-inscripcion (cerrar)="cerrarDetalle()"></app-ver-detalle-inscripcion>-->

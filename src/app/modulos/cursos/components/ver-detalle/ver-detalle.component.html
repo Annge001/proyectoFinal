@@ -1,15 +1,15 @@
-<mat-card *ngIf="cursosDetalle">
+<mat-card *ngIf="curso">
   <mat-card-title>
     Detalle de curso
   </mat-card-title>
   <mat-card-content>
-    id: {{cursosDetalle.idCurso}}<br>
-    Nombre: {{cursosDetalle.nombreCurso}}<br>
-    Comision: {{cursosDetalle.comision}}<br>
-    Profesor: {{cursosDetalle.profesor}}<br>
-    Inicio: {{cursosDetalle.fechaInicio | date: 'dd/MM/yyyy'}}<br>
-    Fin: {{cursosDetalle.fechaFin | date: 'dd/MM/yyyy'}}<br>
-    Inscripci&oacute;n abierta: {{cursosDetalle.inscripcionAbierta}}<br>
+    id: {{curso.idCurso}}<br>
+    Nombre: {{curso.nombreCurso}}<br>
+    Comision: {{curso.comision}}<br>
+    Profesor: {{curso.profesor}}<br>
+    Inicio: {{curso.fechaInicio | date: 'dd/MM/yyyy'}}<br>
+    Fin: {{curso.fechaFin | date: 'dd/MM/yyyy'}}<br>
+    Inscripci&oacute;n abierta: {{curso.inscripcionAbierta}}<br>
 
 
     <button  mat-icon-button (click)="OnCerrar()">close</button>

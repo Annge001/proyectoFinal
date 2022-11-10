@@ -42,9 +42,8 @@ export class ListaCursosComponent implements OnInit {
   obtenerCursos(){
     this.cursoService.obtenerDetalleCurso().subscribe(data => {
       this.dataInicial = data
-
       this.ELEMENT_DATA.data = this.dataInicial
-      console.log(this.curso)
+      console.log(data)
 
     })
   }
@@ -52,16 +51,6 @@ export class ListaCursosComponent implements OnInit {
 
 
   ngOnInit(): void {
-
-   // this.cursos$ = this.cursoService.obtenerCursosPromise();
-
-    // @ts-ignore
-   /* this.obtenerCursos().subscribe(data => {
-      console.log(data)
-      this.dataInicial = data
-      this.ELEMENT_DATA.data = this.dataInicial
-      console.log(this.dataInicial)
-    });*/
   }
 
 
@@ -72,14 +61,7 @@ export class ListaCursosComponent implements OnInit {
 
   }
 
- /* borrar(id: number) {
-    //aqui busco curso por id y me retorna la pocisin en el arreglo
-    let position = this.dataInicial.findIndex((curso: { id: number; }) => curso.id === id)
-    this.dataInicial.splice(position, 1)
-    console.log(this.dataInicial)
-    //en esta linea paso la posicion entregada y lo elimina
-    this.ELEMENT_DATA.data = this.dataInicial
-  }*/
+
 
   editar(curso: any) {
     console.log(curso)
@@ -100,9 +82,18 @@ export class ListaCursosComponent implements OnInit {
   }
 
 
-  verMas(idCurso: any) {
-    console.log(idCurso)
-    this.redirect('curso/detalle-curso')
+  verMas(curso: any) {
+    console.log(curso)
+    this.router.navigate(['curso/detalle-curso', {
+      idCurso: curso.idCurso,
+      nombreCurso: curso.nombreCurso,
+      comision: curso.comision,
+      profesor: curso.profesor,
+      fechaInicio: curso.fechaInicio,
+      fechaFin: curso.fechaFin,
+      inscripcionAbierta: curso.inscripcionAbierta
+
+    }])
   }
   cerrarDetalle(){
     this.cursosDetalle = null;

@@ -11,41 +11,48 @@ import {ActivatedRoute, Router} from "@angular/router";
 export class VerDetalleComponent implements OnInit {
 
   listaCursos: Array<Curso> = [];
-  cursos:Array<Curso> = [];
+  cursos: Array<Curso> = [];
 
   @Output()
   cerrar = new EventEmitter();
   cursosDetalle: any;
-  cursoVerMas:Array<Curso>=[];
+  cursoVerMas: Array<Curso> = [];
+  curso: any;
 
   constructor(
-    private  cursoService: CursoService,
-    private route : Router) {
+    private cursoService: CursoService,
+    private route: Router,
+    private activatedRoute: ActivatedRoute,
+  ) {
 
-    this.obtenerCursos().subscribe(data => {
-      this.cursos = data;
-      this.listaCursos = this.cursos;
-      // se recupera id de curso desde el lista-curso.services para buscarlo en el array de cursos
-      let idCurso = '1';//this.listaCursoService.getIdCurso();
-      this.cursoVerMas = this.cursos.filter((curso:Curso) => curso.idCurso === idCurso)
-      console.log(this.cursoVerMas);
-      this.cursosDetalle = this.cursoVerMas[0];
 
-    })
   }
+
   obtenerCursos() {
     return this.cursoService.obtenerCursosPromise();
   }
 
   ngOnInit(): void {
-
+    this.activatedRoute.paramMap.subscribe((parametros) => {
+        console.log(parametros)
+        this.curso = {
+          idCurso: parametros.get('idCurso') || '0',
+          nombreCurso: parametros.get('nombreCurso') || '',
+          comision: parametros.get('comision') || '',
+          profesor: parametros.get('profesor') || '',
+          fechaInicio: new Date(parametros.get('fechaInicio') || ''),
+          fechaFin: new Date(parametros.get('fechaFin') || ''),
+          inscripcionAbierta: parametros.get('inscripcionAbierta') === 'true'
+        }
+      }
+    )
   }
 
   OnCerrar() {
-   this.redirect('curso/lista-curso')
+    this.redirect('curso/lista-curso')
   }
 
-  redirect(url:string){
+  redirect(url: string) {
     this.route.navigate([url])
   }
 

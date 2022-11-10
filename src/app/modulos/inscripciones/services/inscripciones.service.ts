@@ -42,14 +42,12 @@ export class InscripcionesService {
   }
 
   editarInscripcion(inscripcion: Inscripcion) {
-    this.http.put(`${environment.api}inscripcion${inscripcion.idInscripcion}`, inscripcion, {
+    return this.http.put(`${environment.api}inscripcion/${inscripcion.idInscripcion}`, inscripcion, {
       headers: new HttpHeaders({
         'content-type': 'application/json',
         'encoding': 'UTF-8'
       })
-    })//.pipe(
-     // catchError(this.manejarError)
-    //)
+    })
   }
 
   borrarInscripcion(id: number) {

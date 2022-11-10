@@ -66,8 +66,11 @@ export class EditarInscripcionComponent implements OnInit {
       fechaFin: this.formulario.value.fechaFin,
     }
     console.log(inscripcion)
-    this.inscripcionService.editarInscripcion(inscripcion)
+    this.inscripcionService.editarInscripcion(inscripcion).subscribe(data => {
+      console.log(data)
+      this.router.navigate(['inscripcion/lista-inscripcion'])
+    })
 
-    this.router.navigate(['inscripcion/lista-inscripcion'])
+
   }
 }
