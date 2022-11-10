@@ -42,6 +42,10 @@ export class AgregarCursoComponent implements OnInit {
     })
   }
 
+  obtenerCursos() {
+    return this.cursoService.obtenerCursosPromise();
+  }
+
   ngOnInit(): void {
   }
 
@@ -58,9 +62,7 @@ export class AgregarCursoComponent implements OnInit {
     this.formulario.reset()
   }
 
-  obtenerCursos() {
-    return this.cursoService.obtenerCursosPromise();
-  }
+
 
   agregarCurso(){
     const curso: Curso = {

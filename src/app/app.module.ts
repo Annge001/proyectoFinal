@@ -16,6 +16,7 @@ import {AutenticacionModule} from "./modulos/autenticacion/autenticacion.module"
 import {CoreModule} from "./core/core.module";
 import {SharedModule} from "./shared/shared.module";
 import {InscripcionesService} from "./modulos/inscripciones/services/inscripciones.service";
+import {CursosComponent} from "./components/cursos/cursos.component";
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import {InscripcionesService} from "./modulos/inscripciones/services/inscripcion
     AppComponent,
     LateralNavbarComponent,
     PrincipalComponent,
-    TamanoLetraDirective
+    TamanoLetraDirective,
+    CursosComponent
 
   ],
   imports: [

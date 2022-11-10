@@ -93,8 +93,6 @@ export class ListaCursosComponent implements OnInit {
       inscripcionAbierta: curso.inscripcionAbierta
 
     }])
-
-
   }
 
   redirect(url: string) {

@@ -47,7 +47,7 @@ export class PrincipalComponent implements OnInit {
   }
 
   obtenerAlumnos() {
-    return this.alumnoService.obtenerAlumnosPromise();
+    //return this.alumnoService.obtenerAlumnosPromise();
   }
 
 //funcion para recibir el alumno actualizado desde el formulario del componente hijo

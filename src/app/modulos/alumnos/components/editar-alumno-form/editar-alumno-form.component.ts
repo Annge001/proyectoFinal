@@ -18,6 +18,8 @@ export class EditarAlumnoFormComponent implements OnInit {
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
 
   listaCursos: Array<Curso> = [];
+  listaAlumnos: Array<Alumnos> = [];
+
   cursos: Array<Curso> = [];
   formularioPersona!: FormGroup;
   id!: string;
@@ -37,23 +39,35 @@ export class EditarAlumnoFormComponent implements OnInit {
               private router: Router) {
 
 
-
-    this.obtenerCursos().subscribe(data => {
-      this.cursos = data;
-      this.listaCursos = this.cursos;
-      console.log(this.cursos);
-
+    this.obtenerAlumnos().subscribe(data => {
+      this.alumno = data;
+      this.listaAlumnos = this.alumno;
+      console.log(this.alumno);
     })
   }
-  obtenerCursos() {
-    return this.cursoService.obtenerCursosPromise();
+  obtenerAlumnos() {
+    return this.alumnosService.obtenerAlumnosPromise();
   }
-
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((parametros)=>{
       console.log(parametros)
       this.id = parametros.get('id') || '0';
+
+      this.alumno = {
+        id: parametros.get('id') || '',
+        nombre: parametros.get('nombre') || '0',
+        apellido: parametros.get('nombreCurso') || '',
+        comision: parametros.get('comision') || '',
+        curso: parametros.get('curso') || '',
+        email: parametros.get('email') || '',
+        telefono: parametros.get('telefono') || '',
+        cursos: parametros.get('curso')
+
+
+
+      }
+
       this.formularioPersona = this.fb.group({
 
         nombre: [parametros.get('nombre'), [Validators.required]],

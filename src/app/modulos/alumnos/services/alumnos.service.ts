@@ -1,104 +1,64 @@
 import {Injectable} from '@angular/core';
 import {Alumnos} from "../../../models/alumnos";
-import {BehaviorSubject} from "rxjs";
+import {BehaviorSubject, Observable} from "rxjs";
 import {CursoService} from "../../cursos/services/curso.service";
 import {Curso} from "../../../models/curso";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {environment} from "../../../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AlumnosService {
 
-  alumnos: Alumnos[] = [
-
-  ]
-// @ts-ignore
-  alumnosSubject: BehaviorSubject<Alumnos[]>;
-
-  cursos:Array<Curso> = [];
 
   constructor(
-    private cursoService : CursoService,
+    private http: HttpClient
   ) {
-    this.alumnosSubject = new BehaviorSubject<Alumnos[]>(this.alumnos);
-    this.obtenerCursos().subscribe(data => {
-      this.cursos = data
-      console.log(this.cursos)
-
-      this.alumnos = [
-        {
-          id:'1',
-          nombre:'Andrea',
-          apellido:'Castillo',
-          comision:'32566',
-          curso: [this.cursos[0]],
-          email: 'andrea@correo.cl',
-          telefono: '958641238'
-        },
-        {
-          id:'2',
-          nombre:'Constanza',
-          apellido:'Rojas',
-          comision:'32577',
-          curso: [this.cursos[1]],
-          email: 'constanza@correo.cl',
-          telefono:'958641239'
-
-        },
-        {
-          id:'3',
-          nombre:'Javiera',
-          apellido:'Bello',
-          comision:'32588',
-          curso: [this.cursos[2]],
-          email: 'javiera@correo.cl',
-          telefono: '958641240'
-
-        },
-      ]
-    })
-
   }
 
-  obtenerAlumnosPromise(): Promise<Alumnos[] | any>{
-    return new Promise((resolve, reject) => {
-
-      setTimeout(() => {
-        if(this.alumnos.length > 0){
-          resolve(this.alumnos);
-        }else{
-          reject({
-            codigo: 0,
-            mensaje: 'No existen alumnos'
-          });
-        }
-      }, 1000)
-    });
+  obtenerAlumnosPromise(): Observable<Alumnos[]>{
+    return this.http.get<Alumnos[]>(`${environment.api}/alumnos`, {
+      headers: new HttpHeaders({
+        'content-type': 'application/json',
+        'encoding': 'UTF-8'
+      })
+    }).pipe(
+    )
+  }
+  agregarAlumno(alumno: Alumnos){
+    this.http.post(`${environment.api}/alumnos/`, alumno, {
+      headers: new HttpHeaders({
+        'content-type': 'application/json',
+        'encoding': 'UTF-8'
+      })
+    }).pipe(
+      //catchError(this.manejarError)
+    ).subscribe(console.log);
   }
 
-  obtenerAlumnosObservable(){
-
-    return this.alumnosSubject.asObservable();
-
-
-    // return this.cursos$;
-    // return of(this.cursos);
+  obtenerDetalleAlumno(): Observable<Alumnos[]> {
+    return this.http.get<Alumnos[]>(`${environment.api}/alumnos`, {
+      headers: new HttpHeaders({
+        'content-type': 'application/json',
+        'encoding': 'UTF-8'
+      })
+    })//.pipe(
+      //catchError(this.manejarError)
+    //)
   }
-  obtenerCursos() {
-    return this.cursoService.obtenerCursosPromise();
-  }
+
 
   editarAlumno(alumno: Alumnos){
-    console.log(alumno)
-    let indice = this.alumnos.findIndex((c: Alumnos) => c.id === alumno.id);
-    console.log(indice)
+    this.http.put<Alumnos>(`${environment.api}/alumnos/${alumno.id}`, alumno).pipe(
+      // catchError(this.manejarError)
+    ).subscribe(console.log);
+  }
 
-    if(indice > -1){
-      this.alumnos[indice] = alumno;
-      console.log(this.alumnos)
-    }
 
-    this.alumnosSubject.next(this.alumnos);
+  borrarAlumno(id: number) {
+    console.log(id)
+    return this.http.delete(`${environment.api}/alumnos/${id}`);
   }
 }
 

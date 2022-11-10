@@ -24,7 +24,8 @@ export class VerDetalleAlumnoComponent implements OnInit {
     private  alumnosServices: AlumnosService,
     private route : Router
   ) {
-    this.obtenerAlumno().then(data => {
+    this.obtenerAlumno().subscribe(data => {
+      // @ts-ignore
       this.alumnos = data;
       this.listaAlumnos = this.alumnos;
       // se recupera id de alumno desde alumnos.services para buscarlo en el array de alumnos
@@ -35,6 +36,7 @@ export class VerDetalleAlumnoComponent implements OnInit {
 
     })
   }
+
   obtenerAlumno() {
     return this.alumnosServices.obtenerAlumnosPromise();
   }

@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
       this.formularioPersona.value.admin)
 
 
-    this.router.navigate(['principal']);
+    this.router.navigate(['cursos']);
 
    // this.validarEmail();
    // this.formularioPersona.reset();

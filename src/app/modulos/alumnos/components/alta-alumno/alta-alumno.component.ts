@@ -5,6 +5,9 @@ import {CursoService} from "../../../cursos/services/curso.service";
 import {Observable} from "rxjs";
 import {Sesion} from "../../../../models/login";
 import {ValidatorLoginService} from "../../../../core/services/validator-login.service";
+import {Alumnos} from "../../../../models/alumnos";
+import {AlumnosService} from "../../services/alumnos.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-alta-alumno',
@@ -17,6 +20,9 @@ export class AltaAlumnoComponent implements OnInit {
   listaCursos: Array<Curso> = [];
   cursos: Array<Curso> = [];
   formularioPersona: FormGroup;
+  alumnos: Array<Alumnos> = [];
+
+
 
 
   @Input()
@@ -29,7 +35,10 @@ export class AltaAlumnoComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
               private cursoService: CursoService,
-              private sesionService: ValidatorLoginService) {
+              private  alumnosServices: AlumnosService,
+              private sesionService: ValidatorLoginService,
+              private router: Router
+  ) {
     this.formularioPersona = fb.group({
       nombre: ['', [Validators.required]],
       apellido: ['', [Validators.required]],
@@ -39,10 +48,9 @@ export class AltaAlumnoComponent implements OnInit {
       cursos: ['', [Validators.required]]
     });
 
-    this.obtenerCursos().subscribe(data => {
-      this.cursos = data
-      console.log(this.cursos)
-
+    this.obtenerAlumnos().subscribe(data => {
+      this.alumnos = data
+      console.log(this.alumnos)
     })
   }
 
@@ -55,15 +63,19 @@ export class AltaAlumnoComponent implements OnInit {
     this.alumnoNuevo.emit(
       {
         id: '8',
-        nombre: this.formularioPersona.get('nombre')?.value,
-        apellido: this.formularioPersona.get('apellido')?.value,
-        comision: this.formularioPersona.get('comision')?.value,
-        curso: this.formularioPersona.get('cursos')?.value,
+        nombre: this.formularioPersona.get('profesor')?.value,
+        apellido: this.formularioPersona.get('cursos')?.value,
+        curso: this.formularioPersona.get('curso')?.value,
         email: this.formularioPersona.get('email')?.value,
         telefono: this.formularioPersona.get('telefono')?.value,
+
       }
     )
     this.formularioPersona.reset()
+  }
+
+  obtenerAlumnos() {
+    return this.alumnosServices.obtenerAlumnosPromise();
   }
 
   validarCorreo() {
@@ -77,8 +89,23 @@ export class AltaAlumnoComponent implements OnInit {
     }
   }
 
-  obtenerCursos() {
-    return this.cursoService.obtenerCursosPromise()
+
+  agregarAlumno(){
+    const alumno: Alumnos = {
+      //idCurso: Math.round(Math.random()*1000),
+      id: this.formularioPersona.value.id,
+      nombre: this.formularioPersona.value.nombre,
+      apellido: this.formularioPersona.value.apellido,
+      comision: this.formularioPersona.value.comision,
+      curso: this.formularioPersona.value.curso,
+      email: this.formularioPersona.value.email,
+      telefono: this.formularioPersona.value.telefono,
+      cursando: this.formularioPersona.value.cursando,
+
+    };
+    console.log(alumno);
+    this.alumnosServices.agregarAlumno(alumno);
+    this.router.navigate(['alumno/lista-alumnos']);
   }
 
 }

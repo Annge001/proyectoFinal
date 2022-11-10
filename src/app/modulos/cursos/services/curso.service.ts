@@ -3,7 +3,6 @@ import {Curso} from "../../../models/curso";
 import {BehaviorSubject, catchError, Observable, throwError} from "rxjs";
 import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {environment} from "../../../../environments/environment";
-import {Inscripcion} from "../../../models/inscripcion";
 
 @Injectable()
 export class CursoService {

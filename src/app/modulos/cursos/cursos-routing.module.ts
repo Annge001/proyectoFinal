@@ -4,7 +4,6 @@ import {ListaCursosComponent} from "./components/lista-cursos/lista-cursos.compo
 import {AgregarCursoComponent} from "./components/agregar-curso/agregar-curso.component";
 import {EditarCursoComponent} from "./components/editar-curso/editar-curso.component";
 import {VerDetalleComponent} from "./components/ver-detalle/ver-detalle.component";
-import {CursosComponent} from "./components/cursos/cursos.component";
 import {AutenticacionGuard} from "../../core/guards/autenticacion.guard";
 
 
@@ -15,7 +14,6 @@ const routes: Routes = [
         {path: 'agregar-curso',  component: AgregarCursoComponent,canActivate: [AutenticacionGuard]},
         {path: 'editar-curso',  component: EditarCursoComponent,canActivate: [AutenticacionGuard]} ,
         {path: 'detalle-curso',  component: VerDetalleComponent,canActivate: [AutenticacionGuard]},
-          {path: 'cursos',  component: CursosComponent,canActivate: [AutenticacionGuard]}
     ]},
 ];
 

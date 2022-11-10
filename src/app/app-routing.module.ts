@@ -3,10 +3,12 @@ import {RouterModule, Routes} from '@angular/router';
 import {PrincipalComponent} from "./components/principal/principal.component";
 import {PaginaNoEncontradaComponent} from "./core/components/pagina-no-encontrada/pagina-no-encontrada.component";
 import {AutenticacionGuard} from "./core/guards/autenticacion.guard";
+import {CursosComponent} from "./components/cursos/cursos.component";
 
 
 const routes: Routes = [
   { path: 'principal', component: PrincipalComponent,canActivate: [AutenticacionGuard]},
+  {path: 'cursos',  component: CursosComponent},
   {path: 'curso',
   loadChildren: () => import('./modulos/cursos/cursos.module').then((m) => m.CursosModule),
    canActivate: [AutenticacionGuard]
@@ -25,6 +27,7 @@ const routes: Routes = [
 
   { path: '', redirectTo: 'principal', pathMatch: 'full'},
   { path:'**', component: PaginaNoEncontradaComponent}
+
 
 ];
 

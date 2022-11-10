@@ -1,6 +1,5 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {CursosComponent} from "./components/cursos/cursos.component";
 import {MaterialModule} from "../../material.module";
 import {CursoService} from "./services/curso.service";
 import {AgregarCursoComponent} from './components/agregar-curso/agregar-curso.component';
@@ -13,7 +12,6 @@ import {SharedModule} from "../../shared/shared.module";
 
 @NgModule({
   declarations: [
-    CursosComponent,
     AgregarCursoComponent,
     EditarCursoComponent,
     ListaCursosComponent,
