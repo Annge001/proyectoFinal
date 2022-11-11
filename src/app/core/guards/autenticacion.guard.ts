@@ -29,34 +29,14 @@ export class AutenticacionGuard implements CanActivate {
     return this.sesion.obtenerSesion().pipe(
       map((sesion: Sesion) => {
         console.log(sesion)
-        if(sesion.sesionActiva){
+        if (sesion.sesionActiva) {
           return true;
-        }else{
+        } else {
           this.router.navigate(['autenticacion/login']);
           return false;
         }
       })
     );
   }
-
-  canActivateChild(
-    childRoute: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return true;
-  }
-
-  canDeactivate(
-    component: unknown,
-    currentRoute: ActivatedRouteSnapshot,
-    currentState: RouterStateSnapshot,
-    nextState?: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return true;
-  }
-
-  canLoad(
-    route: Route,
-    segments: UrlSegment[]): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return true;
-  }
-
 }
+ 

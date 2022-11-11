@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
     this.formularioPersona = fb.group({
       email: ['aaaaaaaaa@qa.cl', [Validators.required, Validators.email]],
       password: ['aaaaaaa', [Validators.required]],
-      admin: new FormControl(true)
+      admin: new FormControl()
     });
   }
 

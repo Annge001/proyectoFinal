@@ -5,15 +5,15 @@ import {AgregarCursoComponent} from "./components/agregar-curso/agregar-curso.co
 import {EditarCursoComponent} from "./components/editar-curso/editar-curso.component";
 import {VerDetalleComponent} from "./components/ver-detalle/ver-detalle.component";
 import {AutenticacionGuard} from "../../core/guards/autenticacion.guard";
+import {AdminGuard} from "../../core/guards/admin.guard";
 
 
-//activar canActivate, despues de la segunda entrega.
 const routes: Routes = [
       { path: '',  children:[
-        {path: 'lista-curso',  component: ListaCursosComponent ,canActivate: [AutenticacionGuard]},
-        {path: 'agregar-curso',  component: AgregarCursoComponent,canActivate: [AutenticacionGuard]},
-        {path: 'editar-curso',  component: EditarCursoComponent,canActivate: [AutenticacionGuard]} ,
-        {path: 'detalle-curso',  component: VerDetalleComponent,canActivate: [AutenticacionGuard]},
+        {path: 'lista-curso',  component: ListaCursosComponent , canActivate: [AutenticacionGuard,AdminGuard]},
+        {path: 'agregar-curso',  component: AgregarCursoComponent, canActivate: [AutenticacionGuard,AdminGuard]},
+        {path: 'editar-curso',  component: EditarCursoComponent, canActivate: [AutenticacionGuard,AdminGuard]} ,
+        {path: 'detalle-curso',  component: VerDetalleComponent, canActivate: [AutenticacionGuard,AdminGuard]},
     ]},
 ];
 

@@ -1,12 +1,12 @@
 <!--{{this.formularioPersona.value | json}}-->
 <ng-container *ngIf="sesion$ | async as sesion">
-  {{sesion | json}}
-<div class="container mt-5" *ngIf="sesion.usuarioActivo!.admin">
-  <!--{{this.formularioPersona.value | json}}-->
+  <!-- {{sesion | json}}-->
+ <div class="container mt-5" *ngIf="sesion.usuarioActivo!.admin">
+   <!--{{this.formularioPersona.value | json}}-->
   <div class="row">
     <div class="col">
       <div class="center">
-        <h1 appTamanoLetra>Alumno nuevo</h1>
+        <h1>Alumno nuevo</h1>
       </div>
       <form class="example-form" [formGroup]="formularioPersona" (ngSubmit)="agregarAlumno()">
         <div class="col-12 d-flex">

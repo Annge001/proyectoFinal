@@ -7,20 +7,23 @@ import {CursosComponent} from "./components/cursos/cursos.component";
 
 
 const routes: Routes = [
-  { path: 'principal', component: PrincipalComponent,canActivate: [AutenticacionGuard]},
+  { path: 'principal', component: PrincipalComponent},
   {path: 'cursos',  component: CursosComponent},
-  {path: 'curso',
-  loadChildren: () => import('./modulos/cursos/cursos.module').then((m) => m.CursosModule),
-   canActivate: [AutenticacionGuard]
+
+  {path: 'curso' ,canActivate: [AutenticacionGuard],
+  loadChildren: () => import('./modulos/cursos/cursos.module').then((m) => m.CursosModule)
   },
+
   {path: 'alumno',
     loadChildren: () => import('./modulos/alumnos/alumnos.module').then((m) =>m.AlumnosModule),
     canActivate: [AutenticacionGuard]
   },
+
   {path: 'inscripcion',
     loadChildren: () => import('./modulos/inscripciones/inscripciones.module').then((m) =>m.InscripcionesModule),
     canActivate: [AutenticacionGuard]
   },
+
   {path: 'autenticacion',
     loadChildren: () => import('./modulos/autenticacion/autenticacion.module').then((m) =>m.AutenticacionModule)
   },
