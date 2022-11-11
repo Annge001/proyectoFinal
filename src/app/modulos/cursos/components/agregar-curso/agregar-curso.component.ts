@@ -29,11 +29,14 @@ export class AgregarCursoComponent implements OnInit {
               private router: Router
   ) {
     this.formulario = fb.group({
+
       profesor: ['', [Validators.required]],
       fechaInicio: ['', [Validators.required]],
       fechaFin: ['', [Validators.required]],
       cursos: ['', [Validators.required]]
+
     });
+
 
     this.obtenerCursos().subscribe(data => {
       this.cursos = data
@@ -75,6 +78,8 @@ export class AgregarCursoComponent implements OnInit {
       profesor: this.formulario.value.profesor,
       inscripcionAbierta: this.formulario.value.inscripcionAbierta,
     };
+    console.log(this.formulario)
+
     console.log(curso);
     this.cursoService.agregarCurso(curso);
     this.router.navigate(['curso/lista-curso']);
