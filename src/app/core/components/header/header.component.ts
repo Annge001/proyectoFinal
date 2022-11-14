@@ -13,11 +13,18 @@ export class HeaderComponent implements OnInit {
   sesion$!: Observable<Sesion>;
 
   constructor(
-    private validator: ValidatorLoginService
+    private validator: ValidatorLoginService,
+    private sesionService: ValidatorLoginService,
   ) { }
 
   ngOnInit(): void {
     //this.sesion$ = this.validator.obtenerSesion()
+    this.sesion$ = this.sesionService.obtenerSesion();
+    console.log(this.sesion$)
+  }
+
+  cerrarSesion(){
+    this.validator.logOut()
   }
 
 

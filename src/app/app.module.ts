@@ -17,6 +17,9 @@ import {CoreModule} from "./core/core.module";
 import {SharedModule} from "./shared/shared.module";
 import {InscripcionesService} from "./modulos/inscripciones/services/inscripciones.service";
 import {CursosComponent} from "./components/cursos/cursos.component";
+import {HttpClientModule} from "@angular/common/http";
+import {UsuariosService} from "./modulos/usuarios/services/usuarios.service";
+import {UsuariosModule} from "./modulos/usuarios/usuarios.module";
 
 
 @NgModule({
@@ -25,8 +28,7 @@ import {CursosComponent} from "./components/cursos/cursos.component";
     LateralNavbarComponent,
     PrincipalComponent,
     TamanoLetraDirective,
-    CursosComponent
-
+    CursosComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,10 +41,11 @@ import {CursosComponent} from "./components/cursos/cursos.component";
     ReactiveFormsModule,
     CoreModule,
     SharedModule,
-
+    HttpClientModule,
+    UsuariosModule
 
   ],
-  providers: [CursoService, AlumnosService, InscripcionesService],
+  providers: [CursoService, AlumnosService, InscripcionesService, UsuariosService],
   exports: [
     TamanoLetraDirective
   ],

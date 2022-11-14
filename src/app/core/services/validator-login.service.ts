@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from "rxjs";
 import {Sesion} from "../../models/login";
+import {UsuariosService} from "../../modulos/usuarios/services/usuarios.service";
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,11 @@ export class ValidatorLoginService {
 
   sesionSubject!: BehaviorSubject<Sesion>;
 
-  constructor() {
+  constructor(private usuariosService:UsuariosService) {
+   this.logOut()
+  }
+
+  logOut(){
     const sesion: Sesion = {
       sesionActiva: false,
       usuarioActivo: {
@@ -21,7 +26,15 @@ export class ValidatorLoginService {
     this.sesionSubject = new BehaviorSubject(sesion);
   }
 
+  obtenerUsuarios(){
+    this.usuariosService.obtenerUsuarios().subscribe(data => {
+      console.log(data)
+    })
+  }
+
   login(usuario: string, contrasena: string, admin: boolean){
+    this.obtenerUsuarios();
+
     const sesion: Sesion = {
       sesionActiva: true,
       usuarioActivo: {

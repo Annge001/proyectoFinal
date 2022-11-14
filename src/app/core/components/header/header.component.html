@@ -14,9 +14,11 @@
             <a class="nav-link active" aria-current="page" href="">Nosotros</a>
           </li>
         </ul>
-        <div>
-         <button class="btn btn-dark" routerLink="autenticacion/login">Iniciar sesi&oacute;n</button>
-       </div>
+        <div *ngIf="sesion$ | async as sesion">
+         <button  *ngIf="sesion.usuarioActivo!.usuario === ''" class="btn btn-dark" routerLink="autenticacion/login">Iniciar sesi&oacute;n</button>
+          <button *ngIf="sesion.usuarioActivo!.usuario != ''" class="btn btn-dark" routerLink="autenticacion/login">Cerrar sesi&oacute;n</button>
+        </div>
+
       </div>
     </div>
   </nav>
