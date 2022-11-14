@@ -18,22 +18,20 @@ export class LoginComponent implements OnInit {
     private router: Router
   ) {
     this.formularioPersona = fb.group({
-      email: ['aaaaaaaaa@qa.cl', [Validators.required, Validators.email]],
-      password: ['aaaaaaa', [Validators.required]],
+      email: ['Marquise_Rempel@yahoo.com', [Validators.required, Validators.email]],
+      password: ['teLksOFm707s7EA', [Validators.required]],
       admin: new FormControl()
     });
   }
 
   ngOnInit(): void {
-    console.log(this.formularioPersona);
-
   }
 
 
   loginUsuario(){
     this.validator.login(
-      this.formularioPersona.value.usuario,
-      this.formularioPersona.value.contrasena,
+      this.formularioPersona.value.email,
+      this.formularioPersona.value.password,
       this.formularioPersona.value.admin)
 
 
@@ -45,7 +43,6 @@ export class LoginComponent implements OnInit {
   validarEmail(){
     // @ts-ignore
     this.isEmailValid = this.validator.esEmailValido(this.formularioPersona.get('email').value);
-    console.log(this.formularioPersona)
   }
 
 

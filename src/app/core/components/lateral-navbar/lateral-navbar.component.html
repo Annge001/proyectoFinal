@@ -1,12 +1,11 @@
-<ng-container >
+<ng-container>
 
-  <div class="container-fluid" >
+  <div class="container-fluid">
     <div class="row">
       <div class="col mt-4">
-        <div>
-          <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions"
-                  aria-controls="offcanvasWithBothOptions"
-          >
+        <div *ngIf="sesion$ | async as sesion">
+          <button *ngIf="sesion.usuarioActivo!.usuario != ''" class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions"
+                  aria-controls="offcanvasWithBothOptions">
             <mat-icon>arrow_forward_ios</mat-icon>
           </button>
           <br>
@@ -23,7 +22,8 @@
                  routerLink="curso/lista-curso">Cursos</p>
               <br>
               <br>
-              <p class="display-6 colorWhite pointer" data-bs-dismiss="offcanvas" routerLink="inscripcion/lista-inscripcion">
+              <p class="display-6 colorWhite pointer" data-bs-dismiss="offcanvas"
+                 routerLink="inscripcion/lista-inscripcion">
                 Inscripciones</p>
               <br>
               <br>

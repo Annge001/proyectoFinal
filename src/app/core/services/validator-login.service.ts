@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from "rxjs";
 import {Sesion} from "../../models/login";
 import {UsuariosService} from "../../modulos/usuarios/services/usuarios.service";
+import {Usuario} from "../../models/usuario";
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,8 @@ import {UsuariosService} from "../../modulos/usuarios/services/usuarios.service"
 export class ValidatorLoginService {
 
   sesionSubject!: BehaviorSubject<Sesion>;
+  // @ts-ignore
+  usuarios =[];
 
   constructor(private usuariosService:UsuariosService) {
    this.logOut()
@@ -26,29 +29,34 @@ export class ValidatorLoginService {
     this.sesionSubject = new BehaviorSubject(sesion);
   }
 
-  obtenerUsuarios(){
+  obtenerUsuarios(usuarioRecibido: string, contrasenaRecibida: string){
     this.usuariosService.obtenerUsuarios().subscribe(data => {
-      console.log(data)
+
+      // @ts-ignore
+      this.usuarios = data;
+      this.usuarios.filter((usuario:Usuario) => {
+
+        if(usuario.usuario === usuarioRecibido && usuario.contrasena === contrasenaRecibida){
+          const sesion: Sesion = {
+            sesionActiva: true,
+            usuarioActivo: {
+              usuario: usuario.usuario,
+              contrasena: usuario.contrasena,
+              admin: usuario.admin
+            }
+          }
+          console.log(sesion)
+          this.sesionSubject.next(sesion);
+        }
+      })
     })
   }
 
   login(usuario: string, contrasena: string, admin: boolean){
-    this.obtenerUsuarios();
-
-    const sesion: Sesion = {
-      sesionActiva: true,
-      usuarioActivo: {
-        usuario: usuario,
-        contrasena: contrasena,
-        admin: admin
-      }
-    }
-    this.sesionSubject.next(sesion);
-    console.log(this.sesionSubject)
+    this.obtenerUsuarios(usuario,contrasena);
   }
 
   obtenerSesion(): Observable<Sesion>{
-    console.log(this.sesionSubject)
     return this.sesionSubject.asObservable();
   }
 
@@ -58,7 +66,7 @@ export class ValidatorLoginService {
     let mailValido = false;
     'use strict';
 
-    var EMAIL_REGEX = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
+    var EMAIL_REGEX = /^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$/;
 
     if (email.match(EMAIL_REGEX)) {
       mailValido = true;
