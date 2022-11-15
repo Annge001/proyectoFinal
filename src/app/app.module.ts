@@ -20,6 +20,7 @@ import {CursosComponent} from "./components/cursos/cursos.component";
 import {HttpClientModule} from "@angular/common/http";
 import {UsuariosService} from "./modulos/usuarios/services/usuarios.service";
 import {UsuariosModule} from "./modulos/usuarios/usuarios.module";
+import { StoreModule } from '@ngrx/store';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import {UsuariosModule} from "./modulos/usuarios/usuarios.module";
     CoreModule,
     SharedModule,
     HttpClientModule,
-    UsuariosModule
+    UsuariosModule,
+    StoreModule.forRoot({}, {})
 
   ],
   providers: [CursoService, AlumnosService, InscripcionesService, UsuariosService],

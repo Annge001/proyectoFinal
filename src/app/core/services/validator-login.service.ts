@@ -32,7 +32,7 @@ export class ValidatorLoginService {
   obtenerUsuarios(usuarioRecibido: string, contrasenaRecibida: string){
     this.usuariosService.obtenerUsuarios().subscribe(data => {
 
-      // @ts-ignore
+        // @ts-ignore
       this.usuarios = data;
       this.usuarios.filter((usuario:Usuario) => {
 
