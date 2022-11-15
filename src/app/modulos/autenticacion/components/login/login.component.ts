@@ -19,8 +19,7 @@ export class LoginComponent implements OnInit {
   ) {
     this.formularioPersona = fb.group({
       email: ['Marquise_Rempel@yahoo.com', [Validators.required, Validators.email]],
-      password: ['teLksOFm707s7EA', [Validators.required]],
-      admin: new FormControl()
+      password: ['teLksOFm707s7EA', [Validators.required]]
     });
   }
 
@@ -31,8 +30,7 @@ export class LoginComponent implements OnInit {
   loginUsuario(){
     this.validator.login(
       this.formularioPersona.value.email,
-      this.formularioPersona.value.password,
-      this.formularioPersona.value.admin)
+      this.formularioPersona.value.password)
 
 
     this.router.navigate(['cursos']);

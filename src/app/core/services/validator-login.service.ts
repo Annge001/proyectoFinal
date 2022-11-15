@@ -52,7 +52,7 @@ export class ValidatorLoginService {
     })
   }
 
-  login(usuario: string, contrasena: string, admin: boolean){
+  login(usuario: string, contrasena: string){
     this.obtenerUsuarios(usuario,contrasena);
   }
 
