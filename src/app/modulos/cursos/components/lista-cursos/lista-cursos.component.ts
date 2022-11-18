@@ -5,6 +5,10 @@ import {Observable} from "rxjs";
 import {Alumnos} from "../../../../models/alumnos";
 import {Router} from "@angular/router";
 import {CursoService} from "../../services/curso.service";
+import {appState} from "../../../../state/app.state";
+import {Store} from "@ngrx/store";
+import {cargarCursos, cursosCargados} from "../../../../state/actions/cursos.action";
+import {selectorCursosCargados} from "../../../../state/selectors/cursos.selector";
 
 @Component({
   selector: 'app-lista-cursos',
@@ -33,8 +37,10 @@ export class ListaCursosComponent implements OnInit {
 
   constructor(
     private cursoService: CursoService,
-    private router: Router
+    private router: Router,
+    private store: Store<appState>
   ) {
+    this.store.dispatch(cargarCursos());
 
    this.obtenerCursos();
   }
@@ -51,6 +57,15 @@ export class ListaCursosComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.cursoService.obtenerCursosPromise().subscribe((cursos:Curso[])=>{
+      console.log('Actulizando el store');
+
+      this.store.dispatch(cursosCargados({cursos: cursos}));
+      console.log('Se agregaron los cursos al store')
+    })
+
+    this.cursos$ = this.store.select(selectorCursosCargados);
+
   }
 
 

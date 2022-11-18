@@ -21,6 +21,9 @@ import {HttpClientModule} from "@angular/common/http";
 import {UsuariosService} from "./modulos/usuarios/services/usuarios.service";
 import {UsuariosModule} from "./modulos/usuarios/usuarios.module";
 import { StoreModule } from '@ngrx/store';
+import {ROOT_REDUCERS} from "./state/app.state";
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
 
 
 @NgModule({
@@ -44,7 +47,8 @@ import { StoreModule } from '@ngrx/store';
     SharedModule,
     HttpClientModule,
     UsuariosModule,
-    StoreModule.forRoot({}, {})
+    StoreModule.forRoot(ROOT_REDUCERS),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
 
   ],
   providers: [CursoService, AlumnosService, InscripcionesService, UsuariosService],
