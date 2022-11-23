@@ -32,10 +32,7 @@ export class ListaComponent  implements OnInit {
   listaAlumnosInput= [];
   cursos!: Curso[];
   alumnos!: Alumnos[];
-  //cursos$: Observable<Alumnos[]>;
-  suscripcion: any;
-  promesa: any;
-  merge$!: Observable<any>;
+
 
 
 
@@ -52,19 +49,11 @@ export class ListaComponent  implements OnInit {
       this.dataInicial = data
 
       this.ELEMENT_DATA.data = this.dataInicial
-      console.log(this.alumnos)
-
     })
   }
 
 
    ngOnInit(): void {
-
-  // this.obtenerAlumnos().then(data => {
-  //     this.dataInicial = data
-  //     this.ELEMENT_DATA.data = this.dataInicial
-  //     console.log(this.dataInicial)
-  //   });
 
   }
 
@@ -100,7 +89,6 @@ export class ListaComponent  implements OnInit {
 
 
   verMas(id: any) {
-    console.log(id)
     this.redirect('alumno/detalle-alumno')
   }
   cerrarDetalle(){
