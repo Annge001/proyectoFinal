@@ -79,7 +79,6 @@ export class ListaCursosComponent implements OnInit {
 
 
   editar(curso: any) {
-    console.log(curso)
     this.router.navigate(['curso/editar-curso', {
       idCurso: curso.idCurso,
       nombreCurso: curso.nombreCurso,

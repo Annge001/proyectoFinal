@@ -75,7 +75,6 @@ export class ListaComponent  implements OnInit {
     }])
   }
 
-
   redirect(url: string) {
   this.router.navigate([url]);
 }

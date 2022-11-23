@@ -83,7 +83,6 @@ export class EditarCursoComponent implements OnInit {
       fechaFin: this.formulario.value.fechaFin,
       inscripcionAbierta: this.formulario.value.inscripcionAbierta,
     }
-    console.log(curso)
     this.cursoService.editarCurso(curso)
 
     this.router.navigate(['curso/lista-curso'])

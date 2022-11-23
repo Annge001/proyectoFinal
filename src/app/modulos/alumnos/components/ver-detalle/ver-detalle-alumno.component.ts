@@ -1,7 +1,8 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Curso} from "../../../../models/curso";
-import {Router, ActivatedRoute} from "@angular/router";
+import {Router} from "@angular/router";
 import {AlumnosService} from "../../services/alumnos.service";
+import {Alumnos} from "../../../../models/alumnos";
 
 @Component({
   selector: 'app-ver-detalle-alumno',
@@ -22,20 +23,18 @@ export class VerDetalleAlumnoComponent implements OnInit {
   constructor(
     private  alumnosServices: AlumnosService,
     private route : Router
-  ) {{
-    this.activatedRoute.paramMap.subscribe((parametros) => {
-        console.log(parametros)
-        this.curso = {
-          idCurso: parametros.get('idCurso') || '0',
-          nombreCurso: parametros.get('nombreCurso') || '',
-          comision: parametros.get('comision') || '',
-          profesor: parametros.get('profesor') || '',
-          fechaInicio: new Date(parametros.get('fechaInicio') || ''),
-          fechaFin: new Date(parametros.get('fechaFin') || ''),
-          inscripcionAbierta: parametros.get('inscripcionAbierta') === 'true'
-        }
-      }
-    )
+  ) {
+    this.obtenerAlumno().subscribe(data => {
+      // @ts-ignore
+      this.alumnos = data;
+      this.listaAlumnos = this.alumnos;
+      // se recupera id de alumno desde alumnos.services para buscarlo en el array de alumnos
+      let id = '1';
+      this.alumnoVerMas = this.alumnos.filter((alumnos:Alumnos) => alumnos.id === id)
+      console.log(this.alumnoVerMas);
+      this.alumnoDetalle = this.alumnoVerMas[0];
+
+    })
   }
 
   obtenerAlumno() {
