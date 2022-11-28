@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {environment} from "../../../../environments/environment";
-import {Observable} from "rxjs";
+import {map, Observable} from "rxjs";
 import {Usuario} from "../../../models/usuario";
 
 @Injectable({
@@ -14,11 +14,30 @@ export class UsuariosService {
   ) { }
 
   obtenerUsuarios(): Observable<Usuario>{
-    return this.http.get<Usuario>(`${environment.api}usuarios`, {
+    return this.http.get<Usuario>(`${environment.api}usuarios/`, {
       headers: new HttpHeaders({
         'content-type': 'application/json',
         'encoding': 'UTF-8'
       })
-    })
+    }).pipe(
+      map((resp:any)=> resp)
+    )
+  }
+
+
+  getUsers(){
+    return this.http.get<Usuario>(`${environment.api}usuarios/`)
+      .pipe(
+        map( (resp:any)=> resp.data  )
+      );
+  }
+
+
+  getUserById(id:string){
+    return this.http.get<Usuario>(`${environment.api}usuarios/`+id)
+      .pipe(
+        map( (resp:any)=> resp.data  )
+      );
   }
 }
+

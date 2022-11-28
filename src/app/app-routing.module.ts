@@ -12,6 +12,10 @@ const routes: Routes = [
   { path: 'usuarios', component: ListaUsuariosComponent},
   {path: 'cursos',  component: CursosComponent},
 
+  {path: 'usuario' ,canActivate: [AutenticacionGuard],
+    loadChildren: () => import('./modulos/usuarios/usuarios.module').then((m) => m.UsuariosModule)
+  },
+
   {path: 'curso' ,canActivate: [AutenticacionGuard],
   loadChildren: () => import('./modulos/cursos/cursos.module').then((m) => m.CursosModule)
   },

@@ -21,9 +21,11 @@ import {HttpClientModule} from "@angular/common/http";
 import {UsuariosService} from "./modulos/usuarios/services/usuarios.service";
 import {UsuariosModule} from "./modulos/usuarios/usuarios.module";
 import { StoreModule } from '@ngrx/store';
-import {ROOT_REDUCERS} from "./state/app.state";
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
+import {EffectsModule} from "@ngrx/effects";
+import {EffectsArray} from "./state/effects";
+import {ROOT_REDUCERS} from "./state/app.state";
 
 
 @NgModule({
@@ -48,6 +50,7 @@ import { environment } from '../environments/environment';
     HttpClientModule,
     UsuariosModule,
     StoreModule.forRoot(ROOT_REDUCERS),
+    EffectsModule.forRoot(EffectsArray),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
 
   ],

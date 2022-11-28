@@ -31,7 +31,7 @@ export class ValidatorLoginService {
 
   obtenerUsuarios(usuarioRecibido: string, contrasenaRecibida: string){
     this.usuariosService.obtenerUsuarios().subscribe(data => {
-
+console.log(data)
         // @ts-ignore
       this.usuarios = data;
       this.usuarios.filter((usuario:Usuario) => {

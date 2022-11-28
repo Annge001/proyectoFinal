@@ -9,7 +9,10 @@
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
             <button *ngIf="sesion.usuarioActivo!.usuario != ''" class="btn btn-close-white pointer" data-bs-dismiss="offcanvas"
-               routerLink="usuarios">Usuarios</button>
+                    [routerLink]="['usuarios']">Lista de Usuarios</button>
+
+            <button *ngIf="sesion.usuarioActivo!.usuario != ''" class="btn btn-close-white pointer" data-bs-dismiss="offcanvas"
+                    [routerLink]="['usuario']">Usuario</button>
           </li>
         </ul>
         <div *ngIf="sesion$ | async as sesion">

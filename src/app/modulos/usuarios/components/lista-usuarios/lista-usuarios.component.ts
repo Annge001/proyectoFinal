@@ -1,7 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import {UsuariosService} from "../../services/usuarios.service";
-import {Observable} from "rxjs";
+import {Observable, Subscription} from "rxjs";
 import {Usuario} from "../../../../models/usuario";
+import {Store} from "@ngrx/store";
+import {appState} from "../../../../state/app.state";
+import {cargarUsuarios} from "../../../../state/actions";
+import {selectStateUsuarios, selectStateCargando} from "../../../../state/selectors/usuario.selector"
+
+
 
 @Component({
   selector: 'app-lista-usuarios',
@@ -9,14 +15,41 @@ import {Usuario} from "../../../../models/usuario";
   styleUrls: ['./lista-usuarios.component.css']
 })
 export class ListaUsuariosComponent implements OnInit {
-  usuario$! : Observable<Usuario>
+  usuarios$!: Observable<Usuario[]>;
+  cargando$!: Observable<boolean>;
+  usuarios!:Usuario[];
+  loading: boolean= false;
+  error:any;
+  subscription = new Subscription()
 
-  constructor(private usuariosService:UsuariosService) { }
 
-  ngOnInit(): void {
-    this.usuario$ = this.usuariosService.obtenerUsuarios();
+
+  constructor(
+    private store: Store<appState>
+) {
+    this.usuarios$ = this.store.select(selectStateUsuarios);
+    this.cargando$ = this.store.select(selectStateCargando);
+
+
   }
 
+  ngOnInit(): void {
+//escuchar
+   this.subscription.add(
+     this.store.select('usuarios').subscribe(({users, loading, error})=>{
+       this.loading = loading;
+       this.error = error;
+       this.usuarios = users;
+     })
+   )
 
+
+//ejecutar
+    this.store.dispatch(cargarUsuarios());
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
 
 }

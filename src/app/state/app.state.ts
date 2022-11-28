@@ -1,13 +1,15 @@
-import {CursoState} from "../models/curso.state";
-import {ActionReducerMap} from "@ngrx/store";
-import {cursosReducer} from "./reducers/cursos.reducers";
+import { ActionReducerMap } from "@ngrx/store";
+import * as reducers from "./reducers";
+
 
 export interface appState{
-  cursos: CursoState
+  usuarios: reducers.UsuariosState,
+  usuario: reducers.UsuarioState
+
+
 }
 
-
-
-export const ROOT_REDUCERS: ActionReducerMap<appState>={
-  cursos: cursosReducer
+export const ROOT_REDUCERS: ActionReducerMap<appState> = {
+  usuarios:reducers.usuariosReducer,
+  usuario:reducers.usuarioReducer
 }

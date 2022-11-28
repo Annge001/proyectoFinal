@@ -1,6 +1,8 @@
-export interface Usuario{
-  usuario: string;
-  contrasena: string;
-  admin: boolean;
-  id?:number;
+export class Usuario{
+ constructor(
+  public usuario: string,
+  public contrasena: string,
+  public admin: boolean,
+  public id?:number,
+ ){}
 }
