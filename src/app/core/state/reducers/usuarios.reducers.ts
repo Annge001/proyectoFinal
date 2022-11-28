@@ -1,5 +1,5 @@
 import { Action, createReducer, on } from '@ngrx/store';
-import { Usuario } from '../../models/usuario';
+import { Usuario } from '../../../models/usuario';
 import {cargarUsuarios, usuariosCargados, usuariosCargadosError} from "../actions";
 
 export interface UsuariosState {

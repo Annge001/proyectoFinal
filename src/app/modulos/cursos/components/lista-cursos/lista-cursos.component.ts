@@ -5,7 +5,7 @@ import {Observable} from "rxjs";
 import {Alumnos} from "../../../../models/alumnos";
 import {Router} from "@angular/router";
 import {CursoService} from "../../services/curso.service";
-import {appState} from "../../../../state/app.state";
+import {appState} from "../../../../core/state/app.state";
 import {Store} from "@ngrx/store";
 
 @Component({

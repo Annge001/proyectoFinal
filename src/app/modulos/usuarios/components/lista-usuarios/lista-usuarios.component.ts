@@ -3,9 +3,9 @@ import {UsuariosService} from "../../services/usuarios.service";
 import {Observable, Subscription} from "rxjs";
 import {Usuario} from "../../../../models/usuario";
 import {Store} from "@ngrx/store";
-import {appState} from "../../../../state/app.state";
-import {cargarUsuarios} from "../../../../state/actions";
-import {selectStateUsuarios, selectStateCargando} from "../../../../state/selectors/usuario.selector"
+import {appState} from "../../../../core/state/app.state";
+import {cargarUsuarios} from "../../../../core/state/actions";
+import {selectStateUsuarios, selectStateCargando} from "../../../../core/state/selectors/usuario.selector"
 
 
 

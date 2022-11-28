@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {Usuario} from "../../../../models/usuario";
 import {ActivatedRoute} from "@angular/router";
 import {Store} from "@ngrx/store";
-import {appState} from "../../../../state/app.state";
-import {cargarUsuarios} from "../../../../state/actions";
+import {appState} from "../../../../core/state/app.state";
+import {cargarUsuarios} from "../../../../core/state/actions";
 
 @Component({
   selector: 'app-usuario',
