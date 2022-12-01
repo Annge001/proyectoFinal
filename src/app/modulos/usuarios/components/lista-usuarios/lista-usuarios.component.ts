@@ -37,19 +37,17 @@ export class ListaUsuariosComponent implements OnInit {
 //escuchar
    this.subscription.add(
      this.store.select('usuarios').subscribe(({users, loading, error})=>{
+       console.log(error)
        this.loading = loading;
        this.error = error;
        this.usuarios = users;
      })
-   )
-
-
-//ejecutar
+   )//ejecutar
     this.store.dispatch(cargarUsuarios());
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    this.subscription .unsubscribe();
   }
 
 }

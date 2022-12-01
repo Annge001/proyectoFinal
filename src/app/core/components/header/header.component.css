@@ -4,3 +4,8 @@
 .colorWhite{
   color: whitesmoke;
 }
+.card-title{
+  color: whitesmoke;
+  padding: 15px;
+  font-size: 10px;
+}

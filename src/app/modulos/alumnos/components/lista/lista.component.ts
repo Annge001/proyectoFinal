@@ -12,34 +12,30 @@ import {Router} from "@angular/router";
   templateUrl: './lista.component.html',
   styleUrls: ['./lista.component.css']
 })
-export class ListaComponent  implements OnInit {
+export class ListaComponent implements OnInit {
 
   alumnos$!: Observable<Alumnos[]>
   alumnoDetalle = null;
-  dataInicial:any;
+  dataInicial: any;
 
   ELEMENT_DATA = new MatTableDataSource([])
-  displayedColumns: string[] = ['nombre', 'email', 'comision', 'curso', 'editar', 'borrar','verDetalle'];
+  displayedColumns: string[] = ['nombre', 'email', 'comision', 'curso', 'editar', 'borrar', 'verDetalle'];
   // variante de salida con el alumno a editar
   @Output()
   alumno = new EventEmitter<any>();
 
 
-
-
   //variante que recibe la lista actualizada
   @Input()
-  listaAlumnosInput= [];
+  listaAlumnosInput = [];
   cursos!: Curso[];
   alumnos!: Alumnos[];
 
 
-
-
   constructor(
     private router: Router,
-    private alumnoService : AlumnosService
-  ){
+    private alumnoService: AlumnosService
+  ) {
 
     this.obtenerAlumnos();
   }
@@ -53,15 +49,13 @@ export class ListaComponent  implements OnInit {
   }
 
 
-   ngOnInit(): void {
+  ngOnInit(): void {
 
   }
 
 
-
-
-
-  editar(alumno:any) {
+  editar(alumno: any) {
+    console.log(alumno)
     this.router.navigate(['alumno/editar-alumno', {
       id: alumno.id,
       nombre: alumno.nombre,
@@ -70,16 +64,14 @@ export class ListaComponent  implements OnInit {
       curso: alumno.curso,
       email: alumno.email,
       telefono: alumno.telefono,
-
-
     }])
   }
 
   redirect(url: string) {
-  this.router.navigate([url]);
-}
+    this.router.navigate([url]);
+  }
 
-  filtrar(event: Event){
+  filtrar(event: Event) {
     const filtro = (event.target as HTMLInputElement).value;
 
     this.ELEMENT_DATA.filter = filtro.trim().toLowerCase();
@@ -90,7 +82,8 @@ export class ListaComponent  implements OnInit {
   verMas(id: any) {
     this.redirect('alumno/detalle-alumno')
   }
-  cerrarDetalle(){
+
+  cerrarDetalle() {
     this.alumnoDetalle = null;
   }
 
@@ -101,11 +94,11 @@ export class ListaComponent  implements OnInit {
 
 
   borrar(id: number) {
-  this.alumnoService.borrarAlumno(id).subscribe(data => {
-    console.log(data)
-    this.obtenerAlumnos()
-  })
-  this.alumnos$ = this.alumnoService.obtenerAlumnosPromise()
+    this.alumnoService.borrarAlumno(id).subscribe(data => {
+      console.log(data)
+      this.obtenerAlumnos()
+    })
+    this.alumnos$ = this.alumnoService.obtenerAlumnosPromise()
   }
 
 }

@@ -11,15 +11,15 @@
             <button *ngIf="sesion.usuarioActivo!.usuario != ''" class="btn btn-close-white pointer" data-bs-dismiss="offcanvas"
                     [routerLink]="['usuarios']">Lista de Usuarios</button>
 
-            <button *ngIf="sesion.usuarioActivo!.usuario != ''" class="btn btn-close-white pointer" data-bs-dismiss="offcanvas"
-                    [routerLink]="['usuario']">Usuario</button>
+          <!--  <button *ngIf="sesion.usuarioActivo!.usuario != ''" class="btn btn-close-white pointer" data-bs-dismiss="offcanvas"
+                    [routerLink]="['usuario']">Usuario</button>-->
           </li>
         </ul>
-        <div *ngIf="sesion$ | async as sesion">
-         <button  *ngIf="sesion.usuarioActivo!.usuario === ''" class="btn btn-dark" routerLink="autenticacion/login">Iniciar sesi&oacute;n</button>
-          <button *ngIf="sesion.usuarioActivo!.usuario != ''" class="btn btn-dark" routerLink="autenticacion/login">Cerrar sesi&oacute;n</button>
+        <div *ngIf="sesion$ | async as sesion" class="d-flex">
+          <h5 class="card-title " *ngIf="sesion.usuarioActivo!.usuario != ''" > Usuario: {{sesion.usuarioActivo!.usuario}}</h5>
+          <button  *ngIf="sesion.usuarioActivo!.usuario === ''" class="btn btn-dark" routerLink="autenticacion/login">Iniciar sesi&oacute;n</button>
+          <button *ngIf="sesion.usuarioActivo!.usuario != ''" class="btn btn-dark" routerLink="autenticacion/login" (click)="cerrarSesion()">Cerrar sesi&oacute;n </button>
         </div>
-
       </div>
     </div>
   </nav>

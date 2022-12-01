@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ValidatorLoginService} from "../../services/validator-login.service";
 import {Sesion} from "../../../models/login";
 import {Observable} from "rxjs";
+import {Usuario} from "../../../models/usuario";
 
 @Component({
   selector: 'app-header',
@@ -11,6 +12,7 @@ import {Observable} from "rxjs";
 export class HeaderComponent implements OnInit {
 
   sesion$!: Observable<Sesion>;
+  usuario!:Usuario;
 
   constructor(
     private validator: ValidatorLoginService,
@@ -20,12 +22,11 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     //this.sesion$ = this.validator.obtenerSesion()
     this.sesion$ = this.sesionService.obtenerSesion();
-    console.log(this.sesion$)
   }
 
   cerrarSesion(){
     this.validator.logOut()
+    this.sesion$ = this.sesionService.obtenerSesion();
   }
-
 
 }

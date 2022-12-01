@@ -18,7 +18,9 @@
   <div class="col" *ngFor="let usuario of usuarios">
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title">{{usuario.contrasena}} {{usuario.admin}} {{usuario.usuario}}</h5>
+        <h5 class="card-title">Admin: {{usuario.admin}}</h5>
+        <h5 class="card-title"> Email: {{usuario.usuario}} </h5>
+        <h5 class="card-title">Constraseña: {{usuario.contrasena}}  </h5>
         <span class="text-muted">ID: {{usuario.id}} </span>
       </div>
     </div>

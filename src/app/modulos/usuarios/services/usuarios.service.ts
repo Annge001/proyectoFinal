@@ -28,7 +28,7 @@ export class UsuariosService {
   getUsers(){
     return this.http.get<Usuario>(`${environment.api}usuarios/`)
       .pipe(
-        map( (resp:any)=> resp.data  )
+        map( (resp:any)=> resp  )
       );
   }
 

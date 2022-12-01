@@ -64,8 +64,6 @@ export class EditarAlumnoFormComponent implements OnInit {
         telefono: parametros.get('telefono') || '',
         cursos: parametros.get('curso')
 
-
-
       }
 
       this.formularioPersona = this.fb.group({
