@@ -19,7 +19,7 @@ export class UsuarioEffects {
 
   cargarUsuario$ = createEffect(() => this.actions$.pipe(
     ofType(cargarUsuario),
-    tap(data =>),
+    tap(data => console.log("effect tap", data)),
     mergeMap((action) => this.usuarioService.getUserById(action.id)
       .pipe(
         map(user => usuarioCargado({usuario: user})),

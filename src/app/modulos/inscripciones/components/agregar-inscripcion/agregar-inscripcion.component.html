@@ -33,7 +33,7 @@
           <div class="col-5 me-2">
             <mat-form-field class="example-full-width" appearance="fill">
               <mat-label>id de alumno:</mat-label>
-              <mat-select formControlName="idCurso" multiple>
+              <mat-select formControlName="idAlumno" multiple>
                 <mat-option *ngFor="let inscripcion of inscripcion"
                             [value]="inscripcion">{{inscripcion.idAlumno}}</mat-option>
               </mat-select>
@@ -43,8 +43,7 @@
           <div class="col-5">
             <mat-form-field class="example-full-width" appearance="fill">
               <mat-label>Profesor:</mat-label>
-              <mat-select formControlName="profesor" multiple>
-              </mat-select>
+                <input matInput formControlName="profesor">
             </mat-form-field>
           </div>
         </div>
@@ -78,7 +77,7 @@
             <button mat-stroked-button color="primary">Volver</button>
           </div>
           <div>
-            <button mat-stroked-button color="primary" (click)="crearInscripcion()">Confirmar</button>
+            <button mat-stroked-button color="primary" >Confirmar</button>
           </div>
         </div>
         <br>

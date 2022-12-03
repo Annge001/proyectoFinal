@@ -66,6 +66,4 @@ export class InscripcionesService {
       //catchError(this.manejarError)
     ).subscribe();
   }
-
-
 }

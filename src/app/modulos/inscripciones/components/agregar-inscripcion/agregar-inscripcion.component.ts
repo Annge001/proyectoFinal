@@ -34,6 +34,7 @@ export class AgregarInscripcionComponent implements OnInit {
     });
 
     this.obtenerInscripcion().subscribe(data => {
+      console.log(data)
       this.inscripcion = data
     })
   }
@@ -60,15 +61,16 @@ export class AgregarInscripcionComponent implements OnInit {
   }
 
   agregarInscripcion(){
+    console.log(this)
     const inscripcion: Inscripcion = {
-      //idCurso: Math.round(Math.random()*1000),
       idInscripcion: this.formulario.value.idInscripcion,
-      idCurso: this.formulario.value.idCurso,
-      idAlumno: this.formulario.value.idAlumno,
-      fechaInicio: this.formulario.value.inicio,
-      fechaFin: this.formulario.value.fin,
+      idCurso: this.formulario.value.idCurso[0].idCurso,
+      idAlumno: this.formulario.value.idAlumno[0].idAlumno,
+      fechaInicio: this.formulario.value.fechaInicio,
+      fechaFin: this.formulario.value.fechaFin,
       profesor: this.formulario.value.profesor,
     };
+    console.log(inscripcion)
     this.inscripcionService.agregarInscripcion(inscripcion);
     this.router.navigate(['inscripcion/lista-inscripcion']);
   }

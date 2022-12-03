@@ -48,8 +48,11 @@ export class ListaInscripcionesComponent implements OnInit {
     this.router.navigate(['inscripcion/agregar-inscripcion'])
   }
 
-  filtrar($event: KeyboardEvent) {
+  filtrar(event: Event) {
+    console.log(event)
+    const filtro = (event.target as HTMLInputElement).value;
 
+    this.ELEMENT_DATA.filter = filtro.trim().toLowerCase();
   }
 
   borrar(idInscipcion: number) {
