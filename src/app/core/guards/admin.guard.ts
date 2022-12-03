@@ -21,7 +21,6 @@ export class AdminGuard implements CanActivate {
 
     return this.sesion.obtenerSesion().pipe(
       map((sesion: Sesion) => {
-        console.log(sesion)
         if (sesion.usuarioActivo?.admin){
           return true;
         }else{

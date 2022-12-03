@@ -31,9 +31,7 @@ export class VerDetalleInscripcionComponent implements OnInit {
 
   obtenerInscripcion() {
     this.activatedRoute.paramMap.subscribe((parametros) =>{
-      console.log(parametros)
       this.idInscripcion = parametros.get('idInscripcion') || '0'
-      console.log(this.idInscripcion)
       this.obtenerInscripcionService();
     })
 
@@ -41,7 +39,6 @@ export class VerDetalleInscripcionComponent implements OnInit {
 
   obtenerInscripcionService(){
     this.inscripcionService.obtenerDetalleInscripcion(this.idInscripcion).subscribe(data => {
-      console.log(data)
       this.inscripcionDetalle = data;
     })
   }

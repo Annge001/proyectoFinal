@@ -37,7 +37,6 @@ export class ListaUsuariosComponent implements OnInit {
 //escuchar
    this.subscription.add(
      this.store.select('usuarios').subscribe(({users, loading, error})=>{
-       console.log(error)
        this.loading = loading;
        this.error = error;
        this.usuarios = users;

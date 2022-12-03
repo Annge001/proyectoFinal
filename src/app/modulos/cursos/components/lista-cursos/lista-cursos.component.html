@@ -22,7 +22,7 @@
       </div>
 
 
-      <mat-table [dataSource]="ELEMENT_DATA">
+      <mat-table [dataSource]="ELEMENT_DATA" *ngIf="this.ELEMENT_DATA.filteredData.length > 0">
         <ng-container matColumnDef="nombreCurso">
           <mat-header-cell *matHeaderCellDef> Nombre Curso:</mat-header-cell>
           <mat-cell *matCellDef="let curso"> {{curso.nombreCurso}}</mat-cell>
@@ -63,7 +63,7 @@
             </button>
           </mat-cell>
         </ng-container>
-        <app-ver-detalle (cerrar)="cerrarDetalle()"></app-ver-detalle>
+
 
 
 

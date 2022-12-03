@@ -50,13 +50,11 @@ export class AltaAlumnoComponent implements OnInit {
 
     this.obtenerAlumnos().subscribe(data => {
       this.alumnos = data
-      console.log(this.alumnos)
     })
   }
 
   ngOnInit(): void {
     this.sesion$ = this.sesionService.obtenerSesion();
-    console.log(this.sesion$)
   }
 
   crearAlumno() {
@@ -79,13 +77,10 @@ export class AltaAlumnoComponent implements OnInit {
   }
 
   validarCorreo() {
-    console.log('entroIf')
     if (this.formularioPersona.get('email')?.value === this.formularioPersona.get('confirmarEmail')?.value) {
       this.isCorreoConfirmado = false;
-      console.log('false')
     } else {
       this.isCorreoConfirmado = true;
-      console.log('true')
     }
   }
 
@@ -103,7 +98,6 @@ export class AltaAlumnoComponent implements OnInit {
       cursando: this.formularioPersona.value.cursando,
 
     };
-    console.log(alumno);
     this.alumnosServices.agregarAlumno(alumno);
     this.router.navigate(['alumno/lista-alumnos']);
   }

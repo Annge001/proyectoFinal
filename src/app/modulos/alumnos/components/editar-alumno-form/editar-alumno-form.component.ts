@@ -42,7 +42,6 @@ export class EditarAlumnoFormComponent implements OnInit {
     this.obtenerAlumnos().subscribe(data => {
       this.alumno = data;
       this.listaAlumnos = this.alumno;
-      console.log(this.alumno);
     })
   }
   obtenerAlumnos() {
@@ -51,7 +50,6 @@ export class EditarAlumnoFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((parametros)=>{
-      console.log(parametros)
       this.id = parametros.get('id') || '0';
 
       this.alumno = {

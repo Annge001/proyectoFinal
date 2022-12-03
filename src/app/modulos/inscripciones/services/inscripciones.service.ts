@@ -64,7 +64,7 @@ export class InscripcionesService {
       })
     }).pipe(
       //catchError(this.manejarError)
-    ).subscribe(console.log);
+    ).subscribe();
   }
 
 

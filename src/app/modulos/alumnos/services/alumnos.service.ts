@@ -34,7 +34,7 @@ export class AlumnosService {
       })
     }).pipe(
       //catchError(this.manejarError)
-    ).subscribe(console.log);
+    ).subscribe();
   }
 
   obtenerDetalleAlumno(): Observable<Alumnos[]> {
@@ -52,7 +52,7 @@ export class AlumnosService {
   editarAlumno(alumno: Alumnos){
     this.http.put<Alumnos>(`${environment.api}/alumnos/${alumno.id}`, alumno).pipe(
       // catchError(this.manejarError)
-    ).subscribe(console.log);
+    ).subscribe();
   }
 
 

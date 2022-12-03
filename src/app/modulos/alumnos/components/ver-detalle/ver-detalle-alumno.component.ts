@@ -31,7 +31,6 @@ export class VerDetalleAlumnoComponent implements OnInit {
       // se recupera id de alumno desde alumnos.services para buscarlo en el array de alumnos
       let id = '1';
       this.alumnoVerMas = this.alumnos.filter((alumnos:Alumnos) => alumnos.id === id)
-      console.log(this.alumnoVerMas);
       this.alumnoDetalle = this.alumnoVerMas[0];
 
     })

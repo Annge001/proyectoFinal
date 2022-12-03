@@ -31,7 +31,7 @@ export class CursoService {
       })
     }).pipe(
       //catchError(this.manejarError)
-    ).subscribe(console.log);
+    ).subscribe();
   }
 
   obtenerDetalleCurso(): Observable<Curso[]> {
@@ -48,10 +48,9 @@ export class CursoService {
   editarCurso(curso: Curso){
     this.http.put<Curso>(`${environment.api}/cursos/${curso.idCurso}`, curso).pipe(
      // catchError(this.manejarError)
-    ).subscribe(console.log);
+    ).subscribe();
   }
   borrarCurso(id: number) {
-    console.log(id)
    return this.http.delete(`${environment.api}/cursos/${id}`);
   }
 

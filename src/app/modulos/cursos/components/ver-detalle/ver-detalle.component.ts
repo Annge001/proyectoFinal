@@ -34,7 +34,6 @@ export class VerDetalleComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((parametros) => {
-        console.log(parametros)
         this.curso = {
           idCurso: parametros.get('idCurso') || '0',
           nombreCurso: parametros.get('nombreCurso') || '',

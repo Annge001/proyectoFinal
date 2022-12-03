@@ -35,7 +35,6 @@ export class EditarInscripcionComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((parametros) =>{
-      console.log(parametros)
       this.inscripcion = {
         idInscripcion: parametros.get('idInscripcion') || '0',
         idCurso: parametros.get('idCurso') || '',
@@ -65,9 +64,7 @@ export class EditarInscripcionComponent implements OnInit {
       fechaInicio: this.formulario.value.fechaInicio,
       fechaFin: this.formulario.value.fechaFin,
     }
-    console.log(inscripcion)
     this.inscripcionService.editarInscripcion(inscripcion).subscribe(data => {
-      console.log(data)
       this.router.navigate(['inscripcion/lista-inscripcion'])
     })
 

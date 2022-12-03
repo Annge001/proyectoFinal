@@ -55,7 +55,6 @@ export class ListaComponent implements OnInit {
 
 
   editar(alumno: any) {
-    console.log(alumno)
     this.router.navigate(['alumno/editar-alumno', {
       id: alumno.id,
       nombre: alumno.nombre,
@@ -95,7 +94,6 @@ export class ListaComponent implements OnInit {
 
   borrar(id: number) {
     this.alumnoService.borrarAlumno(id).subscribe(data => {
-      console.log(data)
       this.obtenerAlumnos()
     })
     this.alumnos$ = this.alumnoService.obtenerAlumnosPromise()

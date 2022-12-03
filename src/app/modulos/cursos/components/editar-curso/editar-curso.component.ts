@@ -47,7 +47,6 @@ export class EditarCursoComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((parametros) =>{
-      console.log(parametros)
       this.curso = {
         idCurso: parametros.get('idCurso') || '0',
         nombreCurso: parametros.get('nombreCurso') || '',
@@ -73,7 +72,6 @@ export class EditarCursoComponent implements OnInit {
 
 
   guardarCurso() {
-    console.log(this.formulario.value.idCurso)
     let curso: Curso = {
       idCurso: this.curso.idCurso,
       nombreCurso: this.formulario.value.nombreCurso,

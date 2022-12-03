@@ -40,8 +40,6 @@ export class AgregarCursoComponent implements OnInit {
 
     this.obtenerCursos().subscribe(data => {
       this.cursos = data
-      console.log(this.cursos)
-
     })
   }
 
@@ -78,9 +76,7 @@ export class AgregarCursoComponent implements OnInit {
       profesor: this.formulario.value.profesor,
       inscripcionAbierta: this.formulario.value.inscripcionAbierta,
     };
-    console.log(this.formulario)
 
-    console.log(curso);
     this.cursoService.agregarCurso(curso);
     this.router.navigate(['curso/lista-curso']);
   }

@@ -46,21 +46,12 @@ export class ListaCursosComponent implements OnInit {
     this.cursoService.obtenerDetalleCurso().subscribe(data => {
       this.dataInicial = data
       this.ELEMENT_DATA.data = this.dataInicial
-      console.log(data)
-
     })
   }
 
 
 
   ngOnInit(): void {
-    this.cursoService.obtenerCursosPromise().subscribe((cursos:Curso[])=>{
-      console.log('Actulizando el store');
-
-      //this.store.dispatch(cursosCargados({cursos: cursos}));
-      console.log('Se agregaron los cursos al store')
-    })
-
 
   }
 
@@ -93,7 +84,6 @@ export class ListaCursosComponent implements OnInit {
 
 
   verMas(curso: any) {
-    console.log(curso)
     this.router.navigate(['curso/detalle-curso', {
       idCurso: curso.idCurso,
       nombreCurso: curso.nombreCurso,
@@ -115,7 +105,6 @@ export class ListaCursosComponent implements OnInit {
 
   borrar(idCurso: number) {
     this.cursoService.borrarCurso(idCurso).subscribe(data => {
-      console.log(data)
       this.obtenerCursos()
     })
     this.cursos$ = this.cursoService.obtenerCursosPromise()

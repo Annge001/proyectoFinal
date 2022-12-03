@@ -64,10 +64,7 @@ export class PrincipalComponent implements OnInit {
 
 
   alumnoNuevo($event: any) {
-    console.log($event);
-    console.log(this.listaAlumnos[0])
     // @ts-ignore
-
     this.listaAlumnos.push($event);
     this.listaAlumnos = [...this.listaAlumnos]
     this.lista = true

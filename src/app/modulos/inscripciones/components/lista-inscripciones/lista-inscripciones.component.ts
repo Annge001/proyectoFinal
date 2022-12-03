@@ -37,8 +37,6 @@ export class ListaInscripcionesComponent implements OnInit {
       this.dataInicial = data
 
       this.ELEMENT_DATA.data = this.dataInicial
-      console.log(this.inscripcion)
-
     })
   }
 
@@ -55,16 +53,13 @@ export class ListaInscripcionesComponent implements OnInit {
   }
 
   borrar(idInscipcion: number) {
-    console.log(idInscipcion)
     this.inscripcionesService.borrarInscripcion(idInscipcion).subscribe(data => {
-      console.log(data)
       this.obtenerInscripciones()
     })
     this.inscripcion$ = this.inscripcionesService.obtenerInscripcion()
   }
 
   editar(inscripcion: any) {
-    console.log(inscripcion)
     this.router.navigate(['inscripcion/editar-inscripcion', {
       idInscripcion: inscripcion.idInscripcion,
       idCurso: inscripcion.idCurso,
@@ -76,7 +71,6 @@ export class ListaInscripcionesComponent implements OnInit {
   }
 
   verMas(idInscripcion: any) {
-    console.log(idInscripcion)
     this.router.navigate(['inscripcion/detalle-inscripcion', {
       idInscripcion: idInscripcion,
     }])

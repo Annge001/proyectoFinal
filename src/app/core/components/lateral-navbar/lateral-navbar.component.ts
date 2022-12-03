@@ -17,14 +17,10 @@ export class LateralNavbarComponent implements OnInit {
     private sesion: ValidatorLoginService,
     private router: Router
   ) {
-    console.log(sesion)
   }
 
   ngOnInit(): void {
-
       this.sesion$ =  this.sesion.obtenerSesion();
-      console.log(this.sesion$)
-
   }
 
   redirect(url: string) {

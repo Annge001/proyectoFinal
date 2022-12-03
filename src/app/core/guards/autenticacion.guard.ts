@@ -28,7 +28,6 @@ export class AutenticacionGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     return this.sesion.obtenerSesion().pipe(
       map((sesion: Sesion) => {
-        console.log(sesion)
         if (sesion.sesionActiva) {
           return true;
         } else {
@@ -39,4 +38,4 @@ export class AutenticacionGuard implements CanActivate {
     );
   }
 }
- 
+

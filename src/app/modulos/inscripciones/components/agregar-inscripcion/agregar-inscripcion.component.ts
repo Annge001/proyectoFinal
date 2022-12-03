@@ -35,8 +35,6 @@ export class AgregarInscripcionComponent implements OnInit {
 
     this.obtenerInscripcion().subscribe(data => {
       this.inscripcion = data
-      console.log(this.inscripcion)
-
     })
   }
 
@@ -71,7 +69,6 @@ export class AgregarInscripcionComponent implements OnInit {
       fechaFin: this.formulario.value.fin,
       profesor: this.formulario.value.profesor,
     };
-    console.log(inscripcion);
     this.inscripcionService.agregarInscripcion(inscripcion);
     this.router.navigate(['inscripcion/lista-inscripcion']);
   }
