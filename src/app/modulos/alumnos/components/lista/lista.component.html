@@ -1,10 +1,10 @@
-<div class="btn-agregar">
-  <button  mat-stroked-button color="basic" (click)="agregarAlumno()">
+<div class="btn-agregar margin-btn">
+  <button   mat-stroked-button color="basic" (click)="agregarAlumno()">
     Alta Alumno <mat-icon>person_add</mat-icon>
   </button>
 </div>
 
-<div class="container border">
+<div class="container border mb-5">
   <div class="row-">
     <div class="col-auto">
 
@@ -22,7 +22,7 @@
 
 
       <!--dataSource siempre al inicio de la lista-->
-      <mat-table [dataSource]="ELEMENT_DATA">
+      <mat-table [dataSource]="ELEMENT_DATA" class="">
         <ng-container matColumnDef="nombre">
           <mat-header-cell *matHeaderCellDef> Nombre</mat-header-cell>
           <mat-cell *matCellDef="let persona"> {{persona.nombre | mostrarApellido : persona.apellido }} </mat-cell>

@@ -50,7 +50,7 @@ export class ListaComponent implements OnInit {
 
 
   ngOnInit(): void {
-
+    this.obtenerAlumnos();
   }
 
 
@@ -71,7 +71,7 @@ export class ListaComponent implements OnInit {
   }
 
   filtrar(event: Event) {
-    console.log(event)
+
     const filtro = (event.target as HTMLInputElement).value;
 
     this.ELEMENT_DATA.filter = filtro.trim().toLowerCase();

@@ -33,7 +33,7 @@ export class AgregarCursoComponent implements OnInit {
       profesor: ['', [Validators.required]],
       fechaInicio: ['', [Validators.required]],
       fechaFin: ['', [Validators.required]],
-      cursos: ['', [Validators.required]]
+      nombreCurso: ['', [Validators.required]]
 
     });
 
@@ -50,20 +50,6 @@ export class AgregarCursoComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  crearCurso() {
-    this.cursoNuevo.emit(
-      {
-        id: '8',
-        nombre: this.formulario.get('profesor')?.value,
-        apellido: this.formulario.get('cursos')?.value,
-        fechaInicio: this.formulario.get('fechaInicio')?.value,
-        fechaFin: this.formulario.get('fechaFin')?.value,
-      }
-    )
-    this.formulario.reset()
-  }
-
-
 
   agregarCurso(){
     const curso: Curso = {
@@ -71,12 +57,11 @@ export class AgregarCursoComponent implements OnInit {
       idCurso: this.formulario.value.idCurso,
       nombreCurso: this.formulario.value.nombreCurso,
       comision: this.formulario.value.comision,
-      fechaInicio: this.formulario.value.inicio,
-      fechaFin: this.formulario.value.fin,
+      fechaInicio: this.formulario.value.fechaInicio,
+      fechaFin: this.formulario.value.fechaFin,
       profesor: this.formulario.value.profesor,
       inscripcionAbierta: this.formulario.value.inscripcionAbierta,
     };
-
     this.cursoService.agregarCurso(curso);
     this.router.navigate(['curso/lista-curso']);
   }

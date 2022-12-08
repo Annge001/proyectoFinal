@@ -14,3 +14,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .white-icon svg {
   fill: black;
 }
+
+.margin-btn{
+  margin-left: 99px;
+  margin-bottom: 20px;
+}

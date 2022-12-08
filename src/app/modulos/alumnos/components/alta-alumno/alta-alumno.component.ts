@@ -57,20 +57,7 @@ export class AltaAlumnoComponent implements OnInit {
     this.sesion$ = this.sesionService.obtenerSesion();
   }
 
-  crearAlumno() {
-    this.alumnoNuevo.emit(
-      {
-        id: '8',
-        nombre: this.formularioPersona.get('profesor')?.value,
-        apellido: this.formularioPersona.get('cursos')?.value,
-        curso: this.formularioPersona.get('curso')?.value,
-        email: this.formularioPersona.get('email')?.value,
-        telefono: this.formularioPersona.get('telefono')?.value,
 
-      }
-    )
-    this.formularioPersona.reset()
-  }
 
   obtenerAlumnos() {
     return this.alumnosServices.obtenerAlumnosPromise();

@@ -63,15 +63,6 @@
               <input type="tel" matInput placeholder="555-555-1234" formControlName="telefono">
             </mat-form-field>
           </div>
-
-          <div class="col-6 ">
-            <mat-form-field appearance="fill">
-              <mat-label>Cursos</mat-label>
-              <mat-select formControlName="cursos" multiple>
-                <mat-option *ngFor="let curso of listaCursos" [value]="curso">{{curso.nombreCurso}}</mat-option>
-              </mat-select>
-            </mat-form-field>
-          </div>
         </div>
         <div class="color-error">
           <p *ngIf="isCorreoConfirmado">Campo email debe coincidir</p>
@@ -81,7 +72,7 @@
             <button mat-stroked-button color="primary">Volver</button>
           </div>
           <div>
-             <button mat-stroked-button color="primary" (click)="crearAlumno()">Confirmar</button>
+             <button mat-stroked-button color="primary" >Confirmar</button>
           </div>
         </div>
         <br>
