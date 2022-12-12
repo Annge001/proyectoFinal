@@ -43,7 +43,6 @@ export class ListaComponent implements OnInit {
   obtenerAlumnos() {
     this.alumnoService.obtenerDetalleAlumno().subscribe(data => {
       this.dataInicial = data
-
       this.ELEMENT_DATA.data = this.dataInicial
     })
   }
@@ -55,6 +54,7 @@ export class ListaComponent implements OnInit {
 
 
   editar(alumno: any) {
+    console.log(alumno)
     this.router.navigate(['alumno/editar-alumno', {
       id: alumno.id,
       nombre: alumno.nombre,
@@ -79,8 +79,17 @@ export class ListaComponent implements OnInit {
   }
 
 
-  verMas(id: any) {
-    this.redirect('alumno/detalle-alumno')
+  verMas(alumno: any) {
+    console.log(alumno)
+    this.router.navigate(['alumno/detalle-alumno', {
+      id: alumno.id,
+      nombre: alumno.nombre,
+      apellido: alumno.apellido,
+      comision: alumno.comision,
+      curso: alumno.curso,
+      email: alumno.email,
+      telefono: alumno.telefono,
+    }])
   }
 
   cerrarDetalle() {
